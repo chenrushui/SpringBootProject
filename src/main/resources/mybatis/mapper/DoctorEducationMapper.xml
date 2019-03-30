@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yunque.www.springbootdemo.mapper.DoctorEducationMapper">
+    <resultMap id="BaseResultMap" type="DoctorEducation">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="doctor_id" property="doctorId" jdbcType="INTEGER"/>
+        <result column="school_name" property="schoolName" jdbcType="VARCHAR"/>
+        <result column="major_id" property="majorId" jdbcType="INTEGER"/>
+        <result column="major_name" property="majorName" jdbcType="VARCHAR"/>
+        <result column="education_id" property="educationId" jdbcType="VARCHAR"/>
+        <result column="education_name" property="educationName" jdbcType="VARCHAR"/>
+        <result column="year" property="year" jdbcType="VARCHAR"/>
+        <result column="graduated_year" property="graduatedYear" jdbcType="VARCHAR"/>
+        <result column="delete_flag" property="deleteFlag" jdbcType="INTEGER"/>
+        <result column="creat_id" property="creatId" jdbcType="INTEGER"/>
+        <result column="creat_time" property="creatTime" jdbcType="TIMESTAMP"/>
+        <result column="modify_id" property="modifyId" jdbcType="INTEGER"/>
+        <result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+    id, doctor_id, school_name, major_id, major_name, education_id, education_name, year, 
+    graduated_year, delete_flag, creat_id, creat_time, modify_id, modify_time
+  </sql>
+
+    <select id="selectByDoctorId" resultMap="BaseResultMap" parameterType="java.lang.Long">
+        select
+        <include refid="Base_Column_List"/>
+        from p_doctor_education
+        where doctor_id = #{id,jdbcType=INTEGER}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from p_doctor_education
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+
+    <insert id="insert" parameterType="DoctorEducation">
+        <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into p_doctor_education (id, doctor_id, school_name,
+        major_id, major_name, education_id,
+        education_name, year, graduated_year,
+        delete_flag, creat_id, creat_time,
+        modify_id, modify_time)
+        values (#{id,jdbcType=INTEGER}, #{doctorId,jdbcType=INTEGER}, #{schoolName,jdbcType=VARCHAR},
+        #{majorId,jdbcType=INTEGER}, #{majorName,jdbcType=VARCHAR}, #{educationId,jdbcType=VARCHAR},
+        #{educationName,jdbcType=VARCHAR}, #{year,jdbcType=VARCHAR}, #{graduatedYear,jdbcType=VARCHAR},
+        #{deleteFlag,jdbcType=INTEGER}, #{creatId,jdbcType=INTEGER}, #{creatTime,jdbcType=TIMESTAMP},
+        #{modifyId,jdbcType=INTEGER}, #{modifyTime,jdbcType=TIMESTAMP})
+    </insert>
+
+    <insert id="insertSelective" parameterType="DoctorEducation">
+        <!--todo：插入后返回记录的主键id-->
+        <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into p_doctor_education
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="doctorId != null">
+                doctor_id,
+            </if>
+            <if test="schoolName != null">
+                school_name,
+            </if>
+            <if test="majorId != null">
+                major_id,
+            </if>
+            <if test="majorName != null">
+                major_name,
+            </if>
+            <if test="educationId != null">
+                education_id,
+            </if>
+            <if test="educationName != null">
+                education_name,
+            </if>
+            <if test="year != null">
+                year,
+            </if>
+            <if test="graduatedYear != null">
+                graduated_year,
+            </if>
+            <if test="deleteFlag != null">
+                delete_flag,
+            </if>
+            <if test="creatId != null">
+                creat_id,
+            </if>
+            <if test="creatTime != null">
+                creat_time,
+            </if>
+            <if test="modifyId != null">
+                modify_id,
+            </if>
+            <if test="modifyTime != null">
+                modify_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="doctorId != null">
+                #{doctorId,jdbcType=INTEGER},
+            </if>
+            <if test="schoolName != null">
+                #{schoolName,jdbcType=VARCHAR},
+            </if>
+            <if test="majorId != null">
+                #{majorId,jdbcType=INTEGER},
+            </if>
+            <if test="majorName != null">
+                #{majorName,jdbcType=VARCHAR},
+            </if>
+            <if test="educationId != null">
+                #{educationId,jdbcType=VARCHAR},
+            </if>
+            <if test="educationName != null">
+                #{educationName,jdbcType=VARCHAR},
+            </if>
+            <if test="year != null">
+                #{year,jdbcType=VARCHAR},
+            </if>
+            <if test="graduatedYear != null">
+                #{graduatedYear,jdbcType=VARCHAR},
+            </if>
+            <if test="deleteFlag != null">
+                #{deleteFlag,jdbcType=INTEGER},
+            </if>
+            <if test="creatId != null">
+                #{creatId,jdbcType=INTEGER},
+            </if>
+            <if test="creatTime != null">
+                #{creatTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="modifyId != null">
+                #{modifyId,jdbcType=INTEGER},
+            </if>
+            <if test="modifyTime != null">
+                #{modifyTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateByDoctorIdSelective" parameterType="com.yunque.www.springbootdemo.pojo.DoctorEducation">
+        update p_doctor_education
+        <set>
+            <if test="doctorId != null">
+                doctor_id = #{doctorId,jdbcType=INTEGER},
+            </if>
+            <if test="schoolName != null">
+                school_name = #{schoolName,jdbcType=VARCHAR},
+            </if>
+            <if test="majorId != null">
+                major_id = #{majorId,jdbcType=INTEGER},
+            </if>
+            <if test="majorName != null">
+                major_name = #{majorName,jdbcType=VARCHAR},
+            </if>
+            <if test="educationId != null">
+                education_id = #{educationId,jdbcType=VARCHAR},
+            </if>
+            <if test="educationName != null">
+                education_name = #{educationName,jdbcType=VARCHAR},
+            </if>
+            <if test="year != null">
+                year = #{year,jdbcType=VARCHAR},
+            </if>
+            <if test="graduatedYear != null">
+                graduated_year = #{graduatedYear,jdbcType=VARCHAR},
+            </if>
+            <if test="deleteFlag != null">
+                delete_flag = #{deleteFlag,jdbcType=INTEGER},
+            </if>
+            <if test="creatId != null">
+                creat_id = #{creatId,jdbcType=INTEGER},
+            </if>
+            <if test="creatTime != null">
+                creat_time = #{creatTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="modifyId != null">
+                modify_id = #{modifyId,jdbcType=INTEGER},
+            </if>
+            <if test="modifyTime != null">
+                modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where doctor_id = #{doctorId,jdbcType=INTEGER}
+    </update>
+
+    <update id="updateByDoctorId" parameterType="DoctorEducation">
+    update p_doctor_education
+    set doctor_id = #{doctorId,jdbcType=INTEGER},
+      school_name = #{schoolName,jdbcType=VARCHAR},
+      major_id = #{majorId,jdbcType=INTEGER},
+      major_name = #{majorName,jdbcType=VARCHAR},
+      education_id = #{educationId,jdbcType=VARCHAR},
+      education_name = #{educationName,jdbcType=VARCHAR},
+      year = #{year,jdbcType=VARCHAR},
+      graduated_year = #{graduatedYear,jdbcType=VARCHAR},
+      delete_flag = #{deleteFlag,jdbcType=INTEGER},
+      creat_id = #{creatId,jdbcType=INTEGER},
+      creat_time = #{creatTime,jdbcType=TIMESTAMP},
+      modify_id = #{modifyId,jdbcType=INTEGER},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP}
+    where doctor_id = #{doctorId,jdbcType=INTEGER}
+  </update>
+</mapper>

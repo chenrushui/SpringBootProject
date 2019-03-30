@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--mybatis配置文件-->
+    <!--开启端口映射-->
+    <!-- mappers 告诉了Mybatis去哪里找持久化类的映射文件 -->
+    <settings>
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+        <!-- 要使延迟加载生效必须配置下面两个属性 -->
+        <setting name="lazyLoadingEnabled" value="true"/>
+        <setting name="aggressiveLazyLoading" value="false"/>
+        <setting name="logImpl" value="SLF4J" />
+        <setting name="cacheEnabled" value="true"/>
+    </settings>
+
+    <!-- mybatis别名定义:为数据模型定义别名，然后在映射文件中使用 -->
+    <typeAliases>
+        <typeAlias alias="DoctorTitle" type="com.yunque.www.springbootdemo.pojo.DoctorTitle"/>
+        <typeAlias alias="UserRole" type="com.yunque.www.springbootdemo.pojo.UserRole"/>
+        <typeAlias alias="DoctorPrivacySettings" type="com.yunque.www.springbootdemo.pojo.DoctorPrivacySettings"/>
+        <typeAlias alias="DoctorAgreement" type="com.yunque.www.springbootdemo.pojo.DoctorAgreement"/>
+        <typeAlias alias="DoctorAgreementLog" type="com.yunque.www.springbootdemo.pojo.DoctorAgreementLog"/>
+        <typeAlias alias="DoctorEducation" type="com.yunque.www.springbootdemo.pojo.DoctorEducation"/>
+        <typeAlias alias="Doctor" type="com.yunque.www.springbootdemo.pojo.Doctor"/>
+        <!--<typeAlias alias="Article" type="com.mybatis.test.Article"/>-->
+        <!--<typeAlias alias="Blog" type="com.mybatis.test.Blog"/>-->
+    </typeAliases>
+
+
+    <!--<environments default="mysql">-->
+        <!--<environment id="mysql">-->
+            <!--&lt;!&ndash; 指定事务管理类型，type="JDBC"指直接简单使用了JDBC的提交和回滚设置&ndash;&gt;-->
+            <!--<transactionManager type="JDBC"/>-->
+            <!--&lt;!&ndash; dataSource指数据源配置，POOLED是JDBC连接对象的数据源连接池的实现 &ndash;&gt;-->
+            <!--<dataSource type="POOLED">-->
+                <!--<property name="driver" value="com.mysql.jdbc.Driver"/>-->
+                <!--<property name="url" value="jdbc:mysql://127.0.0.1:3306/mybatis"/>-->
+                <!--<property name="username" value="root"/>-->
+                <!--<property name="password" value="sfhq1866"/>-->
+            <!--</dataSource>-->
+        <!--</environment>-->
+    <!--</environments>-->
+
+    <!--<mappers>-->
+        <!--<mapper resource="com/zxc/mapper/EmployeeMapper.xml"/>-->
+    <!--</mappers>-->
+
+
+</configuration>

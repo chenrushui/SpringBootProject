@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yunque.www.springbootdemo.mapper.DoctorTitleMapper">
+    <resultMap id="BaseResultMap" type="DoctorTitle">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="title_id" property="titleId" jdbcType="INTEGER"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="seq_no" property="seqNo" jdbcType="INTEGER"/>
+        <result column="parent_id" property="parentId" jdbcType="INTEGER"/>
+        <result column="type" property="type" jdbcType="INTEGER"/>
+        <result column="delete_flag" property="deleteFlag" jdbcType="INTEGER"/>
+        <result column="creat_id" property="creatId" jdbcType="INTEGER"/>
+        <result column="creat_time" property="creatTime" jdbcType="TIMESTAMP"/>
+        <result column="modify_id" property="modifyId" jdbcType="INTEGER"/>
+        <result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+    id, title_id, name, seq_no, parent_id, type, delete_flag, creat_id, creat_time, modify_id, 
+    modify_time
+  </sql>
+
+    <!--查询医生类型和等级-->
+    <select id="selectByType" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from p_title where type=#{id,jdbcType=INTEGER}
+    </select>
+
+    <!--查询所有医生类型和等级-->
+    <select id="selectByAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from p_title
+    </select>
+
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from p_title
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from p_title
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+    <insert id="insert" parameterType="DoctorTitle">
+    insert into p_title (id, title_id, name, 
+      seq_no, parent_id, type, 
+      delete_flag, creat_id, creat_time, 
+      modify_id, modify_time)
+    values (#{id,jdbcType=INTEGER}, #{titleId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
+      #{seqNo,jdbcType=INTEGER}, #{parentId,jdbcType=INTEGER}, #{type,jdbcType=INTEGER}, 
+      #{deleteFlag,jdbcType=INTEGER}, #{creatId,jdbcType=INTEGER}, #{creatTime,jdbcType=TIMESTAMP}, 
+      #{modifyId,jdbcType=INTEGER}, #{modifyTime,jdbcType=TIMESTAMP})
+  </insert>
+    <insert id="insertSelective" parameterType="DoctorTitle">
+        insert into p_title
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="titleId != null">
+                title_id,
+            </if>
+            <if test="name != null">
+                name,
+            </if>
+            <if test="seqNo != null">
+                seq_no,
+            </if>
+            <if test="parentId != null">
+                parent_id,
+            </if>
+            <if test="type != null">
+                type,
+            </if>
+            <if test="deleteFlag != null">
+                delete_flag,
+            </if>
+            <if test="creatId != null">
+                creat_id,
+            </if>
+            <if test="creatTime != null">
+                creat_time,
+            </if>
+            <if test="modifyId != null">
+                modify_id,
+            </if>
+            <if test="modifyTime != null">
+                modify_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="titleId != null">
+                #{titleId,jdbcType=INTEGER},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="seqNo != null">
+                #{seqNo,jdbcType=INTEGER},
+            </if>
+            <if test="parentId != null">
+                #{parentId,jdbcType=INTEGER},
+            </if>
+            <if test="type != null">
+                #{type,jdbcType=INTEGER},
+            </if>
+            <if test="deleteFlag != null">
+                #{deleteFlag,jdbcType=INTEGER},
+            </if>
+            <if test="creatId != null">
+                #{creatId,jdbcType=INTEGER},
+            </if>
+            <if test="creatTime != null">
+                #{creatTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="modifyId != null">
+                #{modifyId,jdbcType=INTEGER},
+            </if>
+            <if test="modifyTime != null">
+                #{modifyTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="DoctorTitle">
+        update p_title
+        <set>
+            <if test="titleId != null">
+                title_id = #{titleId,jdbcType=INTEGER},
+            </if>
+            <if test="name != null">
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="seqNo != null">
+                seq_no = #{seqNo,jdbcType=INTEGER},
+            </if>
+            <if test="parentId != null">
+                parent_id = #{parentId,jdbcType=INTEGER},
+            </if>
+            <if test="type != null">
+                type = #{type,jdbcType=INTEGER},
+            </if>
+            <if test="deleteFlag != null">
+                delete_flag = #{deleteFlag,jdbcType=INTEGER},
+            </if>
+            <if test="creatId != null">
+                creat_id = #{creatId,jdbcType=INTEGER},
+            </if>
+            <if test="creatTime != null">
+                creat_time = #{creatTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="modifyId != null">
+                modify_id = #{modifyId,jdbcType=INTEGER},
+            </if>
+            <if test="modifyTime != null">
+                modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="DoctorTitle">
+    update p_title
+    set title_id = #{titleId,jdbcType=INTEGER},
+      name = #{name,jdbcType=VARCHAR},
+      seq_no = #{seqNo,jdbcType=INTEGER},
+      parent_id = #{parentId,jdbcType=INTEGER},
+      type = #{type,jdbcType=INTEGER},
+      delete_flag = #{deleteFlag,jdbcType=INTEGER},
+      creat_id = #{creatId,jdbcType=INTEGER},
+      creat_time = #{creatTime,jdbcType=TIMESTAMP},
+      modify_id = #{modifyId,jdbcType=INTEGER},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
