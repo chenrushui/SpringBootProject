@@ -1,10 +1,8 @@
 package com.yunque.www.springbootdemo.utils;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import com.yunque.www.springbootdemo.pojo.User;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -41,7 +39,7 @@ public class JacksonUtils {
         String resULTList = mapper.writeValueAsString(list);
         System.out.println(resULTList);
 
-        String str="{\"name\":\"crs\",\"password\":\"1111\",\"birthday\":1553939852568}";
+        String str = "{\"name\":\"crs\",\"password\":\"1111\",\"birthday\":1553939852568}";
         //把字符串反序列化成class
         mapper.setDateFormat(format);
         User resultUser = mapper.readValue(str, User.class);
@@ -50,9 +48,9 @@ public class JacksonUtils {
         System.out.println(resultUser.toString());
 
         //todo：new Date().getTime() 获取当前时间的毫秒值进行打印
+        //todo: System.out.println(new Date()); 显示样式不太看得懂：Sat Mar 30 17:57:32 CST 2019
+        //todo: JSONObject.toJSONString() 创建对象耗费了大量的时间；尽量避免创建多个对象。
         System.out.println(new Date().getTime());
-
     }
-
 
 }
