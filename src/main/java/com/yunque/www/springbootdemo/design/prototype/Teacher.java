@@ -4,6 +4,8 @@ package com.yunque.www.springbootdemo.design.prototype;
  * Created on 2018/10/10.
  * Author:crs
  * Description:原型设计模式
+ * 1)实现Cloneable接口
+ * 2)在clone()方法里面处理业务逻辑
  */
 public class Teacher implements Cloneable {
     private String name;

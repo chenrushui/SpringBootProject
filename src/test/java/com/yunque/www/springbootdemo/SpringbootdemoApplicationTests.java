@@ -3,6 +3,7 @@ package com.yunque.www.springbootdemo;
 import com.yunque.www.springbootdemo.mapper.TitleMapper;
 import com.yunque.www.springbootdemo.mybaits.cache.SqlSessionFactoryUtils;
 import com.yunque.www.springbootdemo.pojo.Title;
+import com.yunque.www.springbootdemo.spring.SpringBeanCircle;
 import com.yunque.www.springbootdemo.validate.UserValidator;
 import com.yunque.www.springbootdemo.mapper.RedisDao;
 
@@ -22,6 +23,7 @@ import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
@@ -52,8 +54,18 @@ public class SpringbootdemoApplicationTests {
     SqlSession sqlSession1;
 
 
+    @Autowired
+    SpringBeanCircle springBeanCircle;
 
 
+    /**
+     * 测试bean生命周期
+     */
+    @Test
+    public void testSpringBeanCircle(){
+        springBeanCircle.run();
+        //classPathXmlApplicationContext.close();
+    }
 
     @Test
     public void testMybatisCache2() {

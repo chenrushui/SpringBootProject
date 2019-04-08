@@ -21,9 +21,11 @@ public class TestTeacher {
         p.setHeight(178);
         p.setWeight(65);
         System.out.println(p);
+        System.out.println("-----------");
 
         Teacher p1 = (Teacher) p.clone();
         System.out.println(p1);
+        System.out.println("-----------");
 
         p1.setName("李四");
         System.out.println(p);
