@@ -12,3 +12,8 @@
 12)in在某集合内; between在某范围内
 13)列名，下划线命名法；表名也是
 14)不用为每一个varchar类型单独定义字符集和排序规则，只需要在表中定义即可。
+15)mybatis的参数为集合；
+16)CollectionUtils.isEmpty()：查看实现类的isEmpty()方法实现。如果集合为空，创建一个空的集合的经典代码。
+17)post请求，参数使用@RequestParam()注解，表单提交；使用@RequestBody)注解,以json形式提交；get请求，参数为list；
+18)Date currentTimes = new Date(); 声明一个时间变量，能够复用，本质上是当前时间毫秒值。
+19)数据库设计五个保留字段，时间不能为null，如果插入的时候不设置，就会报错。

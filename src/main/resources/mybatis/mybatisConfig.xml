@@ -22,6 +22,7 @@
         <typeAlias alias="DoctorAgreementLog" type="com.yunque.www.springbootdemo.pojo.DoctorAgreementLog"/>
         <typeAlias alias="DoctorEducation" type="com.yunque.www.springbootdemo.pojo.DoctorEducation"/>
         <typeAlias alias="Doctor" type="com.yunque.www.springbootdemo.pojo.Doctor"/>
+        <typeAlias alias="DoctorHospital" type="com.yunque.www.springbootdemo.pojo.DoctorHospital"/>
         <!--<typeAlias alias="Article" type="com.mybatis.test.Article"/>-->
         <!--<typeAlias alias="Blog" type="com.mybatis.test.Blog"/>-->
     </typeAliases>

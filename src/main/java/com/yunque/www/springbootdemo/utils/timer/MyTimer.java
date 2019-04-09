@@ -1,7 +1,5 @@
 package com.yunque.www.springbootdemo.utils.timer;
 
-import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
-
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Timer;
@@ -12,7 +10,6 @@ import java.util.Timer;
  * Description:XXX
  */
 public class MyTimer {
-
 
 
     public static void main(String[] args) {

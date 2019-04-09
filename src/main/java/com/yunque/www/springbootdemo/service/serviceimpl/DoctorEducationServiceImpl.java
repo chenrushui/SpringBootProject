@@ -39,7 +39,10 @@ public class DoctorEducationServiceImpl implements DoctorEducationService {
     public int putDoctorEducation(DoctorEducation doctorEducation) {
         try {
             int result;
+
             Date currentTimes = new Date();
+
+
             DoctorEducation mDoctorEducation = new DoctorEducation();
             //todo：相当于是原型模式，bean复制，效率高
             BeanUtils.copyProperties(doctorEducation,mDoctorEducation);

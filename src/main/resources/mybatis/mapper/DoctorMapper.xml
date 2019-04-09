@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.yunque.www.springbootdemo.mapper.DoctorMapper" >
+
   <resultMap id="BaseResultMap" type="Doctor" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="sex" property="sex" jdbcType="INTEGER" />
@@ -62,6 +63,7 @@
     <result column="birthday" property="birthday" jdbcType="DATE" />
     <result column="show_flag" property="showFlag" jdbcType="INTEGER" />
   </resultMap>
+
   <sql id="Base_Column_List" >
     id, sex, name, mobile_phone, tel, status, type, hospital_id, department_id, title_id, 
     hospital, department, title, cert_image_url, avatar_image_url, auth_time, honor, 
@@ -72,16 +74,15 @@
     reg_time, last_login_time, unionid, register_source, comment, administer_title_id, 
     administer_title, register_type, first_login_time, card, birthday, show_flag
   </sql>
+
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from p_doctor
     where id = #{id,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from p_doctor
-    where id = #{id,jdbcType=INTEGER}
-  </delete>
+
+
   <insert id="insert" parameterType="Doctor" >
     insert into p_doctor (id, sex, name, 
       mobile_phone, tel, status, 
