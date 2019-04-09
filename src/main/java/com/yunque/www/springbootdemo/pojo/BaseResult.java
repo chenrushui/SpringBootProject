@@ -1,20 +1,26 @@
 package com.yunque.www.springbootdemo.pojo;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import java.io.Serializable;
 
 @Data
-public class BaseResult implements Serializable {
+@ApiModel(value = "BaseResult")
+public class BaseResult<T> implements Serializable {
     //200 表示成功，-1表示失败
+    @ApiModelProperty(value = "code码")
     public int code;
+    @ApiModelProperty(value = "信息")
     public String message;
-    public Object result;
+    @ApiModelProperty(value = "实体模型")
+    public T result;
 
     public BaseResult() {
     }
 
-    public BaseResult(int code, String message, Object result) {
+    public BaseResult(int code, String message, T result) {
         this.code = code;
         this.message = message;
         this.result = result;

@@ -13,7 +13,11 @@
 13)列名，下划线命名法；表名也是
 14)不用为每一个varchar类型单独定义字符集和排序规则，只需要在表中定义即可。
 15)mybatis的参数为集合；
-16)CollectionUtils.isEmpty()：查看实现类的isEmpty()方法实现。如果集合为空，创建一个空的集合的经典代码。
+16)CollectionUtils.isEmpty()：查看实现类的isEmpty()方法实现。如果集合为空，创建一个空的集合的经典代码。Collections类
 17)post请求，参数使用@RequestParam()注解，表单提交；使用@RequestBody)注解,以json形式提交；get请求，参数为list；
 18)Date currentTimes = new Date(); 声明一个时间变量，能够复用，本质上是当前时间毫秒值。
 19)数据库设计五个保留字段，时间不能为null，如果插入的时候不设置，就会报错。
+20)mybatis接口如何返回一个Map<String,String> map?  select hospital_id as hospitalId, count(1) as num from...
+21)传递一个集合查询，必须要进行分组才行？
+22)@ApiModel,@ApiModelProperty("医生id") 这两个注解怎么没用啊？如何在生产环境禁用swagger2?
+23)@Value取赋值详解与@ConfigurationProperties对比,直接可以取值，不需要先决条件。

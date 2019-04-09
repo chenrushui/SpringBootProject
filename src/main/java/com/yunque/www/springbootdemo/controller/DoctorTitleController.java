@@ -24,7 +24,7 @@ public class DoctorTitleController {
     private DoctorTitleService doctorTitleService;
 
     @GetMapping(value = "/list/type", produces = "application/json;charset=utf-8")
-    public BaseResult getDoctorTitleList() {
+    public BaseResult<DoctorTitle> getDoctorTitleList() {
         DoctorTitleList doctorTitleList = doctorTitleService.selectDoctorTitleById();
         BaseResult baseResult = new BaseResult();
         baseResult.setMessage("请求成功");
@@ -34,7 +34,7 @@ public class DoctorTitleController {
     }
 
     @GetMapping(value = "/list", produces = "application/json;charset=utf-8")
-    public BaseResult getAllDoctorTitle() {
+    public BaseResult<DoctorTitle> getAllDoctorTitle() {
         List<DoctorTitle> doctorTitles = doctorTitleService.selectDoctorTitle();
         BaseResult baseResult = new BaseResult();
         baseResult.setMessage("请求成功");

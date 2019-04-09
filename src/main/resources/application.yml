@@ -80,4 +80,7 @@ logging:
   level:
     root: info
 
+#是否激活swagger
+swagger: false
+
 
