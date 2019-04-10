@@ -14,7 +14,7 @@ public class BaseResult<T> implements Serializable {
     public int code;
     @ApiModelProperty(value = "信息")
     public String message;
-    @ApiModelProperty(value = "实体模型")
+    @ApiModelProperty(value = "数据")
     public T result;
 
     public BaseResult() {

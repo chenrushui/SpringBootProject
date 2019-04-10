@@ -2,6 +2,7 @@ package com.yunque.www.springbootdemo.mapper;
 
 
 import com.yunque.www.springbootdemo.pojo.DoctorHospital;
+import com.yunque.www.springbootdemo.pojo.HospitalDepartmentMemberDto;
 
 import java.util.List;
 import java.util.Map;
@@ -22,5 +23,9 @@ public interface DoctorHospitalMapper {
     int selectMemberNumByHospitalId(long hospitalId);
 
     List<Map<String, Object>> selectMemberNumByHospitalIds(List<Long> hospitalIds);
+
+    int selectMemberNumByHospitalIdAndDepartmentId(long hospitalId,long departmentId);
+
+    List<HospitalDepartmentMemberDto> getDepartmentMemberByHospitalId(long hospitalId, List<Long> doctorIds);
 
 }

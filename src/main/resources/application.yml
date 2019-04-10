@@ -59,6 +59,8 @@ spring:
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8
     default-property-inclusion: non_null
+  application:
+    name: spring-boot-micro-8000
 
 
 mybatis:
@@ -81,6 +83,6 @@ logging:
     root: info
 
 #是否激活swagger
-swagger: false
+swagger: true
 
 

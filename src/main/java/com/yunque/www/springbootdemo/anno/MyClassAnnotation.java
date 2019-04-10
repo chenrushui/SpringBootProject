@@ -1,10 +1,14 @@
 package com.yunque.www.springbootdemo.anno;
 
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+
 /**
  * Created on 2019/3/18.
  * author:crs
  * Description:XXX
  */
+@Retention(RetentionPolicy.RUNTIME)
 public @interface MyClassAnnotation {
     // 系统名称
     String sysName() default "";

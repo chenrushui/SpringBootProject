@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class DoctorPrivacySettingsServiceImpl extends BaseServiceImpl implements DoctorPrivacySettingsService {
+
     @Autowired
     private DoctorPrivacySettingsMapper doctorPrivacySettingsMapper;
 

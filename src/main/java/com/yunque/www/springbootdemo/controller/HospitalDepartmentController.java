@@ -1,6 +1,7 @@
 package com.yunque.www.springbootdemo.controller;
 
 import com.yunque.www.springbootdemo.pojo.BaseResult;
+import com.yunque.www.springbootdemo.pojo.HospitalDepartmentMemberDto;
 import com.yunque.www.springbootdemo.service.HospitalDepartmentService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -46,5 +47,21 @@ public class HospitalDepartmentController {
         return BaseResult.buildSuccess(list);
     }
 
+    //todo:不进行泛型安全检查
+    @SuppressWarnings("unchecked")
+    @ApiOperation("获取部门的人数")
+    @GetMapping(value = "/{hospitalId}/departments/{departmentId}/num",produces = "application/json;charset=UTF-8")
+    public BaseResult<Integer> getHospitalDepartmentMemberNum(@PathVariable("hospitalId") long hospitalId, @PathVariable("departmentId") long departmentId){
+        int num = hospitalDepartmentService.getHospitalDepartmentMemberNum(hospitalId, departmentId);
+        return BaseResult.buildSuccess(num);
+    }
+
+    @SuppressWarnings("unchecked")
+    @ApiOperation("获取科室id以及部门人数")
+    @GetMapping(value = "/departments/members",produces = "application/json;charset=utf-8")
+    public BaseResult<List<HospitalDepartmentMemberDto>> getDepartmentMemberByHospitalId(@RequestParam("hospitalId") long hospitalId){
+        List<HospitalDepartmentMemberDto> list = hospitalDepartmentService.getDepartmentMemberByHospitalId(hospitalId);
+        return BaseResult.buildSuccess(list);
+    }
 
 }

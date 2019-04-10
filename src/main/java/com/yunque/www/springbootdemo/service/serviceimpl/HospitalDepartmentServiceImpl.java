@@ -1,6 +1,7 @@
 package com.yunque.www.springbootdemo.service.serviceimpl;
 
 import com.yunque.www.springbootdemo.mapper.DoctorHospitalMapper;
+import com.yunque.www.springbootdemo.pojo.HospitalDepartmentMemberDto;
 import com.yunque.www.springbootdemo.service.HospitalDepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,10 +31,19 @@ public class HospitalDepartmentServiceImpl implements HospitalDepartmentService 
 
     @Override
     public List<Map<String, Object>> getMemberNumByHospitalIds(List<Long> hospitalIds) {
-        //todo:判断集合是否为空
         if (CollectionUtils.isEmpty(hospitalIds)){
             return Collections.EMPTY_LIST;
         }
         return doctorHospitalMapper.selectMemberNumByHospitalIds(hospitalIds);
+    }
+
+    @Override
+    public int getHospitalDepartmentMemberNum(long hospitalId, long departmentId) {
+        return doctorHospitalMapper.selectMemberNumByHospitalIdAndDepartmentId(hospitalId,departmentId);
+    }
+
+    @Override
+    public  List<HospitalDepartmentMemberDto> getDepartmentMemberByHospitalId(long hospitalId) {
+        return doctorHospitalMapper.getDepartmentMemberByHospitalId(hospitalId,null);
     }
 }
