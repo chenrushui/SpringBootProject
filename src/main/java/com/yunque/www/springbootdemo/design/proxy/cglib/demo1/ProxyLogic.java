@@ -1,4 +1,4 @@
-package com.yunque.www.springbootdemo.design.proxy.cglib;
+package com.yunque.www.springbootdemo.design.proxy.cglib.demo1;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cglib.proxy.MethodInterceptor;

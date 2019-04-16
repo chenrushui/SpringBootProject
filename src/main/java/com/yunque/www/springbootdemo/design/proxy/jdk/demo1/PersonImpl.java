@@ -1,4 +1,4 @@
-package com.yunque.www.springbootdemo.design.proxy.jdk;
+package com.yunque.www.springbootdemo.design.proxy.jdk.demo1;
 
 import lombok.extern.slf4j.Slf4j;
 

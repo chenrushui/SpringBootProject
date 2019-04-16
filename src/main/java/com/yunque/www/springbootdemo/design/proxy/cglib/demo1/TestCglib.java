@@ -1,4 +1,4 @@
-package com.yunque.www.springbootdemo.design.proxy.cglib;
+package com.yunque.www.springbootdemo.design.proxy.cglib.demo1;
 
 import org.springframework.cglib.proxy.Enhancer;
 
