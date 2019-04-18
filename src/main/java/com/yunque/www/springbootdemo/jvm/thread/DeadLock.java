@@ -27,7 +27,6 @@ public class DeadLock implements Runnable {
                 //这是资源
                 System.out.println("Hel\\pushSdklo");
             }
-            
         }
     }
 }
