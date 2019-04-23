@@ -17,8 +17,9 @@ public class DeadLock implements Runnable {
 
     @Override
     public void run() {
+        //todo:同步锁
         synchronized (obj1) {  //锁对象obj1，某个线程拿到了锁对象。
-            try {
+                try {
                 Thread.sleep(100);
             } catch (InterruptedException e) {
                 e.printStackTrace();
@@ -28,5 +29,7 @@ public class DeadLock implements Runnable {
                 System.out.println("Hel\\pushSdklo");
             }
         }
+        //两把不一样的锁。
+        //每天要写很多代码才行。
     }
 }
