@@ -35,7 +35,7 @@
 35)学会注解对理解项目中常用的注解，有什么影响？
 36)利用反射技术，通过pojo上的注解，创建数据表字段。获取字段的名称，属性，长度。终于理解了这个原理。
 37)Class对象是对类信息的封装，注解信息，方法信息等都可以从class对象上获取到。
-38)判断是否可以获取到注解对象，如果生命周期不是运行时注解，自定义的注解对象为空。
+38)判断是否可以获取到注解对象，如果生命周期不是运行时注解，自定义的注解对象为空。 注解的使用流程：定义注解，使用注解，解析注解。
 39)利用反射技术获取对注解对象。
 40)对集合进行forEach()遍历，然后使用lambda进行写，能够简化代码，但是可读性不好。
 41)ApplicationContext的继承关系，两个子类；通过加载配置文件创建对象。
@@ -72,6 +72,8 @@
 72)jackson框架的使用，ObjectMapper类，readValue() writeValueAsString() 用于序列化与反序列化的操作.jackson框架的常用配置。
 73)使用beanUtils类的好处是什么？BeanUtils.copyProperties() 提高bean复制的效率.
 74)server.context-path=/doctor  配置项目的访问路径。
+75)SpringBoot项目中，如果已经有spring-boot-dependencies依赖了，所有org.springframework.boot组的依赖都不用添加版本号。
+
 
 
 
