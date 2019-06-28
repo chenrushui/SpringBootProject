@@ -26,7 +26,7 @@ public class Sender {
         channel.queueDeclare(QUEUE, false, false, false, null);
         //发送消息
         for (int i = 0; i < 100; i++) {
-            channel.basicPublish("", QUEUE, null, ("发送的消息"+i).getBytes());
+            channel.basicPublish("", QUEUE, null, ("发送的消息" + i).getBytes());
         }
         ConnectionUtils.close(channel, conn);
     }

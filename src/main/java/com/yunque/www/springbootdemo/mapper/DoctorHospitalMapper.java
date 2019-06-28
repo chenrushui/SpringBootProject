@@ -24,7 +24,7 @@ public interface DoctorHospitalMapper {
 
     List<Map<String, Object>> selectMemberNumByHospitalIds(List<Long> hospitalIds);
 
-    int selectMemberNumByHospitalIdAndDepartmentId(long hospitalId,long departmentId);
+    int selectMemberNumByHospitalIdAndDepartmentId(long hospitalId, long departmentId);
 
     List<HospitalDepartmentMemberDto> getDepartmentMemberByHospitalId(long hospitalId, List<Long> doctorIds);
 

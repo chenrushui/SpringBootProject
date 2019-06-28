@@ -1,187 +1,187 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.yunque.www.springbootdemo.mapper.DoctorAgreementMapper" >
-  <resultMap id="BaseResultMap" type="DoctorAgreement" >
-    <id column="id" property="id" jdbcType="BIGINT" />
-    <result column="agreement_type" property="agreementType" jdbcType="INTEGER" />
-    <result column="version" property="version" jdbcType="VARCHAR" />
-    <result column="delete_flag" property="deleteFlag" jdbcType="INTEGER" />
-    <result column="created_id" property="createdId" jdbcType="BIGINT" />
-    <result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
-    <result column="modified_id" property="modifiedId" jdbcType="BIGINT" />
-    <result column="modified_time" property="modifiedTime" jdbcType="TIMESTAMP" />
-  </resultMap>
+<mapper namespace="com.yunque.www.springbootdemo.mapper.DoctorAgreementMapper">
+    <resultMap id="BaseResultMap" type="DoctorAgreement">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="agreement_type" property="agreementType" jdbcType="INTEGER"/>
+        <result column="version" property="version" jdbcType="VARCHAR"/>
+        <result column="delete_flag" property="deleteFlag" jdbcType="INTEGER"/>
+        <result column="created_id" property="createdId" jdbcType="BIGINT"/>
+        <result column="created_time" property="createdTime" jdbcType="TIMESTAMP"/>
+        <result column="modified_id" property="modifiedId" jdbcType="BIGINT"/>
+        <result column="modified_time" property="modifiedTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
 
-  <resultMap id="ResultMapWithBLOBs" type="DoctorAgreement" extends="BaseResultMap" >
-    <result column="agreement_content" property="agreementContent" jdbcType="LONGVARCHAR" />
-  </resultMap>
-
-
-  <sql id="Base_Column_List" >
-    id, agreement_type, version, delete_flag, created_id, created_time, modified_id, 
-    modified_time
-  </sql>
-
-  <sql id="Blob_Column_List" >
-    agreement_content
-  </sql>
-
-  <select id="selectAgreementListById" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    select <include refid="Base_Column_List"/>
-    from doctor_agreement
-    where delete_flag = 1
-    <if test="agreementType != null">
-      and agreement_type = #{agreementType,jdbcType=BIGINT}
-    </if>
-  </select>
-
-  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
-    from doctor_agreement
-    where id = #{id,jdbcType=BIGINT}
-  </select>
-
-  <select id="selectByAgreementType" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
-    select
-    <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
-    from doctor_agreement
-    where agreement_type = #{id,jdbcType=BIGINT} and delete_flag=1
-    limit 1
-  </select>
+    <resultMap id="ResultMapWithBLOBs" type="DoctorAgreement" extends="BaseResultMap">
+        <result column="agreement_content" property="agreementContent" jdbcType="LONGVARCHAR"/>
+    </resultMap>
 
 
+    <sql id="Base_Column_List">
+        id, agreement_type, version, delete_flag, created_id, created_time, modified_id,
+        modified_time
+    </sql>
 
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
-    delete from doctor_agreement
-    where id = #{id,jdbcType=BIGINT}
-  </delete>
-  <insert id="insert" parameterType="DoctorAgreement" >
-    insert into doctor_agreement (id, agreement_type, version, 
-      delete_flag, created_id, created_time, 
-      modified_id, modified_time, agreement_content
-      )
-    values (#{id,jdbcType=BIGINT}, #{agreementType,jdbcType=INTEGER}, #{version,jdbcType=VARCHAR}, 
-      #{deleteFlag,jdbcType=INTEGER}, #{createdId,jdbcType=BIGINT}, #{createdTime,jdbcType=TIMESTAMP}, 
-      #{modifiedId,jdbcType=BIGINT}, #{modifiedTime,jdbcType=TIMESTAMP}, #{agreementContent,jdbcType=LONGVARCHAR}
-      )
-  </insert>
-  <insert id="insertSelective" parameterType="DoctorAgreement" >
-    insert into doctor_agreement
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        id,
-      </if>
-      <if test="agreementType != null" >
-        agreement_type,
-      </if>
-      <if test="version != null" >
-        version,
-      </if>
-      <if test="deleteFlag != null" >
-        delete_flag,
-      </if>
-      <if test="createdId != null" >
-        created_id,
-      </if>
-      <if test="createdTime != null" >
-        created_time,
-      </if>
-      <if test="modifiedId != null" >
-        modified_id,
-      </if>
-      <if test="modifiedTime != null" >
-        modified_time,
-      </if>
-      <if test="agreementContent != null" >
-        agreement_content,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=BIGINT},
-      </if>
-      <if test="agreementType != null" >
-        #{agreementType,jdbcType=INTEGER},
-      </if>
-      <if test="version != null" >
-        #{version,jdbcType=VARCHAR},
-      </if>
-      <if test="deleteFlag != null" >
-        #{deleteFlag,jdbcType=INTEGER},
-      </if>
-      <if test="createdId != null" >
-        #{createdId,jdbcType=BIGINT},
-      </if>
-      <if test="createdTime != null" >
-        #{createdTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="modifiedId != null" >
-        #{modifiedId,jdbcType=BIGINT},
-      </if>
-      <if test="modifiedTime != null" >
-        #{modifiedTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="agreementContent != null" >
-        #{agreementContent,jdbcType=LONGVARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="DoctorAgreement" >
-    update doctor_agreement
-    <set >
-      <if test="agreementType != null" >
-        agreement_type = #{agreementType,jdbcType=INTEGER},
-      </if>
-      <if test="version != null" >
+    <sql id="Blob_Column_List">
+        agreement_content
+    </sql>
+
+    <select id="selectAgreementListById" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from doctor_agreement
+        where delete_flag = 1
+        <if test="agreementType != null">
+            and agreement_type = #{agreementType,jdbcType=BIGINT}
+        </if>
+    </select>
+
+    <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from doctor_agreement
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+
+    <select id="selectByAgreementType" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from doctor_agreement
+        where agreement_type = #{id,jdbcType=BIGINT} and delete_flag=1
+        limit 1
+    </select>
+
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete from doctor_agreement
+        where id = #{id,jdbcType=BIGINT}
+    </delete>
+    <insert id="insert" parameterType="DoctorAgreement">
+        insert into doctor_agreement (id, agreement_type, version,
+        delete_flag, created_id, created_time,
+        modified_id, modified_time, agreement_content
+        )
+        values (#{id,jdbcType=BIGINT}, #{agreementType,jdbcType=INTEGER}, #{version,jdbcType=VARCHAR},
+        #{deleteFlag,jdbcType=INTEGER}, #{createdId,jdbcType=BIGINT}, #{createdTime,jdbcType=TIMESTAMP},
+        #{modifiedId,jdbcType=BIGINT}, #{modifiedTime,jdbcType=TIMESTAMP}, #{agreementContent,jdbcType=LONGVARCHAR}
+        )
+    </insert>
+    <insert id="insertSelective" parameterType="DoctorAgreement">
+        insert into doctor_agreement
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="agreementType != null">
+                agreement_type,
+            </if>
+            <if test="version != null">
+                version,
+            </if>
+            <if test="deleteFlag != null">
+                delete_flag,
+            </if>
+            <if test="createdId != null">
+                created_id,
+            </if>
+            <if test="createdTime != null">
+                created_time,
+            </if>
+            <if test="modifiedId != null">
+                modified_id,
+            </if>
+            <if test="modifiedTime != null">
+                modified_time,
+            </if>
+            <if test="agreementContent != null">
+                agreement_content,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="agreementType != null">
+                #{agreementType,jdbcType=INTEGER},
+            </if>
+            <if test="version != null">
+                #{version,jdbcType=VARCHAR},
+            </if>
+            <if test="deleteFlag != null">
+                #{deleteFlag,jdbcType=INTEGER},
+            </if>
+            <if test="createdId != null">
+                #{createdId,jdbcType=BIGINT},
+            </if>
+            <if test="createdTime != null">
+                #{createdTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="modifiedId != null">
+                #{modifiedId,jdbcType=BIGINT},
+            </if>
+            <if test="modifiedTime != null">
+                #{modifiedTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="agreementContent != null">
+                #{agreementContent,jdbcType=LONGVARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="DoctorAgreement">
+        update doctor_agreement
+        <set>
+            <if test="agreementType != null">
+                agreement_type = #{agreementType,jdbcType=INTEGER},
+            </if>
+            <if test="version != null">
+                version = #{version,jdbcType=VARCHAR},
+            </if>
+            <if test="deleteFlag != null">
+                delete_flag = #{deleteFlag,jdbcType=INTEGER},
+            </if>
+            <if test="createdId != null">
+                created_id = #{createdId,jdbcType=BIGINT},
+            </if>
+            <if test="createdTime != null">
+                created_time = #{createdTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="modifiedId != null">
+                modified_id = #{modifiedId,jdbcType=BIGINT},
+            </if>
+            <if test="modifiedTime != null">
+                modified_time = #{modifiedTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="agreementContent != null">
+                agreement_content = #{agreementContent,jdbcType=LONGVARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKeyWithBLOBs" parameterType="DoctorAgreement">
+        update doctor_agreement
+        set agreement_type = #{agreementType,jdbcType=INTEGER},
         version = #{version,jdbcType=VARCHAR},
-      </if>
-      <if test="deleteFlag != null" >
         delete_flag = #{deleteFlag,jdbcType=INTEGER},
-      </if>
-      <if test="createdId != null" >
         created_id = #{createdId,jdbcType=BIGINT},
-      </if>
-      <if test="createdTime != null" >
         created_time = #{createdTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="modifiedId != null" >
         modified_id = #{modifiedId,jdbcType=BIGINT},
-      </if>
-      <if test="modifiedTime != null" >
         modified_time = #{modifiedTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="agreementContent != null" >
-        agreement_content = #{agreementContent,jdbcType=LONGVARCHAR},
-      </if>
-    </set>
-    where id = #{id,jdbcType=BIGINT}
-  </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="DoctorAgreement" >
-    update doctor_agreement
-    set agreement_type = #{agreementType,jdbcType=INTEGER},
-      version = #{version,jdbcType=VARCHAR},
-      delete_flag = #{deleteFlag,jdbcType=INTEGER},
-      created_id = #{createdId,jdbcType=BIGINT},
-      created_time = #{createdTime,jdbcType=TIMESTAMP},
-      modified_id = #{modifiedId,jdbcType=BIGINT},
-      modified_time = #{modifiedTime,jdbcType=TIMESTAMP},
-      agreement_content = #{agreementContent,jdbcType=LONGVARCHAR}
-    where id = #{id,jdbcType=BIGINT}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="DoctorAgreement" >
-    update doctor_agreement
-    set agreement_type = #{agreementType,jdbcType=INTEGER},
-      version = #{version,jdbcType=VARCHAR},
-      delete_flag = #{deleteFlag,jdbcType=INTEGER},
-      created_id = #{createdId,jdbcType=BIGINT},
-      created_time = #{createdTime,jdbcType=TIMESTAMP},
-      modified_id = #{modifiedId,jdbcType=BIGINT},
-      modified_time = #{modifiedTime,jdbcType=TIMESTAMP}
-    where id = #{id,jdbcType=BIGINT}
-  </update>
+        agreement_content = #{agreementContent,jdbcType=LONGVARCHAR}
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="DoctorAgreement">
+        update doctor_agreement
+        set agreement_type = #{agreementType,jdbcType=INTEGER},
+        version = #{version,jdbcType=VARCHAR},
+        delete_flag = #{deleteFlag,jdbcType=INTEGER},
+        created_id = #{createdId,jdbcType=BIGINT},
+        created_time = #{createdTime,jdbcType=TIMESTAMP},
+        modified_id = #{modifiedId,jdbcType=BIGINT},
+        modified_time = #{modifiedTime,jdbcType=TIMESTAMP}
+        where id = #{id,jdbcType=BIGINT}
+    </update>
 </mapper>

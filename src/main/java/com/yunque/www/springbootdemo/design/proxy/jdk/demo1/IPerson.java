@@ -6,5 +6,5 @@ package com.yunque.www.springbootdemo.design.proxy.jdk.demo1;
  * Description:接口
  */
 public interface IPerson {
-     void say(String message);
+    void say(String message);
 }

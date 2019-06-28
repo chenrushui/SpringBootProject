@@ -27,25 +27,26 @@ public class DoctorEducationController {
 
     /**
      * 查询教育信息
+     *
      * @param doctorId
      * @return
      */
     @ApiOperation(value = "获取医生教育信息")
-    @GetMapping(value = "/",produces = "application/json;charset=UTF-8")
-    public BaseResult getDoctorEducationByDoctorId(@RequestParam("doctorId") Long doctorId){
+    @GetMapping(value = "/", produces = "application/json;charset=UTF-8")
+    public BaseResult getDoctorEducationByDoctorId(@RequestParam("doctorId") Long doctorId) {
         ArrayList<DoctorEducation> list = new ArrayList<>();
         DoctorEducation doctorEducation = doctorEducationService.getDoctorEducationByDoctorId(doctorId);
-        if (doctorEducation!=null){
+        if (doctorEducation != null) {
             list.add(doctorEducation);
         }
         return BaseResult.buildSuccess(list);
     }
 
     @ApiOperation(value = "编辑医生教育信息")
-    @PostMapping(value = "/edit",produces = "application/json;charset=UTF-8")
-    public  BaseResult editDoctorEducation(@RequestBody DoctorEducation doctorEducation){
-        int row= doctorEducationService.putDoctorEducation(doctorEducation);
-        log.info("保存教育信息成功,医生id是："+doctorEducation.getDoctorId());
+    @PostMapping(value = "/edit", produces = "application/json;charset=UTF-8")
+    public BaseResult editDoctorEducation(@RequestBody DoctorEducation doctorEducation) {
+        int row = doctorEducationService.putDoctorEducation(doctorEducation);
+        log.info("保存教育信息成功,医生id是：" + doctorEducation.getDoctorId());
         return BaseResult.buildSuccess(row);
     }
 }

@@ -13,6 +13,7 @@ public interface ISysUserService {
 
     /**
      * 通过id获取用户信息
+     *
      * @param id
      * @return
      */
@@ -20,6 +21,7 @@ public interface ISysUserService {
 
     /**
      * 通过id获取用户信息以及角色信息
+     *
      * @param id
      * @return
      */
@@ -27,6 +29,7 @@ public interface ISysUserService {
 
     /**
      * 通过id获取用户信息以及角色信息
+     *
      * @param id
      * @return
      */

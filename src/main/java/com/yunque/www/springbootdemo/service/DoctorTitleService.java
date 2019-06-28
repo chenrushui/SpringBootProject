@@ -17,5 +17,4 @@ public interface DoctorTitleService {
     List<DoctorTitle> selectDoctorTitle();
 
 
-
 }

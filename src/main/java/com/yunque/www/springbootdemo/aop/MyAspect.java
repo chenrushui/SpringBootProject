@@ -1,6 +1,5 @@
 package com.yunque.www.springbootdemo.aop;
 
-
 import com.yunque.www.springbootdemo.validate.UserValidator;
 import com.yunque.www.springbootdemo.validate.UserValidatorImpl;
 import com.yunque.www.springbootdemo.pojo.User;

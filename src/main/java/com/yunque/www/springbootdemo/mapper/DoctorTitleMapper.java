@@ -17,6 +17,7 @@ public interface DoctorTitleMapper {
 
     /**
      * 通过类型获取职称等级
+     *
      * @param id
      * @return
      */
@@ -24,6 +25,7 @@ public interface DoctorTitleMapper {
 
     /**
      * 获取所有的医生分类以及职称
+     *
      * @return
      */
     List<DoctorTitle> selectByAll();

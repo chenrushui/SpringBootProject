@@ -19,14 +19,15 @@ public class RedisClient {
 
     /**
      * 设置(key,value)到redis中
+     *
      * @param key
      * @param value
      * @return
      */
-    public boolean set(String key,String value){
+    public boolean set(String key, String value) {
         try {
             ValueOperations<String, String> valueOperations = stringRedisTemplate.opsForValue();
-            valueOperations.set(key,value);
+            valueOperations.set(key, value);
             return true;
         } catch (Exception e) {
             e.printStackTrace();
@@ -36,10 +37,11 @@ public class RedisClient {
 
     /**
      * 通过key获取value
+     *
      * @param key
      * @return
      */
-    public String get(String key){
+    public String get(String key) {
         ValueOperations<String, String> valueOperations = stringRedisTemplate.opsForValue();
         return valueOperations.get(key);
     }

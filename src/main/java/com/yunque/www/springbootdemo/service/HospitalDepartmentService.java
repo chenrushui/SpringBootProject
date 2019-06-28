@@ -32,6 +32,7 @@ public interface HospitalDepartmentService {
 
     /**
      * 获取部门下人员数量
+     *
      * @param hospitalId
      * @param departmentId
      * @return
@@ -41,6 +42,7 @@ public interface HospitalDepartmentService {
 
     /**
      * 获取有人员的科室以及人数
+     *
      * @param hospitalId
      * @return
      */

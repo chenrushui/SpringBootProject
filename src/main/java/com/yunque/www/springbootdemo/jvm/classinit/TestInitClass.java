@@ -7,10 +7,10 @@ package com.yunque.www.springbootdemo.jvm.classinit;
  */
 public class TestInitClass {
 
-    static int i=1;
+    static int i = 1;
 
     static {
-        i=0;
+        i = 0;
         System.out.println(i);
     }
     //static int i=1;

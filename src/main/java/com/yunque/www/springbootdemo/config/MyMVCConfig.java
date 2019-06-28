@@ -10,7 +10,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  * 自己写一个配置类
  * WebMvcConfigurer接口可以扩展spring MVC的功能
  * 直接重写其中的方法即可
- *
  */
 @Configuration
 public class MyMVCConfig implements WebMvcConfigurer {

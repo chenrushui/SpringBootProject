@@ -13,10 +13,10 @@ public class TestDeadLock {
         Object o2 = new Object();
 
         //线程t1
-        new Thread(new DeadLock(o1,o2),"t1").start();
+        new Thread(new DeadLock(o1, o2), "t1").start();
 
         //线程t2
-        new Thread(new DeadLock(o2,o1),"t2").start();
+        new Thread(new DeadLock(o2, o1), "t2").start();
 
     }
 }

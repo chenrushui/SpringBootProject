@@ -16,7 +16,6 @@ import java.util.concurrent.TimeoutException;
 public class ConnectionUtils {
 
 
-
     /**
      * 获取mq连接对象
      *

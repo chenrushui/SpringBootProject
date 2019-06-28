@@ -28,7 +28,7 @@ class Lock1 implements Runnable {
                 System.out.println("Lock1 lock obj1");
                 try {
                     Thread.sleep(100);
-                    synchronized (DeadLockDemo1.obj2){
+                    synchronized (DeadLockDemo1.obj2) {
                         System.out.println("Lock1 lock obj2");
                     }
                 } catch (InterruptedException e) {
@@ -51,7 +51,7 @@ class Lock2 implements Runnable {
                 System.out.println("Lock2 lock obj2");
                 try {
                     Thread.sleep(100);
-                    synchronized (DeadLockDemo1.obj1){
+                    synchronized (DeadLockDemo1.obj1) {
                         System.out.println("Lock2 lock obj1");
                     }
                 } catch (InterruptedException e) {

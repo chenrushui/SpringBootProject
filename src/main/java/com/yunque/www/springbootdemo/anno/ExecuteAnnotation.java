@@ -12,7 +12,7 @@ public class ExecuteAnnotation {
     public static void main(String[] args) {
         // 获取类注解
         MyClassAnnotation myClassAnnotation = TestAnnotation.class.getAnnotation(MyClassAnnotation.class);
-        if (myClassAnnotation == null){
+        if (myClassAnnotation == null) {
             return;
         }
         System.out.println("id = " + myClassAnnotation.id() + "&sysName=" + myClassAnnotation.sysName() + "&desc=" + myClassAnnotation.desc());
@@ -22,7 +22,7 @@ public class ExecuteAnnotation {
         // 获取方法注解
         TestAnnotation testAnnotation = new TestAnnotation();
         Method[] methods = testAnnotation.getClass().getDeclaredMethods();
-        for (Method method: methods) {
+        for (Method method : methods) {
             System.out.println(method.getName());
             // 获取该方法的解决
             MyMethodAnnotation myMethodAnnotation = method.getAnnotation(MyMethodAnnotation.class);
@@ -37,7 +37,7 @@ public class ExecuteAnnotation {
 
         // 获取字段注解
         Field[] fields = TestAnnotation.class.getDeclaredFields();
-        for (Field field: fields) {
+        for (Field field : fields) {
             System.out.println(field.getName());
             // 获取该字段的解决
             MyFieldAnnotation myFieldAnnotation = field.getAnnotation(MyFieldAnnotation.class);

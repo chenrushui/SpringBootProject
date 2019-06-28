@@ -5,7 +5,7 @@ package com.yunque.www.springbootdemo.jvm.classload.parent;
  * author:crs
  * Description:XXX
  */
-public class Son extends  Parent {
+public class Son extends Parent {
     static {
         System.out.println("son初始化...");
     }

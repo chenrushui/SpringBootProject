@@ -23,7 +23,7 @@ public class MyTimerTask extends TimerTask {
             Calendar instance = Calendar.getInstance();
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             String time = simpleDateFormat.format(instance.getTime());
-            System.out.println(name+"----->"+time);
+            System.out.println(name + "----->" + time);
         } else {
             cancel();
         }

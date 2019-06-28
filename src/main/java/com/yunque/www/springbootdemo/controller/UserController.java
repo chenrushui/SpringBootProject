@@ -114,7 +114,7 @@ public class UserController {
 
     //http://localhost:9000/user/get
     @GetMapping(value = "/user/get")
-    public BaseResult getUserInfo(){
+    public BaseResult getUserInfo() {
         User user = new User();
         User u = iUserService.printUser(user);
         BaseResult baseResult = new BaseResult();

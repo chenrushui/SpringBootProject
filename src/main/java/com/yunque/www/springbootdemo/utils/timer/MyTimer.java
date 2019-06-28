@@ -33,13 +33,13 @@ public class MyTimer {
         Calendar calendar = Calendar.getInstance();
         //如何格式化时间？
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        System.out.println("当前时间："+simpleDateFormat.format(calendar.getTime()));
+        System.out.println("当前时间：" + simpleDateFormat.format(calendar.getTime()));
         //如何为当前时间添加三秒钟
         //calendar.add(Calendar.SECOND,3);
         //myTimer.schedule(myTimerTask,calendar.getTime());
         //myTimer.schedule(myTimerTask,calendar.getTime(),3000);
         //myTimer.schedule(myTimerTask,1000);
-        myTimer.schedule(myTimerTask,1000,1000);
+        myTimer.schedule(myTimerTask, 1000, 1000);
         try {
             Thread.sleep(5000);
             myTimer.cancel();

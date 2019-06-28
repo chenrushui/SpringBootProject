@@ -10,6 +10,7 @@ import com.yunque.www.springbootdemo.pojo.DoctorPrivacySettings;
 public interface DoctorPrivacySettingsService {
     /**
      * 保存设置信息
+     *
      * @param record
      * @return
      */
@@ -17,6 +18,7 @@ public interface DoctorPrivacySettingsService {
 
     /**
      * 更新设置信息
+     *
      * @param record
      * @return
      */

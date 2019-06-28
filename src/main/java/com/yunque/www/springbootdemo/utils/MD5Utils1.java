@@ -43,7 +43,7 @@ public class MD5Utils1 {
     }
 
     public static void main(String[] args) {
-        String result= MD5Utils1.stringToMD5("13024112588");
+        String result = MD5Utils1.stringToMD5("13024112588");
         System.out.println(result);
     }
 

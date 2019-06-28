@@ -9,7 +9,7 @@ public enum AgreementTypeEnum {
 
     //TODO:枚举中是常量，需要全部是大写
 
-    USER_AGREEMENT(1,"用户协议"), PRIVATE_AGREEMENT(5,"隐私协议");
+    USER_AGREEMENT(1, "用户协议"), PRIVATE_AGREEMENT(5, "隐私协议");
 
     private int code;
     private String message;

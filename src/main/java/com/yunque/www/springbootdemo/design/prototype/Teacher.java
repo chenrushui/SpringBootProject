@@ -64,7 +64,7 @@ public class Teacher implements Cloneable {
      * @return Object
      */
     @Override
-    protected Object clone()  {
+    protected Object clone() {
         Teacher teacher = null;
         try {
             teacher = (Teacher) super.clone();

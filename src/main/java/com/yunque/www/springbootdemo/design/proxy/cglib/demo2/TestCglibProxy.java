@@ -24,12 +24,12 @@ public class TestCglibProxy {
 //    }
 
     public static void main(String[] args) {
-        String s1="abc";
-        String s2="abc";
-        String s3=new String("abc");
-        System.out.println(s1==s2);//true
-        System.out.println(s1==s3);//false
-        System.out.println(s1==s3.intern());//true
+        String s1 = "abc";
+        String s2 = "abc";
+        String s3 = new String("abc");
+        System.out.println(s1 == s2);//true
+        System.out.println(s1 == s3);//false
+        System.out.println(s1 == s3.intern());//true
     }
 
     //变量s1：java虚拟机栈中的局部变量表中，对象在堆内存中的地址；"abc"存在常量池中，HashSet集合字符串常量表（内存地址）

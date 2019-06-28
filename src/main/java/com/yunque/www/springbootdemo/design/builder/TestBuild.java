@@ -62,7 +62,7 @@ public class TestBuild {
         //因为它的构造函数不是public的，但是你可以在EventBus这个类中看到他的应用（建造者模式）。
 
         //testTeacherBuilder();
-}
+    }
 
 //    private static void testTeacherBuilder() {
 //        Teacher.Builder builder = new Teacher.Builder();

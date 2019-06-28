@@ -2,8 +2,8 @@ package com.yunque.www.springbootdemo.design.observer;
 
 /**
  * Created on 2019/1/29.
- * @author:crs
- * Description:HospitalBean
+ *
+ * @author:crs Description:HospitalBean
  */
 
 public class HospitalBean {

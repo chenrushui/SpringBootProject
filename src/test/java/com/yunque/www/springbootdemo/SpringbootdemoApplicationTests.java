@@ -62,7 +62,7 @@ public class SpringbootdemoApplicationTests {
      * 测试bean生命周期
      */
     @Test
-    public void testSpringBeanCircle(){
+    public void testSpringBeanCircle() {
         springBeanCircle.run();
         //classPathXmlApplicationContext.close();
     }
@@ -71,11 +71,11 @@ public class SpringbootdemoApplicationTests {
     public void testMybatisCache2() {
         TitleMapper mapper = sqlSession.getMapper(TitleMapper.class);
         Title title = mapper.selectById(1);
-        System.out.println("1----->"+title);
+        System.out.println("1----->" + title);
         TitleMapper mapper1 = sqlSession1.getMapper(TitleMapper.class);
         //mapper1.deleteTitleById(29);
         Title title1 = mapper.selectById(1);
-        System.out.println("2----->"+title1);
+        System.out.println("2----->" + title1);
     }
 
     @Test

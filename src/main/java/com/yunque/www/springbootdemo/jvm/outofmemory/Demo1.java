@@ -6,6 +6,6 @@ package com.yunque.www.springbootdemo.jvm.outofmemory;
  * Description:Demo1
  */
 public class Demo1 {
-    public byte[] b=new byte[1024*1024];
+    public byte[] b = new byte[1024 * 1024];
 
 }

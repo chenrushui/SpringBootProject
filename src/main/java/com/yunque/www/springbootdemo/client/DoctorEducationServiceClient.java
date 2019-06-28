@@ -19,14 +19,15 @@ public interface DoctorEducationServiceClient {
 
     /**
      * 查询教育信息
+     *
      * @param doctorId
      * @return
      */
     @ApiOperation(value = "获取医生教育信息")
-    @GetMapping(value = "/",produces = "application/json;charset=UTF-8")
-     BaseResult getDoctorEducationByDoctorId(@RequestParam("doctorId") Long doctorId);
+    @GetMapping(value = "/", produces = "application/json;charset=UTF-8")
+    BaseResult getDoctorEducationByDoctorId(@RequestParam("doctorId") Long doctorId);
 
     @ApiOperation(value = "编辑医生教育信息")
-    @PostMapping(value = "/edit",produces = "application/json;charset=UTF-8")
-      BaseResult editDoctorEducation(@RequestBody DoctorEducation doctorEducation);
+    @PostMapping(value = "/edit", produces = "application/json;charset=UTF-8")
+    BaseResult editDoctorEducation(@RequestBody DoctorEducation doctorEducation);
 }

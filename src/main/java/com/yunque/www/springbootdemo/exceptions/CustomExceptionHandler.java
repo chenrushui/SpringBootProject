@@ -32,7 +32,7 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
     }
 
     @ExceptionHandler(PicaException.class)
-    public final ResponseEntity<BaseBean> handlerGeneralException(PicaException ex, HttpServletRequest request){
+    public final ResponseEntity<BaseBean> handlerGeneralException(PicaException ex, HttpServletRequest request) {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.parseMediaType("application/json; charset=UTF-8"));
         BaseBean baseBean = new BaseBean();
@@ -49,7 +49,7 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
         BaseBean baseBean = new BaseBean();
         baseBean.setCode(PicaResultCode.INTERFACE_INVOKE_EXCEPTION.getCode());
         baseBean.setMessage(PicaResultCode.INTERFACE_INVOKE_EXCEPTION.getMessage());
-        this.logError(ex, request,baseBean);
+        this.logError(ex, request, baseBean);
         return new ResponseEntity(baseBean, headers, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
@@ -61,18 +61,19 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
 
     /**
      * 打印错误信息
+     *
      * @param ex
      * @param request
      * @param baseBean
      */
     private void logError(Exception ex, HttpServletRequest request, BaseBean baseBean) {
-        HashMap<String,String> map = new HashMap();
-        map.put("code",baseBean.getCode());
-        map.put("message",baseBean.getMessage());
-        map.put("from",request.getRemoteAddr());
+        HashMap<String, String> map = new HashMap();
+        map.put("code", baseBean.getCode());
+        map.put("message", baseBean.getMessage());
+        map.put("from", request.getRemoteAddr());
         //a=b&c=d&e=f
         String queryString = request.getQueryString();
-        map.put("path",queryString!=null?request.getRequestURI() + "?" + queryString : request.getRequestURI());
+        map.put("path", queryString != null ? request.getRequestURI() + "?" + queryString : request.getRequestURI());
         //调用Logger系统的error()方法
         this.logger.error(JSONObject.toJSONString(map), ex);
     }

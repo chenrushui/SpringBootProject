@@ -21,8 +21,8 @@
     </resultMap>
 
     <sql id="Base_Column_List">
-    id, user_name, user_password, user_email, create_time
-  </sql>
+        id, user_name, user_password, user_email, create_time
+    </sql>
 
 
     <select id="selectByPrimaryKey" resultMap="BaseResultUserAndRoleMap" parameterType="java.lang.Long">
@@ -36,24 +36,24 @@
     <!--TODO:新建一个数据模型，用来存储数据-->
     <!--TODO:使用连接查询来实现-->
     <select id="selectSysUserRoleJoinById" parameterType="java.lang.Long" resultMap="BaseResultUserAndRoleMap">
-      SELECT sysUser.id,sysUser.user_name,sysUser.user_password,sysUser.user_email,sysUser.create_time,
+        SELECT sysUser.id,sysUser.user_name,sysUser.user_password,sysUser.user_email,sysUser.create_time,
         role.role_name,role.enabled,role.create_by from sys_user sysUser
-      LEFT JOIN sys_user_role userRole on sysUser.id=userRole.user_id
-      LEFT JOIN sys_role role on userRole.role_id=role.id
-      where sysUser.id=#{id}
-  </select>
+        LEFT JOIN sys_user_role userRole on sysUser.id=userRole.user_id
+        LEFT JOIN sys_role role on userRole.role_id=role.id
+        where sysUser.id=#{id}
+    </select>
 
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from sys_user
-    where id = #{id,jdbcType=BIGINT}
-  </delete>
+        delete from sys_user
+        where id = #{id,jdbcType=BIGINT}
+    </delete>
 
     <insert id="insert" parameterType="com.yunque.www.springbootdemo.pojo.SysUserBean">
-    insert into sys_user (id, user_name, user_password, 
-      user_email, create_time)
-    values (#{id,jdbcType=BIGINT}, #{userName,jdbcType=VARCHAR}, #{userPassword,jdbcType=VARCHAR}, 
-      #{userEmail,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP})
-  </insert>
+        insert into sys_user (id, user_name, user_password,
+        user_email, create_time)
+        values (#{id,jdbcType=BIGINT}, #{userName,jdbcType=VARCHAR}, #{userPassword,jdbcType=VARCHAR},
+        #{userEmail,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP})
+    </insert>
 
     <insert id="insertSelective" parameterType="com.yunque.www.springbootdemo.pojo.SysUserBean">
         insert into sys_user
@@ -113,11 +113,11 @@
     </update>
 
     <update id="updateByPrimaryKey" parameterType="com.yunque.www.springbootdemo.pojo.SysUserBean">
-    update sys_user
-    set user_name = #{userName,jdbcType=VARCHAR},
-      user_password = #{userPassword,jdbcType=VARCHAR},
-      user_email = #{userEmail,jdbcType=VARCHAR},
-      create_time = #{createTime,jdbcType=TIMESTAMP}
-    where id = #{id,jdbcType=BIGINT}
-  </update>
+        update sys_user
+        set user_name = #{userName,jdbcType=VARCHAR},
+        user_password = #{userPassword,jdbcType=VARCHAR},
+        user_email = #{userEmail,jdbcType=VARCHAR},
+        create_time = #{createTime,jdbcType=TIMESTAMP}
+        where id = #{id,jdbcType=BIGINT}
+    </update>
 </mapper>

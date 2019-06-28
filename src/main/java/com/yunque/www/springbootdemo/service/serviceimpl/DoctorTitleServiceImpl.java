@@ -34,14 +34,14 @@ public class DoctorTitleServiceImpl extends BaseServiceImpl implements DoctorTit
         List<DoctorTitle> nurseTitles = doctorTitleMapper.selectByType(DoctorTitleEnum.nurse_type.getCode());
         List<DoctorTitle> echnicianTitles = doctorTitleMapper.selectByType(DoctorTitleEnum.echnician_type.getCode());
         DoctorTitleList doctorTitleList = new DoctorTitleList(doctorTitles, nurseTitles, echnicianTitles);
-        log.info("------>"+doctorTitleList.toString());
+        log.info("------>" + doctorTitleList.toString());
         return doctorTitleList;
     }
 
     @Override
-    public List<DoctorTitle> selectDoctorTitle(){
+    public List<DoctorTitle> selectDoctorTitle() {
         List<DoctorTitle> doctorTitles = doctorTitleMapper.selectByAll();
-        log.info("------>"+doctorTitles.toString());
+        log.info("------>" + doctorTitles.toString());
         return doctorTitles;
     }
 }

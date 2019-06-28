@@ -24,7 +24,9 @@ public @interface Anno01 {
      */
 
     String value() default "";
+
     int age() default 0;
+
     String[] schools() default {""};
 
 

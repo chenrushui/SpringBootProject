@@ -22,7 +22,7 @@ public class DoctorPrivacySettingsController {
     private DoctorPrivacySettingsService doctorPrivacySettingsService;
 
     @PostMapping(value = "/show")
-    public BaseResult showDoctorPrivacy(@RequestBody DoctorPrivacySettings doctorPrivacySettings){
+    public BaseResult showDoctorPrivacy(@RequestBody DoctorPrivacySettings doctorPrivacySettings) {
         int i = doctorPrivacySettingsService.insertSelective(doctorPrivacySettings);
         BaseResult baseResult = new BaseResult();
         baseResult.setResult(i);
@@ -31,8 +31,6 @@ public class DoctorPrivacySettingsController {
         return baseResult;
 
     }
-
-
 
 
 }

@@ -11,7 +11,7 @@ public class TestFinal {
     }
 
     public static void main(String[] args) {
-        System.out.println( Aaa.var);
+        System.out.println(Aaa.var);
 
 
     }
@@ -20,7 +20,7 @@ public class TestFinal {
 class Aaa {
 
     //public final static String var = "1111";
-    public  static String var = "1111";
+    public static String var = "1111";
 
     static {
         System.out.println("Aaa");

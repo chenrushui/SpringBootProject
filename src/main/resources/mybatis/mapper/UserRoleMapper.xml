@@ -1,212 +1,212 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.yunque.www.springbootdemo.mapper.UserRoleMapper" >
-  <resultMap id="BaseResultMap" type="UserRole" >
-    <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="role_name" property="roleName" jdbcType="VARCHAR" />
-    <result column="role_code" property="roleCode" jdbcType="VARCHAR" />
-    <result column="remark" property="remark" jdbcType="VARCHAR" />
-    <result column="param_1" property="param1" jdbcType="VARCHAR" />
-    <result column="param_2" property="param2" jdbcType="VARCHAR" />
-    <result column="param_3" property="param3" jdbcType="VARCHAR" />
-    <result column="param_4" property="param4" jdbcType="VARCHAR" />
-    <result column="param_5" property="param5" jdbcType="VARCHAR" />
-    <result column="status" property="status" jdbcType="INTEGER" />
-    <result column="delete_flag" property="deleteFlag" jdbcType="INTEGER" />
-    <result column="creat_id" property="creatId" jdbcType="INTEGER" />
-    <result column="creat_time" property="creatTime" jdbcType="TIMESTAMP" />
-    <result column="modify_id" property="modifyId" jdbcType="INTEGER" />
-    <result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP" />
-  </resultMap>
-  <sql id="Base_Column_List" >
-    id, role_name, role_code, remark, param_1, param_2, param_3, param_4, param_5, status, 
-    delete_flag, creat_id, creat_time, modify_id, modify_time
-  </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    from p_user_role
-    where id = #{id,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from p_user_role
-    where id = #{id,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="UserRole" >
-    insert into p_user_role (id, role_name, role_code, 
-      remark, param_1, param_2, 
-      param_3, param_4, param_5, 
-      status, delete_flag, creat_id, 
-      creat_time, modify_id, modify_time
-      )
-    values (#{id,jdbcType=INTEGER}, #{roleName,jdbcType=VARCHAR}, #{roleCode,jdbcType=VARCHAR}, 
-      #{remark,jdbcType=VARCHAR}, #{param1,jdbcType=VARCHAR}, #{param2,jdbcType=VARCHAR}, 
-      #{param3,jdbcType=VARCHAR}, #{param4,jdbcType=VARCHAR}, #{param5,jdbcType=VARCHAR}, 
-      #{status,jdbcType=INTEGER}, #{deleteFlag,jdbcType=INTEGER}, #{creatId,jdbcType=INTEGER}, 
-      #{creatTime,jdbcType=TIMESTAMP}, #{modifyId,jdbcType=INTEGER}, #{modifyTime,jdbcType=TIMESTAMP}
-      )
-  </insert>
-  <insert id="insertSelective" parameterType="UserRole" >
-    insert into p_user_role
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        id,
-      </if>
-      <if test="roleName != null" >
-        role_name,
-      </if>
-      <if test="roleCode != null" >
-        role_code,
-      </if>
-      <if test="remark != null" >
-        remark,
-      </if>
-      <if test="param1 != null" >
-        param_1,
-      </if>
-      <if test="param2 != null" >
-        param_2,
-      </if>
-      <if test="param3 != null" >
-        param_3,
-      </if>
-      <if test="param4 != null" >
-        param_4,
-      </if>
-      <if test="param5 != null" >
-        param_5,
-      </if>
-      <if test="status != null" >
-        status,
-      </if>
-      <if test="deleteFlag != null" >
-        delete_flag,
-      </if>
-      <if test="creatId != null" >
-        creat_id,
-      </if>
-      <if test="creatTime != null" >
-        creat_time,
-      </if>
-      <if test="modifyId != null" >
-        modify_id,
-      </if>
-      <if test="modifyTime != null" >
-        modify_time,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=INTEGER},
-      </if>
-      <if test="roleName != null" >
-        #{roleName,jdbcType=VARCHAR},
-      </if>
-      <if test="roleCode != null" >
-        #{roleCode,jdbcType=VARCHAR},
-      </if>
-      <if test="remark != null" >
-        #{remark,jdbcType=VARCHAR},
-      </if>
-      <if test="param1 != null" >
-        #{param1,jdbcType=VARCHAR},
-      </if>
-      <if test="param2 != null" >
-        #{param2,jdbcType=VARCHAR},
-      </if>
-      <if test="param3 != null" >
-        #{param3,jdbcType=VARCHAR},
-      </if>
-      <if test="param4 != null" >
-        #{param4,jdbcType=VARCHAR},
-      </if>
-      <if test="param5 != null" >
-        #{param5,jdbcType=VARCHAR},
-      </if>
-      <if test="status != null" >
-        #{status,jdbcType=INTEGER},
-      </if>
-      <if test="deleteFlag != null" >
-        #{deleteFlag,jdbcType=INTEGER},
-      </if>
-      <if test="creatId != null" >
-        #{creatId,jdbcType=INTEGER},
-      </if>
-      <if test="creatTime != null" >
-        #{creatTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="modifyId != null" >
-        #{modifyId,jdbcType=INTEGER},
-      </if>
-      <if test="modifyTime != null" >
-        #{modifyTime,jdbcType=TIMESTAMP},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="UserRole" >
-    update p_user_role
-    <set >
-      <if test="roleName != null" >
-        role_name = #{roleName,jdbcType=VARCHAR},
-      </if>
-      <if test="roleCode != null" >
+<mapper namespace="com.yunque.www.springbootdemo.mapper.UserRoleMapper">
+    <resultMap id="BaseResultMap" type="UserRole">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="role_name" property="roleName" jdbcType="VARCHAR"/>
+        <result column="role_code" property="roleCode" jdbcType="VARCHAR"/>
+        <result column="remark" property="remark" jdbcType="VARCHAR"/>
+        <result column="param_1" property="param1" jdbcType="VARCHAR"/>
+        <result column="param_2" property="param2" jdbcType="VARCHAR"/>
+        <result column="param_3" property="param3" jdbcType="VARCHAR"/>
+        <result column="param_4" property="param4" jdbcType="VARCHAR"/>
+        <result column="param_5" property="param5" jdbcType="VARCHAR"/>
+        <result column="status" property="status" jdbcType="INTEGER"/>
+        <result column="delete_flag" property="deleteFlag" jdbcType="INTEGER"/>
+        <result column="creat_id" property="creatId" jdbcType="INTEGER"/>
+        <result column="creat_time" property="creatTime" jdbcType="TIMESTAMP"/>
+        <result column="modify_id" property="modifyId" jdbcType="INTEGER"/>
+        <result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id, role_name, role_code, remark, param_1, param_2, param_3, param_4, param_5, status,
+        delete_flag, creat_id, creat_time, modify_id, modify_time
+    </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from p_user_role
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete from p_user_role
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" parameterType="UserRole">
+        insert into p_user_role (id, role_name, role_code,
+        remark, param_1, param_2,
+        param_3, param_4, param_5,
+        status, delete_flag, creat_id,
+        creat_time, modify_id, modify_time
+        )
+        values (#{id,jdbcType=INTEGER}, #{roleName,jdbcType=VARCHAR}, #{roleCode,jdbcType=VARCHAR},
+        #{remark,jdbcType=VARCHAR}, #{param1,jdbcType=VARCHAR}, #{param2,jdbcType=VARCHAR},
+        #{param3,jdbcType=VARCHAR}, #{param4,jdbcType=VARCHAR}, #{param5,jdbcType=VARCHAR},
+        #{status,jdbcType=INTEGER}, #{deleteFlag,jdbcType=INTEGER}, #{creatId,jdbcType=INTEGER},
+        #{creatTime,jdbcType=TIMESTAMP}, #{modifyId,jdbcType=INTEGER}, #{modifyTime,jdbcType=TIMESTAMP}
+        )
+    </insert>
+    <insert id="insertSelective" parameterType="UserRole">
+        insert into p_user_role
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="roleName != null">
+                role_name,
+            </if>
+            <if test="roleCode != null">
+                role_code,
+            </if>
+            <if test="remark != null">
+                remark,
+            </if>
+            <if test="param1 != null">
+                param_1,
+            </if>
+            <if test="param2 != null">
+                param_2,
+            </if>
+            <if test="param3 != null">
+                param_3,
+            </if>
+            <if test="param4 != null">
+                param_4,
+            </if>
+            <if test="param5 != null">
+                param_5,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="deleteFlag != null">
+                delete_flag,
+            </if>
+            <if test="creatId != null">
+                creat_id,
+            </if>
+            <if test="creatTime != null">
+                creat_time,
+            </if>
+            <if test="modifyId != null">
+                modify_id,
+            </if>
+            <if test="modifyTime != null">
+                modify_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="roleName != null">
+                #{roleName,jdbcType=VARCHAR},
+            </if>
+            <if test="roleCode != null">
+                #{roleCode,jdbcType=VARCHAR},
+            </if>
+            <if test="remark != null">
+                #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="param1 != null">
+                #{param1,jdbcType=VARCHAR},
+            </if>
+            <if test="param2 != null">
+                #{param2,jdbcType=VARCHAR},
+            </if>
+            <if test="param3 != null">
+                #{param3,jdbcType=VARCHAR},
+            </if>
+            <if test="param4 != null">
+                #{param4,jdbcType=VARCHAR},
+            </if>
+            <if test="param5 != null">
+                #{param5,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=INTEGER},
+            </if>
+            <if test="deleteFlag != null">
+                #{deleteFlag,jdbcType=INTEGER},
+            </if>
+            <if test="creatId != null">
+                #{creatId,jdbcType=INTEGER},
+            </if>
+            <if test="creatTime != null">
+                #{creatTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="modifyId != null">
+                #{modifyId,jdbcType=INTEGER},
+            </if>
+            <if test="modifyTime != null">
+                #{modifyTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="UserRole">
+        update p_user_role
+        <set>
+            <if test="roleName != null">
+                role_name = #{roleName,jdbcType=VARCHAR},
+            </if>
+            <if test="roleCode != null">
+                role_code = #{roleCode,jdbcType=VARCHAR},
+            </if>
+            <if test="remark != null">
+                remark = #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="param1 != null">
+                param_1 = #{param1,jdbcType=VARCHAR},
+            </if>
+            <if test="param2 != null">
+                param_2 = #{param2,jdbcType=VARCHAR},
+            </if>
+            <if test="param3 != null">
+                param_3 = #{param3,jdbcType=VARCHAR},
+            </if>
+            <if test="param4 != null">
+                param_4 = #{param4,jdbcType=VARCHAR},
+            </if>
+            <if test="param5 != null">
+                param_5 = #{param5,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                status = #{status,jdbcType=INTEGER},
+            </if>
+            <if test="deleteFlag != null">
+                delete_flag = #{deleteFlag,jdbcType=INTEGER},
+            </if>
+            <if test="creatId != null">
+                creat_id = #{creatId,jdbcType=INTEGER},
+            </if>
+            <if test="creatTime != null">
+                creat_time = #{creatTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="modifyId != null">
+                modify_id = #{modifyId,jdbcType=INTEGER},
+            </if>
+            <if test="modifyTime != null">
+                modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="UserRole">
+        update p_user_role
+        set role_name = #{roleName,jdbcType=VARCHAR},
         role_code = #{roleCode,jdbcType=VARCHAR},
-      </if>
-      <if test="remark != null" >
         remark = #{remark,jdbcType=VARCHAR},
-      </if>
-      <if test="param1 != null" >
         param_1 = #{param1,jdbcType=VARCHAR},
-      </if>
-      <if test="param2 != null" >
         param_2 = #{param2,jdbcType=VARCHAR},
-      </if>
-      <if test="param3 != null" >
         param_3 = #{param3,jdbcType=VARCHAR},
-      </if>
-      <if test="param4 != null" >
         param_4 = #{param4,jdbcType=VARCHAR},
-      </if>
-      <if test="param5 != null" >
         param_5 = #{param5,jdbcType=VARCHAR},
-      </if>
-      <if test="status != null" >
         status = #{status,jdbcType=INTEGER},
-      </if>
-      <if test="deleteFlag != null" >
         delete_flag = #{deleteFlag,jdbcType=INTEGER},
-      </if>
-      <if test="creatId != null" >
         creat_id = #{creatId,jdbcType=INTEGER},
-      </if>
-      <if test="creatTime != null" >
         creat_time = #{creatTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="modifyId != null" >
         modify_id = #{modifyId,jdbcType=INTEGER},
-      </if>
-      <if test="modifyTime != null" >
-        modify_time = #{modifyTime,jdbcType=TIMESTAMP},
-      </if>
-    </set>
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="UserRole" >
-    update p_user_role
-    set role_name = #{roleName,jdbcType=VARCHAR},
-      role_code = #{roleCode,jdbcType=VARCHAR},
-      remark = #{remark,jdbcType=VARCHAR},
-      param_1 = #{param1,jdbcType=VARCHAR},
-      param_2 = #{param2,jdbcType=VARCHAR},
-      param_3 = #{param3,jdbcType=VARCHAR},
-      param_4 = #{param4,jdbcType=VARCHAR},
-      param_5 = #{param5,jdbcType=VARCHAR},
-      status = #{status,jdbcType=INTEGER},
-      delete_flag = #{deleteFlag,jdbcType=INTEGER},
-      creat_id = #{creatId,jdbcType=INTEGER},
-      creat_time = #{creatTime,jdbcType=TIMESTAMP},
-      modify_id = #{modifyId,jdbcType=INTEGER},
-      modify_time = #{modifyTime,jdbcType=TIMESTAMP}
-    where id = #{id,jdbcType=INTEGER}
-  </update>
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
 </mapper>

@@ -17,9 +17,9 @@
         <result column="modified_time" property="modifiedTime" jdbcType="TIMESTAMP"/>
     </resultMap>
     <sql id="Base_Column_List">
-    id, doctor_id, hospital_id, status, sys_code, memo, delete_flag, created_id, created_time, 
-    modified_id, modified_time
-  </sql>
+        id, doctor_id, hospital_id, status, sys_code, memo, delete_flag, created_id, created_time,
+        modified_id, modified_time
+    </sql>
 
 
     <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long">
@@ -31,8 +31,8 @@
 
     <!--通过机构id获取机构人员信息-->
     <select id="selectMemberNumByHospitalId" parameterType="java.lang.Long" resultType="java.lang.Integer">
-    select count(1) from p_doctor where delete_flag=1 and hospital_id=#{hospitalId}
-  </select>
+        select count(1) from p_doctor where delete_flag=1 and hospital_id=#{hospitalId}
+    </select>
 
     <!--TODO:如何进行数组的遍历-->
     <!--通过机构ids获取多个机构人员信息-->
@@ -47,10 +47,10 @@
     <!--获取某一个机构的科室人数-->
     <select id="selectMemberNumByHospitalIdAndDepartmentId" parameterType="java.lang.Long"
             resultType="java.lang.Integer">
-    select count(1)
-    from p_doctor
-    where hospital_id=#{hospitalId} and department_id=#{departmentId} AND delete_flag=1
-  </select>
+        select count(1)
+        from p_doctor
+        where hospital_id=#{hospitalId} and department_id=#{departmentId} AND delete_flag=1
+    </select>
 
     <!--查看有人员的科室id以及对应的人数-->
     <!--todo：结果进行了自动映射,别名和对象的属性一致特别好用-->
@@ -71,15 +71,15 @@
     </select>
 
     <insert id="insert" parameterType="DoctorHospital">
-    insert into doctor_hospital (id, doctor_id, hospital_id, 
-      status, sys_code, memo, 
-      delete_flag, created_id, created_time, 
-      modified_id, modified_time)
-    values (#{id,jdbcType=BIGINT}, #{doctorId,jdbcType=BIGINT}, #{hospitalId,jdbcType=BIGINT}, 
-      #{status,jdbcType=INTEGER}, #{sysCode,jdbcType=INTEGER}, #{memo,jdbcType=VARCHAR}, 
-      #{deleteFlag,jdbcType=INTEGER}, #{createdId,jdbcType=BIGINT}, #{createdTime,jdbcType=TIMESTAMP}, 
-      #{modifiedId,jdbcType=BIGINT}, #{modifiedTime,jdbcType=TIMESTAMP})
-  </insert>
+        insert into doctor_hospital (id, doctor_id, hospital_id,
+        status, sys_code, memo,
+        delete_flag, created_id, created_time,
+        modified_id, modified_time)
+        values (#{id,jdbcType=BIGINT}, #{doctorId,jdbcType=BIGINT}, #{hospitalId,jdbcType=BIGINT},
+        #{status,jdbcType=INTEGER}, #{sysCode,jdbcType=INTEGER}, #{memo,jdbcType=VARCHAR},
+        #{deleteFlag,jdbcType=INTEGER}, #{createdId,jdbcType=BIGINT}, #{createdTime,jdbcType=TIMESTAMP},
+        #{modifiedId,jdbcType=BIGINT}, #{modifiedTime,jdbcType=TIMESTAMP})
+    </insert>
     <insert id="insertSelective" parameterType="DoctorHospital">
         insert into doctor_hospital
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -190,17 +190,17 @@
         where id = #{id,jdbcType=BIGINT}
     </update>
     <update id="updateByPrimaryKey" parameterType="DoctorHospital">
-    update doctor_hospital
-    set doctor_id = #{doctorId,jdbcType=BIGINT},
-      hospital_id = #{hospitalId,jdbcType=BIGINT},
-      status = #{status,jdbcType=INTEGER},
-      sys_code = #{sysCode,jdbcType=INTEGER},
-      memo = #{memo,jdbcType=VARCHAR},
-      delete_flag = #{deleteFlag,jdbcType=INTEGER},
-      created_id = #{createdId,jdbcType=BIGINT},
-      created_time = #{createdTime,jdbcType=TIMESTAMP},
-      modified_id = #{modifiedId,jdbcType=BIGINT},
-      modified_time = #{modifiedTime,jdbcType=TIMESTAMP}
-    where id = #{id,jdbcType=BIGINT}
-  </update>
+        update doctor_hospital
+        set doctor_id = #{doctorId,jdbcType=BIGINT},
+        hospital_id = #{hospitalId,jdbcType=BIGINT},
+        status = #{status,jdbcType=INTEGER},
+        sys_code = #{sysCode,jdbcType=INTEGER},
+        memo = #{memo,jdbcType=VARCHAR},
+        delete_flag = #{deleteFlag,jdbcType=INTEGER},
+        created_id = #{createdId,jdbcType=BIGINT},
+        created_time = #{createdTime,jdbcType=TIMESTAMP},
+        modified_id = #{modifiedId,jdbcType=BIGINT},
+        modified_time = #{modifiedTime,jdbcType=TIMESTAMP}
+        where id = #{id,jdbcType=BIGINT}
+    </update>
 </mapper>

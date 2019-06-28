@@ -5,8 +5,8 @@ import java.util.Observable;
 
 /**
  * Created on 2019/1/29.
- * @author:crs
- * Description:Customer1
+ *
+ * @author:crs Description:Customer1
  */
 
 public class Customer1 implements BaseObserver {

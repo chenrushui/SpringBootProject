@@ -14,23 +14,24 @@ import java.io.IOException;
  */
 public class JsonUtils {
 
-    private static ObjectMapper objectMapper=new ObjectMapper();
+    private static ObjectMapper objectMapper = new ObjectMapper();
 
     /**
      * 把对象转化成String
+     *
      * @param object
      * @param <T>
      * @return
      */
-    public static <T> String objToString(T object){
-        if (object==null){
+    public static <T> String objToString(T object) {
+        if (object == null) {
             return null;
         }
         try {
-            if (object instanceof String){
-                return (String)object;
-            }else{
-              return objectMapper.writeValueAsString(object);
+            if (object instanceof String) {
+                return (String) object;
+            } else {
+                return objectMapper.writeValueAsString(object);
             }
         } catch (JsonProcessingException e) {
             e.printStackTrace();
@@ -40,20 +41,21 @@ public class JsonUtils {
 
     /**
      * 把String转化成Object
+     *
      * @param str
      * @param clazz
      * @param <T>
      * @return
      */
-    public static <T> T stringToObject(String str,Class<T> clazz){
-        if (StringUtils.isEmpty(str)||clazz==null){
+    public static <T> T stringToObject(String str, Class<T> clazz) {
+        if (StringUtils.isEmpty(str) || clazz == null) {
             return null;
         }
         try {
-            if (clazz.equals(String.class)){
-                return (T)str;
-            }else{
-               return objectMapper.readValue(str, clazz);
+            if (clazz.equals(String.class)) {
+                return (T) str;
+            } else {
+                return objectMapper.readValue(str, clazz);
             }
         } catch (IOException e) {
             e.printStackTrace();

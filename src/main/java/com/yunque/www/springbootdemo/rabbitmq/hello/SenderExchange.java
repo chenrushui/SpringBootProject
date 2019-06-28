@@ -19,6 +19,6 @@ public class SenderExchange {
         //在客户端声明交换机
         channel.exchangeDeclare(exchange, "fanout");
         channel.basicPublish(exchange, "", null, "交换机".getBytes());
-        ConnectionUtils.close(channel,conn);
+        ConnectionUtils.close(channel, conn);
     }
 }

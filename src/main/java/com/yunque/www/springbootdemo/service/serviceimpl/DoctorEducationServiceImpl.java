@@ -29,7 +29,7 @@ public class DoctorEducationServiceImpl implements DoctorEducationService {
     @Override
     public DoctorEducation getDoctorEducationByDoctorId(Long doctor) {
         DoctorEducation doctorEducation = doctorEducationMapper.selectByDoctorId(doctor);
-        if (doctorEducation!=null){
+        if (doctorEducation != null) {
             return doctorEducation;
         }
         return null;
@@ -45,25 +45,25 @@ public class DoctorEducationServiceImpl implements DoctorEducationService {
 
             DoctorEducation mDoctorEducation = new DoctorEducation();
             //todo：相当于是原型模式，bean复制，效率高
-            BeanUtils.copyProperties(doctorEducation,mDoctorEducation);
+            BeanUtils.copyProperties(doctorEducation, mDoctorEducation);
 
             //todo：如果能够查到数据，就进行更新操作；如果查不到数据，就进行插入操作
             DoctorEducation origin = doctorEducationMapper.selectByDoctorId(mDoctorEducation.getDoctorId());
-            if (origin!=null){
+            if (origin != null) {
                 mDoctorEducation.setModifyId(mDoctorEducation.getDoctorId());
                 mDoctorEducation.setModifyTime(currentTimes);
-                result= doctorEducationMapper.updateByDoctorIdSelective(mDoctorEducation);
-            }else{
+                result = doctorEducationMapper.updateByDoctorIdSelective(mDoctorEducation);
+            } else {
                 mDoctorEducation.setModifyId(mDoctorEducation.getDoctorId());
                 mDoctorEducation.setModifyTime(currentTimes);
                 mDoctorEducation.setCreatId(mDoctorEducation.getDoctorId());
                 mDoctorEducation.setCreatTime(currentTimes);
                 mDoctorEducation.setDeleteFlag(1);
-                result= doctorEducationMapper.insertSelective(mDoctorEducation);
+                result = doctorEducationMapper.insertSelective(mDoctorEducation);
             }
             return result;
         } catch (BeansException ex) {
-            log.error(ex.getMessage(),ex);
+            log.error(ex.getMessage(), ex);
             //todo:抛出一个自定义的异常
             throw new PicaException(PicaResultCode.INTERFACE_INVOKE_EXCEPTION);
         }

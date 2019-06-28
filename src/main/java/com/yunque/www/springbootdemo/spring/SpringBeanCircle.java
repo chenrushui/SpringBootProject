@@ -31,11 +31,12 @@ public class SpringBeanCircle implements BeanNameAware, ApplicationContextAware,
 
     /**
      * 设置beanId，对象的名称
+     *
      * @param objectName
      */
     @Override
     public void setBeanName(String objectName) {
-        log.info("第三步：设置Bean的名称"+objectName);
+        log.info("第三步：设置Bean的名称" + objectName);
     }
 
     @Override
@@ -48,11 +49,11 @@ public class SpringBeanCircle implements BeanNameAware, ApplicationContextAware,
         log.info("第六步：属性设置后");
     }
 
-    public void setup(){
+    public void setup() {
         log.info("第七步：MAN被初始化了...");
     }
 
-    public void run(){
+    public void run() {
         log.info("第九步：执行业务方法");
     }
 

@@ -31,7 +31,7 @@ public class HospitalDepartmentServiceImpl implements HospitalDepartmentService 
 
     @Override
     public List<Map<String, Object>> getMemberNumByHospitalIds(List<Long> hospitalIds) {
-        if (CollectionUtils.isEmpty(hospitalIds)){
+        if (CollectionUtils.isEmpty(hospitalIds)) {
             return Collections.EMPTY_LIST;
         }
         return doctorHospitalMapper.selectMemberNumByHospitalIds(hospitalIds);
@@ -39,11 +39,11 @@ public class HospitalDepartmentServiceImpl implements HospitalDepartmentService 
 
     @Override
     public int getHospitalDepartmentMemberNum(long hospitalId, long departmentId) {
-        return doctorHospitalMapper.selectMemberNumByHospitalIdAndDepartmentId(hospitalId,departmentId);
+        return doctorHospitalMapper.selectMemberNumByHospitalIdAndDepartmentId(hospitalId, departmentId);
     }
 
     @Override
-    public  List<HospitalDepartmentMemberDto> getDepartmentMemberByHospitalId(long hospitalId) {
-        return doctorHospitalMapper.getDepartmentMemberByHospitalId(hospitalId,null);
+    public List<HospitalDepartmentMemberDto> getDepartmentMemberByHospitalId(long hospitalId) {
+        return doctorHospitalMapper.getDepartmentMemberByHospitalId(hospitalId, null);
     }
 }

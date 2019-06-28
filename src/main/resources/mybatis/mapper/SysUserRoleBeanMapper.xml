@@ -8,13 +8,13 @@
 
 
     <insert id="insert" parameterType="com.yunque.www.springbootdemo.pojo.SysUserRoleBean">
-    insert into sys_user_role (user_id, role_id)
-    values (#{userId,jdbcType=BIGINT}, #{roleId,jdbcType=BIGINT})
-   </insert>
+        insert into sys_user_role (user_id, role_id)
+        values (#{userId,jdbcType=BIGINT}, #{roleId,jdbcType=BIGINT})
+    </insert>
 
 
     <select id="selectUserRoleById" parameterType="java.lang.Long" resultMap="BaseResultMap">
-      select role_id from sys_user_role where user_id=#{id}
+        select role_id from sys_user_role where user_id=#{id}
     </select>
 
 

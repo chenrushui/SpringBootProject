@@ -5,6 +5,7 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.kafka.annotation.EnableKafka;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 import java.util.ArrayList;
@@ -33,7 +34,7 @@ public class SpringBootApp {
     }
 
     {
-        ArrayList<String> params=new ArrayList<>();
+        ArrayList<String> params = new ArrayList<>();
         params.forEach((String hospitalId) -> {
             //List<DoctorMemberDto> memberList = hospitalDepartmentService.getHospitalDepartmentMembersInfo(hospitalId);
 
@@ -45,6 +46,4 @@ public class SpringBootApp {
             }
         });
     }
-
-
 }

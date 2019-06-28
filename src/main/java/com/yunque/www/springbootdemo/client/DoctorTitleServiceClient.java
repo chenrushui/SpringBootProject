@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 public interface DoctorTitleServiceClient {
 
     @GetMapping(value = "/list/type", produces = "application/json;charset=utf-8")
-     BaseResult<DoctorTitle> getDoctorTitleList();
+    BaseResult<DoctorTitle> getDoctorTitleList();
 
     @GetMapping(value = "/list", produces = "application/json;charset=utf-8")
-     BaseResult<DoctorTitle> getAllDoctorTitle() ;
+    BaseResult<DoctorTitle> getAllDoctorTitle();
 }

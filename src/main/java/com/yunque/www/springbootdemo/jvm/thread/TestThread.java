@@ -21,12 +21,12 @@ public class TestThread {
                 }
 
             }
-        },"while true").start();
+        }, "while true").start();
 
         new Thread(new Runnable() {
             @Override
             public void run() {
-                synchronized (TestThread.class){
+                synchronized (TestThread.class) {
                     try {
                         wait();
                     } catch (InterruptedException e) {
@@ -34,7 +34,7 @@ public class TestThread {
                     }
                 }
             }
-        },"while wait").start();
+        }, "while wait").start();
 
 
     }

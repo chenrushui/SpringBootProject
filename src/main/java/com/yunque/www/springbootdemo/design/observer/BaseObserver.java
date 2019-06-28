@@ -5,8 +5,8 @@ import java.util.Observer;
 
 /**
  * Created on 2019/1/29.
- * @author:crs
- * Description:BaseObserver
+ *
+ * @author:crs Description:BaseObserver
  */
 
 public interface BaseObserver extends Observer {

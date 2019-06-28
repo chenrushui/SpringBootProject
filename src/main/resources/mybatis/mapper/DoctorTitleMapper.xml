@@ -16,9 +16,9 @@
     </resultMap>
 
     <sql id="Base_Column_List">
-    id, title_id, name, seq_no, parent_id, type, delete_flag, creat_id, creat_time, modify_id, 
-    modify_time
-  </sql>
+        id, title_id, name, seq_no, parent_id, type, delete_flag, creat_id, creat_time, modify_id,
+        modify_time
+    </sql>
 
     <!--查询医生类型和等级-->
     <select id="selectByType" parameterType="java.lang.Integer" resultMap="BaseResultMap">
@@ -42,19 +42,19 @@
         where id = #{id,jdbcType=INTEGER}
     </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from p_title
-    where id = #{id,jdbcType=INTEGER}
-  </delete>
+        delete from p_title
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
     <insert id="insert" parameterType="DoctorTitle">
-    insert into p_title (id, title_id, name, 
-      seq_no, parent_id, type, 
-      delete_flag, creat_id, creat_time, 
-      modify_id, modify_time)
-    values (#{id,jdbcType=INTEGER}, #{titleId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
-      #{seqNo,jdbcType=INTEGER}, #{parentId,jdbcType=INTEGER}, #{type,jdbcType=INTEGER}, 
-      #{deleteFlag,jdbcType=INTEGER}, #{creatId,jdbcType=INTEGER}, #{creatTime,jdbcType=TIMESTAMP}, 
-      #{modifyId,jdbcType=INTEGER}, #{modifyTime,jdbcType=TIMESTAMP})
-  </insert>
+        insert into p_title (id, title_id, name,
+        seq_no, parent_id, type,
+        delete_flag, creat_id, creat_time,
+        modify_id, modify_time)
+        values (#{id,jdbcType=INTEGER}, #{titleId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR},
+        #{seqNo,jdbcType=INTEGER}, #{parentId,jdbcType=INTEGER}, #{type,jdbcType=INTEGER},
+        #{deleteFlag,jdbcType=INTEGER}, #{creatId,jdbcType=INTEGER}, #{creatTime,jdbcType=TIMESTAMP},
+        #{modifyId,jdbcType=INTEGER}, #{modifyTime,jdbcType=TIMESTAMP})
+    </insert>
     <insert id="insertSelective" parameterType="DoctorTitle">
         insert into p_title
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -165,17 +165,17 @@
         where id = #{id,jdbcType=INTEGER}
     </update>
     <update id="updateByPrimaryKey" parameterType="DoctorTitle">
-    update p_title
-    set title_id = #{titleId,jdbcType=INTEGER},
-      name = #{name,jdbcType=VARCHAR},
-      seq_no = #{seqNo,jdbcType=INTEGER},
-      parent_id = #{parentId,jdbcType=INTEGER},
-      type = #{type,jdbcType=INTEGER},
-      delete_flag = #{deleteFlag,jdbcType=INTEGER},
-      creat_id = #{creatId,jdbcType=INTEGER},
-      creat_time = #{creatTime,jdbcType=TIMESTAMP},
-      modify_id = #{modifyId,jdbcType=INTEGER},
-      modify_time = #{modifyTime,jdbcType=TIMESTAMP}
-    where id = #{id,jdbcType=INTEGER}
-  </update>
+        update p_title
+        set title_id = #{titleId,jdbcType=INTEGER},
+        name = #{name,jdbcType=VARCHAR},
+        seq_no = #{seqNo,jdbcType=INTEGER},
+        parent_id = #{parentId,jdbcType=INTEGER},
+        type = #{type,jdbcType=INTEGER},
+        delete_flag = #{deleteFlag,jdbcType=INTEGER},
+        creat_id = #{creatId,jdbcType=INTEGER},
+        creat_time = #{creatTime,jdbcType=TIMESTAMP},
+        modify_id = #{modifyId,jdbcType=INTEGER},
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
 </mapper>

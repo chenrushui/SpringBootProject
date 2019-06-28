@@ -19,7 +19,7 @@ public class DeadLock implements Runnable {
     public void run() {
         //todo:同步锁
         synchronized (obj1) {  //锁对象obj1，某个线程拿到了锁对象。
-                try {
+            try {
                 Thread.sleep(100);
             } catch (InterruptedException e) {
                 e.printStackTrace();

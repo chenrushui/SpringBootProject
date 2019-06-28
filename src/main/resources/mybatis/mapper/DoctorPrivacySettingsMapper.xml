@@ -1,129 +1,129 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.yunque.www.springbootdemo.mapper.DoctorPrivacySettingsMapper" >
-  <resultMap id="BaseResultMap" type="DoctorPrivacySettings" >
-    <id column="id" property="id" jdbcType="BIGINT" />
-    <result column="doctor_id" property="doctorId" jdbcType="BIGINT" />
-    <result column="privacy_type" property="privacyType" jdbcType="INTEGER" />
-    <result column="delete_flag" property="deleteFlag" jdbcType="INTEGER" />
-    <result column="created_id" property="createdId" jdbcType="BIGINT" />
-    <result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
-    <result column="modified_id" property="modifiedId" jdbcType="BIGINT" />
-    <result column="modified_time" property="modifiedTime" jdbcType="TIMESTAMP" />
-  </resultMap>
-  <sql id="Base_Column_List" >
-    id, doctor_id, privacy_type, delete_flag, created_id, created_time, modified_id, 
-    modified_time
-  </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
-    select 
-    <include refid="Base_Column_List" />
-    from doctor_privacy_settings
-    where id = #{id,jdbcType=BIGINT}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
-    delete from doctor_privacy_settings
-    where id = #{id,jdbcType=BIGINT}
-  </delete>
-  <insert id="insert" parameterType="DoctorPrivacySettings" >
-    insert into doctor_privacy_settings (id, doctor_id, privacy_type, 
-      delete_flag, created_id, created_time, 
-      modified_id, modified_time)
-    values (#{id,jdbcType=BIGINT}, #{doctorId,jdbcType=BIGINT}, #{privacyType,jdbcType=INTEGER}, 
-      #{deleteFlag,jdbcType=INTEGER}, #{createdId,jdbcType=BIGINT}, #{createdTime,jdbcType=TIMESTAMP}, 
-      #{modifiedId,jdbcType=BIGINT}, #{modifiedTime,jdbcType=TIMESTAMP})
-  </insert>
-  <insert id="insertSelective" parameterType="DoctorPrivacySettings" >
-    insert into doctor_privacy_settings
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        id,
-      </if>
-      <if test="doctorId != null" >
-        doctor_id,
-      </if>
-      <if test="privacyType != null" >
-        privacy_type,
-      </if>
-      <if test="deleteFlag != null" >
-        delete_flag,
-      </if>
-      <if test="createdId != null" >
-        created_id,
-      </if>
-      <if test="createdTime != null" >
-        created_time,
-      </if>
-      <if test="modifiedId != null" >
-        modified_id,
-      </if>
-      <if test="modifiedTime != null" >
-        modified_time,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=BIGINT},
-      </if>
-      <if test="doctorId != null" >
-        #{doctorId,jdbcType=BIGINT},
-      </if>
-      <if test="privacyType != null" >
-        #{privacyType,jdbcType=INTEGER},
-      </if>
-      <if test="deleteFlag != null" >
-        #{deleteFlag,jdbcType=INTEGER},
-      </if>
-      <if test="createdId != null" >
-        #{createdId,jdbcType=BIGINT},
-      </if>
-      <if test="createdTime != null" >
-        #{createdTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="modifiedId != null" >
-        #{modifiedId,jdbcType=BIGINT},
-      </if>
-      <if test="modifiedTime != null" >
-        #{modifiedTime,jdbcType=TIMESTAMP},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="DoctorPrivacySettings" >
-    update doctor_privacy_settings
-    <set >
-      <if test="doctorId != null" >
-        doctor_id = #{doctorId,jdbcType=BIGINT},
-      </if>
-      <if test="privacyType != null" >
+<mapper namespace="com.yunque.www.springbootdemo.mapper.DoctorPrivacySettingsMapper">
+    <resultMap id="BaseResultMap" type="DoctorPrivacySettings">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="doctor_id" property="doctorId" jdbcType="BIGINT"/>
+        <result column="privacy_type" property="privacyType" jdbcType="INTEGER"/>
+        <result column="delete_flag" property="deleteFlag" jdbcType="INTEGER"/>
+        <result column="created_id" property="createdId" jdbcType="BIGINT"/>
+        <result column="created_time" property="createdTime" jdbcType="TIMESTAMP"/>
+        <result column="modified_id" property="modifiedId" jdbcType="BIGINT"/>
+        <result column="modified_time" property="modifiedTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id, doctor_id, privacy_type, delete_flag, created_id, created_time, modified_id,
+        modified_time
+    </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long">
+        select
+        <include refid="Base_Column_List"/>
+        from doctor_privacy_settings
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete from doctor_privacy_settings
+        where id = #{id,jdbcType=BIGINT}
+    </delete>
+    <insert id="insert" parameterType="DoctorPrivacySettings">
+        insert into doctor_privacy_settings (id, doctor_id, privacy_type,
+        delete_flag, created_id, created_time,
+        modified_id, modified_time)
+        values (#{id,jdbcType=BIGINT}, #{doctorId,jdbcType=BIGINT}, #{privacyType,jdbcType=INTEGER},
+        #{deleteFlag,jdbcType=INTEGER}, #{createdId,jdbcType=BIGINT}, #{createdTime,jdbcType=TIMESTAMP},
+        #{modifiedId,jdbcType=BIGINT}, #{modifiedTime,jdbcType=TIMESTAMP})
+    </insert>
+    <insert id="insertSelective" parameterType="DoctorPrivacySettings">
+        insert into doctor_privacy_settings
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="doctorId != null">
+                doctor_id,
+            </if>
+            <if test="privacyType != null">
+                privacy_type,
+            </if>
+            <if test="deleteFlag != null">
+                delete_flag,
+            </if>
+            <if test="createdId != null">
+                created_id,
+            </if>
+            <if test="createdTime != null">
+                created_time,
+            </if>
+            <if test="modifiedId != null">
+                modified_id,
+            </if>
+            <if test="modifiedTime != null">
+                modified_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="doctorId != null">
+                #{doctorId,jdbcType=BIGINT},
+            </if>
+            <if test="privacyType != null">
+                #{privacyType,jdbcType=INTEGER},
+            </if>
+            <if test="deleteFlag != null">
+                #{deleteFlag,jdbcType=INTEGER},
+            </if>
+            <if test="createdId != null">
+                #{createdId,jdbcType=BIGINT},
+            </if>
+            <if test="createdTime != null">
+                #{createdTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="modifiedId != null">
+                #{modifiedId,jdbcType=BIGINT},
+            </if>
+            <if test="modifiedTime != null">
+                #{modifiedTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="DoctorPrivacySettings">
+        update doctor_privacy_settings
+        <set>
+            <if test="doctorId != null">
+                doctor_id = #{doctorId,jdbcType=BIGINT},
+            </if>
+            <if test="privacyType != null">
+                privacy_type = #{privacyType,jdbcType=INTEGER},
+            </if>
+            <if test="deleteFlag != null">
+                delete_flag = #{deleteFlag,jdbcType=INTEGER},
+            </if>
+            <if test="createdId != null">
+                created_id = #{createdId,jdbcType=BIGINT},
+            </if>
+            <if test="createdTime != null">
+                created_time = #{createdTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="modifiedId != null">
+                modified_id = #{modifiedId,jdbcType=BIGINT},
+            </if>
+            <if test="modifiedTime != null">
+                modified_time = #{modifiedTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="DoctorPrivacySettings">
+        update doctor_privacy_settings
+        set doctor_id = #{doctorId,jdbcType=BIGINT},
         privacy_type = #{privacyType,jdbcType=INTEGER},
-      </if>
-      <if test="deleteFlag != null" >
         delete_flag = #{deleteFlag,jdbcType=INTEGER},
-      </if>
-      <if test="createdId != null" >
         created_id = #{createdId,jdbcType=BIGINT},
-      </if>
-      <if test="createdTime != null" >
         created_time = #{createdTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="modifiedId != null" >
         modified_id = #{modifiedId,jdbcType=BIGINT},
-      </if>
-      <if test="modifiedTime != null" >
-        modified_time = #{modifiedTime,jdbcType=TIMESTAMP},
-      </if>
-    </set>
-    where id = #{id,jdbcType=BIGINT}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="DoctorPrivacySettings" >
-    update doctor_privacy_settings
-    set doctor_id = #{doctorId,jdbcType=BIGINT},
-      privacy_type = #{privacyType,jdbcType=INTEGER},
-      delete_flag = #{deleteFlag,jdbcType=INTEGER},
-      created_id = #{createdId,jdbcType=BIGINT},
-      created_time = #{createdTime,jdbcType=TIMESTAMP},
-      modified_id = #{modifiedId,jdbcType=BIGINT},
-      modified_time = #{modifiedTime,jdbcType=TIMESTAMP}
-    where id = #{id,jdbcType=BIGINT}
-  </update>
+        modified_time = #{modifiedTime,jdbcType=TIMESTAMP}
+        where id = #{id,jdbcType=BIGINT}
+    </update>
 </mapper>

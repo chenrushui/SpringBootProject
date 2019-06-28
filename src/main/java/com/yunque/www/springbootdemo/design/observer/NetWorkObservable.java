@@ -4,8 +4,8 @@ import java.util.Observable;
 
 /**
  * Created on 2019/1/29.
- * @author:crs
- * Description:创建被观察者类
+ *
+ * @author:crs Description:创建被观察者类
  */
 
 public class NetWorkObservable extends Observable {

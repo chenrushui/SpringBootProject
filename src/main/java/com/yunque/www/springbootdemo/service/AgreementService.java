@@ -12,6 +12,7 @@ import java.util.List;
 public interface AgreementService {
     /**
      * 根据协议类型查询协议列表
+     *
      * @param agreementType
      * @return List<DoctorAgreementDto>
      */
@@ -19,6 +20,7 @@ public interface AgreementService {
 
     /**
      * 根据协议类型查询最新协议
+     *
      * @param agreementType
      * @return DoctorAgreementDto
      */
@@ -26,14 +28,16 @@ public interface AgreementService {
 
     /**
      * 保存用户同意的协议版本号
-     * @param doctorId 医生ID
+     *
+     * @param doctorId      医生ID
      * @param agreementType 协议类型
      */
     void saveConsentVersion(long doctorId, Integer agreementType);
 
     /**
      * 校验用户是否需要重新同意协议
-     * @param doctorId 医生ID
+     *
+     * @param doctorId      医生ID
      * @param agreementType 协议类型
      * @return boolean 是否需要重新同意协议
      */

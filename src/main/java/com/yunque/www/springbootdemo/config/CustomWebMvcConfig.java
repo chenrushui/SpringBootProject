@@ -18,7 +18,7 @@ public class CustomWebMvcConfig implements WebMvcConfigurer {
     public void addViewControllers(ViewControllerRegistry registry) {
         //如果用户访问的是/index路径，直接返回success资源。
         registry.addViewController("/index").setViewName("success");
-}
+    }
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {

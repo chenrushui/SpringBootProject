@@ -13,7 +13,7 @@ public interface DoctorAgreementLogMapper {
 
     DoctorAgreementLog selectByPrimaryKey(Long id);
 
-    DoctorAgreementLog selectLatestByDoctorIdAndType(@Param("doctorId") Long doctorId,@Param("agreementType") int agreement_type);
+    DoctorAgreementLog selectLatestByDoctorIdAndType(@Param("doctorId") Long doctorId, @Param("agreementType") int agreement_type);
 
     int updateByPrimaryKeySelective(DoctorAgreementLog record);
 

@@ -19,9 +19,9 @@
     </resultMap>
 
     <sql id="Base_Column_List">
-    id, doctor_id, school_name, major_id, major_name, education_id, education_name, year, 
-    graduated_year, delete_flag, creat_id, creat_time, modify_id, modify_time
-  </sql>
+        id, doctor_id, school_name, major_id, major_name, education_id, education_name, year,
+        graduated_year, delete_flag, creat_id, creat_time, modify_id, modify_time
+    </sql>
 
     <select id="selectByDoctorId" resultMap="BaseResultMap" parameterType="java.lang.Long">
         select
@@ -31,9 +31,9 @@
     </select>
 
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from p_doctor_education
-    where id = #{id,jdbcType=INTEGER}
-  </delete>
+        delete from p_doctor_education
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
 
     <insert id="insert" parameterType="DoctorEducation">
         <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
@@ -194,20 +194,20 @@
     </update>
 
     <update id="updateByDoctorId" parameterType="DoctorEducation">
-    update p_doctor_education
-    set doctor_id = #{doctorId,jdbcType=INTEGER},
-      school_name = #{schoolName,jdbcType=VARCHAR},
-      major_id = #{majorId,jdbcType=INTEGER},
-      major_name = #{majorName,jdbcType=VARCHAR},
-      education_id = #{educationId,jdbcType=VARCHAR},
-      education_name = #{educationName,jdbcType=VARCHAR},
-      year = #{year,jdbcType=VARCHAR},
-      graduated_year = #{graduatedYear,jdbcType=VARCHAR},
-      delete_flag = #{deleteFlag,jdbcType=INTEGER},
-      creat_id = #{creatId,jdbcType=INTEGER},
-      creat_time = #{creatTime,jdbcType=TIMESTAMP},
-      modify_id = #{modifyId,jdbcType=INTEGER},
-      modify_time = #{modifyTime,jdbcType=TIMESTAMP}
-    where doctor_id = #{doctorId,jdbcType=INTEGER}
-  </update>
+        update p_doctor_education
+        set doctor_id = #{doctorId,jdbcType=INTEGER},
+        school_name = #{schoolName,jdbcType=VARCHAR},
+        major_id = #{majorId,jdbcType=INTEGER},
+        major_name = #{majorName,jdbcType=VARCHAR},
+        education_id = #{educationId,jdbcType=VARCHAR},
+        education_name = #{educationName,jdbcType=VARCHAR},
+        year = #{year,jdbcType=VARCHAR},
+        graduated_year = #{graduatedYear,jdbcType=VARCHAR},
+        delete_flag = #{deleteFlag,jdbcType=INTEGER},
+        creat_id = #{creatId,jdbcType=INTEGER},
+        creat_time = #{creatTime,jdbcType=TIMESTAMP},
+        modify_id = #{modifyId,jdbcType=INTEGER},
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP}
+        where doctor_id = #{doctorId,jdbcType=INTEGER}
+    </update>
 </mapper>

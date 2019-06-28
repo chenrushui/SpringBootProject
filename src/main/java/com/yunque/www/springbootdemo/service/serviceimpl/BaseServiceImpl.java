@@ -15,5 +15,4 @@ public class BaseServiceImpl {
     //一般情况下，引用别微服务的feign接口
 
 
-
 }

@@ -3,6 +3,7 @@ package com.yunque.www.springbootdemo.pojo;
 import lombok.Data;
 
 import java.util.Date;
+
 @Data
 public class DoctorAgreementLog {
     private Long id;

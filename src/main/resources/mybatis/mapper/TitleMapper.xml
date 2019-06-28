@@ -19,9 +19,9 @@
     </resultMap>
 
     <sql id="Base_Column_List">
-    id, title_id, name, seq_no, parent_id, delete_flag, creat_id, creat_time, modify_id,
-    modify_time
-  </sql>
+        id, title_id, name, seq_no, parent_id, delete_flag, creat_id, creat_time, modify_id,
+        modify_time
+    </sql>
 
     <delete id="deleteTitleById" parameterType="java.lang.Integer">
         DELETE FROM p_title WHERE id=#{id}
@@ -29,25 +29,25 @@
 
     <select id="selectByType" parameterType="java.lang.Integer"
             resultType="com.yunque.www.springbootdemo.pojo.Title">
-    select title_id as titleId, name
-    from p_title
-    where type = #{type,jdbcType=INTEGER} and delete_flag = 1
-    order by seq_no
-  </select>
+        select title_id as titleId, name
+        from p_title
+        where type = #{type,jdbcType=INTEGER} and delete_flag = 1
+        order by seq_no
+    </select>
 
     <select id="selectAll" resultType="com.yunque.www.springbootdemo.pojo.Title">
-    select title_id as titleId, name
-    from p_title
-    where type > 0 and delete_flag = 1
-    order by type, seq_no
-  </select>
+        select title_id as titleId, name
+        from p_title
+        where type > 0 and delete_flag = 1
+        order by type, seq_no
+    </select>
 
     <select id="selectById" resultType="com.yunque.www.springbootdemo.pojo.Title"
             parameterType="java.lang.Integer">
-    select title_id as titleId, name, type
-    from p_title
-    where title_id = #{id,jdbcType=INTEGER} and delete_flag = 1
-  </select>
+        select title_id as titleId, name, type
+        from p_title
+        where title_id = #{id,jdbcType=INTEGER} and delete_flag = 1
+    </select>
 
 
     <update id="updateByPrimaryKeySelective" parameterType="com.yunque.www.springbootdemo.pojo.Title">
