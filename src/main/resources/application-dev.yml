@@ -20,12 +20,13 @@ spring:
 
   thymeleaf:
     cache: false
-    #  rabbitmq:
-    #    host: 192.168.140.88
-    #    port: 5672
-    #    username: guest
-    #    password: guest
-    #  #    virtual-host: /
+
+  rabbitmq:
+    host: 192.168.110.206
+    port: 5672
+    username: appuser
+    password: AqLfvyWOvLQEUzdI
+    virtual-host: ha-order20190701-vhost
 
   #  数据库配置信息
   datasource:
@@ -84,5 +85,7 @@ logging:
 
 #是否激活swagger
 swagger: true
+
+
 
 
