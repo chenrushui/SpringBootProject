@@ -1,5 +1,7 @@
 package com.yunque.www.springbootdemo.anno;
 
+import com.yunque.www.springbootdemo.anno.visitpermission.VisitPermission;
+
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
@@ -19,6 +21,12 @@ public class TestAnnotation {
     public String getElement() {
         return name;
     }
+
+    @VisitPermission()
+    public void testVisitPermission(long hospital_id){
+
+    }
+
 
     /**
      * 通过反射解析注解内容

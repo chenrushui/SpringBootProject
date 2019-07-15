@@ -1,19 +1,17 @@
 package com.yunque.www.springbootdemo;
 
-import com.yunque.www.springbootdemo.mapper.TitleMapper;
-import com.yunque.www.springbootdemo.mybaits.cache.SqlSessionFactoryUtils;
-import com.yunque.www.springbootdemo.pojo.Title;
-import com.yunque.www.springbootdemo.spring.SpringBeanCircle;
-import com.yunque.www.springbootdemo.validate.UserValidator;
-import com.yunque.www.springbootdemo.mapper.RedisDao;
-
 import com.yunque.www.springbootdemo.design.facade.FacadeClass;
 import com.yunque.www.springbootdemo.design.template.BusTravel;
 import com.yunque.www.springbootdemo.design.template.TrainTravel;
 import com.yunque.www.springbootdemo.design.template.TravelTemplate;
+import com.yunque.www.springbootdemo.mapper.RedisDao;
+import com.yunque.www.springbootdemo.mapper.TitleMapper;
 import com.yunque.www.springbootdemo.pojo.Person;
+import com.yunque.www.springbootdemo.pojo.Title;
 import com.yunque.www.springbootdemo.pojo.User;
 import com.yunque.www.springbootdemo.service.IUserService;
+import com.yunque.www.springbootdemo.spring.SpringBeanCircle;
+import com.yunque.www.springbootdemo.validate.UserValidator;
 import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -23,14 +21,13 @@ import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class SpringbootdemoApplicationTests {
+public class SpringBootDemoApplicationTests {
 
-    public static Logger logger = LoggerFactory.getLogger(SpringbootdemoApplicationTests.class);
+    public static Logger logger = LoggerFactory.getLogger(SpringBootDemoApplicationTests.class);
 
     @Autowired
     private Person person;
@@ -53,10 +50,8 @@ public class SpringbootdemoApplicationTests {
     @Autowired
     SqlSession sqlSession1;
 
-
     @Autowired
     SpringBeanCircle springBeanCircle;
-
 
     /**
      * 测试bean生命周期

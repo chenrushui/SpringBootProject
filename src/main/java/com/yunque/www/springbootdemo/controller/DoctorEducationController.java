@@ -1,5 +1,6 @@
 package com.yunque.www.springbootdemo.controller;
 
+import com.yunque.www.springbootdemo.anno.loginpermission.LoginPermission;
 import com.yunque.www.springbootdemo.pojo.BaseResult;
 import com.yunque.www.springbootdemo.pojo.DoctorEducation;
 import com.yunque.www.springbootdemo.service.DoctorEducationService;
@@ -48,5 +49,12 @@ public class DoctorEducationController {
         int row = doctorEducationService.putDoctorEducation(doctorEducation);
         log.info("保存教育信息成功,医生id是：" + doctorEducation.getDoctorId());
         return BaseResult.buildSuccess(row);
+    }
+
+    @LoginPermission(value = "是否可以登陆？")
+    @GetMapping("/anno")
+    public BaseResult<String> getTestAnno() {
+        return BaseResult.buildSuccess("登陆权限");
+
     }
 }

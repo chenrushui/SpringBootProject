@@ -34,6 +34,7 @@ public class TestController {
         return "hello" + name;
     }
 
+
     @ApiOperation(value = "获取请求结果")
     @GetMapping(value = "/success")
     public String success(Map<String, String> map) {

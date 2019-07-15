@@ -1,39 +1,53 @@
-package com.yunque.www.springbootdemo.utils;
+package com.yunque.www.springbootdemo.redis;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Component;
-import org.springframework.util.CollectionUtils;
+import org.springframework.util.StringUtils;
+import redis.clients.jedis.HostAndPort;
+import redis.clients.jedis.Jedis;
+import redis.clients.jedis.JedisCluster;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
-/**
- * Created on 2019/3/28.
- * author:crs
- * Description:RedisUtil 工具类
- */
-@Lazy
 @Component
-public class RedisUtil {
+public class RedisUtils {
+
+    @Autowired
+    private StringRedisTemplate stringRedisTemplate;
 
     @Autowired
     private RedisTemplate redisTemplate;
 
-    public void setRedisTemplate(RedisTemplate redisTemplate) {
-        this.redisTemplate = redisTemplate;
+    //-------------多结点配置-------------------------------
+    public void redisCluster() {
+        HashSet<HostAndPort> node = new HashSet<>();
+        node.add(new HostAndPort("192.168.140.98",6379));
+        node.add(new HostAndPort("192.168.140.97",6379));
+        node.add(new HostAndPort("192.168.140.96",6379));
+        // 通过jedisCluster操作redis
+        JedisCluster jedisCluster = new JedisCluster(node);
     }
 
-    //=============================common============================
+    public void jedis() {
+        Jedis jedis = new Jedis("192.168.140.98",6379);
+        jedis.auth("redis密码");
+        //直接使用jedis操作redis，所有的命令都对应一个方法。
+    }
+
+    //------------关于key的通用操作--------------------------
 
     /**
      * 指定缓存失效时间
      *
-     * @param key  键
-     * @param time 时间(秒)
+     * @param key
+     * @param time
      * @return
      */
     public boolean expire(String key, long time) {
@@ -48,27 +62,27 @@ public class RedisUtil {
         }
     }
 
+
     /**
-     * 根据key 获取过期时间
+     * 获取当前key的过期时间
      *
-     * @param key 键 不能为null
+     * @param key
      * @return 时间(秒) 返回0代表为永久有效
      */
-    public long getExpire(String key) {
+    public Long getExpire(String key) {
         return redisTemplate.getExpire(key, TimeUnit.SECONDS);
     }
 
     /**
      * 判断key是否存在
      *
-     * @param key 键
-     * @return true 存在 false不存在
+     * @param key
+     * @return
      */
-    public boolean hasKey(String key) {
+    public boolean exist(String key) {
         try {
             return redisTemplate.hasKey(key);
         } catch (Exception e) {
-            e.printStackTrace();
             return false;
         }
     }
@@ -76,65 +90,57 @@ public class RedisUtil {
     /**
      * 删除缓存
      *
-     * @param key 可以传一个值 或多个
+     * @param key
+     * @return
      */
-    @SuppressWarnings("unchecked")
-    public void del(String... key) {
-        if (key != null && key.length > 0) {
-            if (key.length == 1) {
-                redisTemplate.delete(key[0]);
-            } else {
-                redisTemplate.delete(CollectionUtils.arrayToList(key));
-            }
-        }
-    }
-
-    //============================String=============================
-
-    /**
-     * 普通缓存获取
-     *
-     * @param key 键
-     * @return 值
-     */
-    public Object get(String key, int indexdb) {
-        //redisTemplate.indexdb.set(indexdb);
-        return key == null ? null : redisTemplate.opsForValue().get(key);
-    }
-
-    /**
-     * 普通缓存放入
-     *
-     * @param key   键
-     * @param value 值
-     * @return true成功 false失败
-     */
-    public boolean set(String key, Object value, int indexdb) {
+    public boolean del(String key) {
         try {
-            //redisTemplate.indexdb.set(indexdb);
-            redisTemplate.opsForValue().set(key, value);
-            return true;
+            if (!StringUtils.isEmpty(key)) {
+                return redisTemplate.delete(key);
+            } else {
+                return false;
+            }
         } catch (Exception e) {
             e.printStackTrace();
             return false;
         }
 
+    }
+
+//-----------------String操作----------------------
+
+    /**
+     * 存储值
+     *
+     * @param key
+     * @param value
+     */
+    public boolean set(String key, String value) {
+        try {
+            ValueOperations<String, String> ops = stringRedisTemplate.opsForValue();
+            ops.set(key, value);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     /**
      * 普通缓存放入并设置时间
      *
-     * @param key   键
-     * @param value 值
+     * @param key
+     * @param value
      * @param time  时间(秒) time要大于0 如果time小于等于0 将设置无限期
      * @return true成功 false 失败
      */
-    public boolean set(String key, Object value, long time) {
+    public boolean set(String key, String value, long time) {
         try {
+            ValueOperations<String, String> ops = stringRedisTemplate.opsForValue();
             if (time > 0) {
-                redisTemplate.opsForValue().set(key, value, time, TimeUnit.SECONDS);
+                ops.set(key, value, time);
             } else {
-                redisTemplate.opsForValue().set(key, value);
+                ops.set(key, value);
             }
             return true;
         } catch (Exception e) {
@@ -143,33 +149,52 @@ public class RedisUtil {
         }
     }
 
+
+    /**
+     * 获取值
+     *
+     * @param key
+     * @return
+     */
+    public String get(String key) {
+        if (StringUtils.isEmpty(key)) {
+            return null;
+        }
+        ValueOperations<String, String> ops = stringRedisTemplate.opsForValue();
+        return ops.get(key);
+        //return key==null?null: stringRedisTemplate.opsForValue().get(key);
+    }
+
     /**
      * 递增
      *
-     * @param key   键
-     * @param delta 要增加几(大于0)
-     * @return
+     * @param key
+     * @param data 增加几(大于0)
+     * @return 增加后的值
      */
-    public long incr(String key, long delta) {
-        if (delta < 0) {
+    public long incr(String key, long data) {
+        ValueOperations<String, String> ops = stringRedisTemplate.opsForValue();
+        if (data < 0) {
             throw new RuntimeException("递增因子必须大于0");
         }
-        return redisTemplate.opsForValue().increment(key, delta);
+        return ops.increment(key, data);
     }
 
     /**
      * 递减
      *
-     * @param key   键
-     * @param delta 要减少几(小于0)
+     * @param key
+     * @param data
      * @return
      */
-    public long decr(String key, long delta) {
-        if (delta < 0) {
-            throw new RuntimeException("递减因子必须大于0");
+    public long desc(String key, long data) {
+        if (data < 0) {
+            throw new RuntimeException("递增因子必须大于0");
         }
-        return redisTemplate.opsForValue().increment(key, -delta);
+        ValueOperations<String, String> ops = stringRedisTemplate.opsForValue();
+        return ops.decrement(key, data);
     }
+
 
     //================================Map=================================
 
@@ -584,5 +609,4 @@ public class RedisUtil {
 			System.out.println(string);
 		}*/
     }
-
 }

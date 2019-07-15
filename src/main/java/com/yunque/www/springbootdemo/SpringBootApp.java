@@ -1,5 +1,6 @@
 package com.yunque.www.springbootdemo;
 
+import com.yunque.www.springbootdemo.anno.demo1.TestParamLog;
 import com.yunque.www.springbootdemo.aop.MyAspect;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.amqp.rabbit.annotation.EnableRabbit;
@@ -22,6 +23,7 @@ public class SpringBootApp {
 
     public static void main(String[] args) {
         SpringApplication.run(SpringBootApp.class, args);
+        System.out.println(new TestParamLog().addSum(1, 2));
     }
 
     /**
