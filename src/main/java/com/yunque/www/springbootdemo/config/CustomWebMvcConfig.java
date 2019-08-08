@@ -1,6 +1,6 @@
 package com.yunque.www.springbootdemo.config;
 
-import com.yunque.www.springbootdemo.utils.RequestInterceptor;
+import com.yunque.www.springbootdemo.interceptor.RequestInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;

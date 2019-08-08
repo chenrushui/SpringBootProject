@@ -32,7 +32,7 @@ public class SysUserController {
     public BaseResult getSysUserById(@PathVariable Long id) {
         SysUserBean sysUser = iSysUserService.selectSysUserById(id);
         BaseResult baseResult = new BaseResult();
-        baseResult.setResult(sysUser);
+        baseResult.setData(sysUser);
         baseResult.setMessage("请求成功");
         baseResult.setCode(200);
         return baseResult;
@@ -42,7 +42,7 @@ public class SysUserController {
     public BaseResult getUserRoleById(@PathVariable Long id) {
         SysUserRoleJoinBean sysUserBean = iSysUserService.selectSysUserRoleJoinById(id);
         BaseResult baseResult = new BaseResult();
-        baseResult.setResult(sysUserBean);
+        baseResult.setData(sysUserBean);
         baseResult.setMessage("请求成功");
         baseResult.setCode(200);
         return baseResult;

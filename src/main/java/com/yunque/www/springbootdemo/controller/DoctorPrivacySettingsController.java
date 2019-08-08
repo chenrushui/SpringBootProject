@@ -25,7 +25,7 @@ public class DoctorPrivacySettingsController {
     public BaseResult showDoctorPrivacy(@RequestBody DoctorPrivacySettings doctorPrivacySettings) {
         int i = doctorPrivacySettingsService.insertSelective(doctorPrivacySettings);
         BaseResult baseResult = new BaseResult();
-        baseResult.setResult(i);
+        baseResult.setData(i);
         baseResult.setCode(200);
         baseResult.setMessage("请求成功！");
         return baseResult;

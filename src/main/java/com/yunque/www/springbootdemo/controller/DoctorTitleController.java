@@ -29,7 +29,7 @@ public class DoctorTitleController {
         BaseResult baseResult = new BaseResult();
         baseResult.setMessage("请求成功");
         baseResult.setCode(200);
-        baseResult.setResult(doctorTitleList);
+        baseResult.setData(doctorTitleList);
         return baseResult;
     }
 
@@ -39,7 +39,7 @@ public class DoctorTitleController {
         BaseResult baseResult = new BaseResult();
         baseResult.setMessage("请求成功");
         baseResult.setCode(200);
-        baseResult.setResult(doctorTitles);
+        baseResult.setData(doctorTitles);
         return baseResult;
     }
 }

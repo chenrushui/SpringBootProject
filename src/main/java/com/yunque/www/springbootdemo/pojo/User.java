@@ -1,6 +1,5 @@
 package com.yunque.www.springbootdemo.pojo;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,5 +17,8 @@ public class User {
     private String password;
     private Date birthday;
 
-
+    public User(String name, String password) {
+        this.name = name;
+        this.password = password;
+    }
 }

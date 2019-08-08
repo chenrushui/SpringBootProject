@@ -26,44 +26,44 @@ public class UserController {
 
     private Logger logger = LoggerFactory.getLogger(UserController.class);
 
-    @ApiOperation(value = "用户登录接口")
-    @ApiImplicitParams({
-            @ApiImplicitParam(name = "name", value = "用户名", required = true, dataType = "String"),
-            @ApiImplicitParam(name = "password", value = "密码", required = true, dataType = "String")
-    })
-    //localhost:8082/add/user?name=crs&password=1231
-    @GetMapping(value = "/add/user", produces = "application/json;charset=utf-8")
-    public BaseResult addUser(String name, String password) {
-        User user = new User();
-        user.setName(name);
-        user.setPassword(password);
-        BaseResult baseResult = new BaseResult();
-        baseResult.setResult(user);
-        baseResult.setCode(200);
-        baseResult.setMessage("请求成功！");
-        return baseResult;
-    }
+//    @ApiOperation(value = "用户登录接口")
+//    @ApiImplicitParams({
+//            @ApiImplicitParam(name = "name", value = "用户名", required = true, dataType = "String"),
+//            @ApiImplicitParam(name = "password", value = "密码", required = true, dataType = "String")
+//    })
+//    //localhost:8082/add/user?name=crs&password=1231
+//    @GetMapping(value = "/add/user", produces = "application/json;charset=utf-8")
+//    public BaseResult addUser(String name, String password) {
+//        User user = new User();
+//        user.setName(name);
+//        user.setPassword(password);
+//        BaseResult baseResult = new BaseResult();
+//        baseResult.setData(user);
+//        baseResult.setCode(200);
+//        baseResult.setMessage("请求成功！");
+//        return baseResult;
+//    }
 
 
-    @ApiOperation(value = "添加用户")
-    @ApiImplicitParams({
-            @ApiImplicitParam(name = "name", value = "用户名", required = true, dataType = "String"),
-            @ApiImplicitParam(name = "password", value = "密码", required = true, dataType = "String")
-    })
-    //HttpServletRequest类的使用
-    @PostMapping(value = "/add/user", produces = "application/json;charset=utf-8")
-    public BaseResult addUser(HttpServletRequest request) {
-        String name = request.getParameter("name");
-        String password = request.getParameter("password");
-        User user = new User();
-        user.setName(name);
-        user.setPassword(password);
-        BaseResult baseResult = new BaseResult();
-        baseResult.setResult(user);
-        baseResult.setCode(200);
-        baseResult.setMessage("请求成功！");
-        return baseResult;
-    }
+//    @ApiOperation(value = "添加用户")
+//    @ApiImplicitParams({
+//            @ApiImplicitParam(name = "name", value = "用户名", required = true, dataType = "String"),
+//            @ApiImplicitParam(name = "password", value = "密码", required = true, dataType = "String")
+//    })
+//    //HttpServletRequest类的使用
+//    @PostMapping(value = "/add/user", produces = "application/json;charset=utf-8")
+//    public BaseResult addUser(HttpServletRequest request) {
+//        String name = request.getParameter("name");
+//        String password = request.getParameter("password");
+//        User user = new User();
+//        user.setName(name);
+//        user.setPassword(password);
+//        BaseResult baseResult = new BaseResult();
+//        baseResult.setData(user);
+//        baseResult.setCode(200);
+//        baseResult.setMessage("请求成功！");
+//        return baseResult;
+//    }
 
     @ApiIgnore
     //通过Bean接收数据？
@@ -71,7 +71,7 @@ public class UserController {
     @PostMapping(value = "/adduse", produces = "application/json;charset=utf-8")
     public BaseResult addUser(User user) {
         BaseResult baseResult = new BaseResult();
-        baseResult.setResult(user);
+        baseResult.setData(user);
         baseResult.setCode(200);
         baseResult.setMessage("请求成功");
         return baseResult;
@@ -82,7 +82,7 @@ public class UserController {
     @GetMapping(value = "/adduse/{name}", produces = "application/json;charset=utf-8")
     public BaseResult addUserPath(@PathVariable("name") String name) {
         BaseResult baseResult = new BaseResult();
-        baseResult.setResult(name);
+        baseResult.setData(name);
         baseResult.setCode(200);
         baseResult.setMessage("请求成功！");
         return baseResult;
@@ -100,7 +100,7 @@ public class UserController {
             user.setName(name);
         }
         user.setPassword(password);
-        baseResult.setResult(user);
+        baseResult.setData(user);
         baseResult.setCode(200);
         baseResult.setMessage("请求成功");
         logger.info(baseResult.toString());
@@ -118,7 +118,7 @@ public class UserController {
         User user = new User();
         User u = iUserService.printUser(user);
         BaseResult baseResult = new BaseResult();
-        baseResult.setResult(u.getName());
+        baseResult.setData(u.getName());
         return baseResult;
     }
 

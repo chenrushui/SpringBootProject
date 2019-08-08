@@ -3,9 +3,13 @@ package com.yunque.www.springbootdemo.controller;
 import com.yunque.www.springbootdemo.enums.AgreementTypeEnum;
 import com.yunque.www.springbootdemo.pojo.BaseResult;
 import com.yunque.www.springbootdemo.pojo.DoctorAgreement;
+import com.yunque.www.springbootdemo.redis.RedisUtils;
 import com.yunque.www.springbootdemo.req.AgreementConsentReq;
 import com.yunque.www.springbootdemo.service.AgreementService;
+import org.apache.kafka.common.config.ConfigDef;
+import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -22,11 +26,14 @@ public class AgreementController {
     @Autowired
     private AgreementService agreementService;
 
+    @Autowired
+    private RedisUtils redisUtils;
+
     @GetMapping(value = "/get", produces = "application/json;charset=utf-8")
     public BaseResult getAgreementContentByType(@RequestParam(value = "agreementType") Integer type) {
         DoctorAgreement doctorAgreement = agreementService.getLatestByType(type);
         BaseResult baseResult = new BaseResult();
-        baseResult.setResult(doctorAgreement);
+        baseResult.setData(doctorAgreement);
         baseResult.setCode(200);
         baseResult.setMessage("请求成功！");
         return baseResult;
@@ -64,6 +71,41 @@ public class AgreementController {
             list.add(AgreementTypeEnum.PRIVATE_AGREEMENT.getCode());
         }
         return BaseResult.buildSuccess(list);
+    }
+
+
+    /**
+     * 接口幂等性处理
+     *
+     * @param hospitalId
+     * @return
+     */
+    @PostMapping(value = "/repeat")
+    public BaseResult<String> processRepeatRequest(@RequestParam("hospitalId") int hospitalId) {
+        if (StringUtils.isEmpty(redisUtils.get("cache_repeat_" + hospitalId))) {
+            //1)如果没有处理过，进行处理
+            String result = null;
+            //2)返回给前端的同时，把数据存到redis中
+            redisUtils.set("cache_repeat_" + hospitalId, result);
+            return BaseResult.buildSuccess(result);
+        } else {
+            //如果处理过，直接返回值
+            return BaseResult.buildSuccess(redisUtils.get("cache_repeat_" + hospitalId));
+        }
+    }
+
+    /**
+     * 通过版本号处理幂等
+     *
+     * @param id
+     * @param name
+     * @param version
+     * @return
+     */
+    public boolean updateGoodsInfo(int id, String name, int version) {
+        //对应的数据库中的sql:第一次版本号加1，后面不处理
+        //update goods set name=#{name},version=version+1,where id=#{id} and version=#{version}
+        return true;
     }
 
 

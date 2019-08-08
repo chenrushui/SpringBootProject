@@ -9,6 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.kafka.annotation.EnableKafka;
 import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
 import java.util.function.Consumer;
@@ -48,5 +49,15 @@ public class SpringBootApp {
                 //List<DoctorMemberDto> memberList = hospitalDepartmentService.getHospitalDepartmentMembersInfo(hospitalId)
             }
         });
+    }
+
+
+    /**
+     * 让容器帮我们实例化此对象
+     * @return
+     */
+    @Bean
+    public RestTemplate restTemplate() {
+        return new RestTemplate();
     }
 }

@@ -1,5 +1,7 @@
 package com.yunque.www.springbootdemo.redis;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.yunque.www.springbootdemo.base.PicaUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
@@ -18,6 +20,8 @@ import java.util.concurrent.TimeUnit;
 
 @Component
 public class RedisUtils {
+
+    private final ObjectMapper mapper = new ObjectMapper();
 
     @Autowired
     private StringRedisTemplate stringRedisTemplate;
@@ -609,4 +613,29 @@ public class RedisUtils {
 			System.out.println(string);
 		}*/
     }
+
+//    mapper
+//
+//    public PicaUser getToken(String token, Class<PicaUser> picaUserClass) {
+//
+//
+
+
+
+//        return null;
+//    }
+
+    public <T> T getToken(String token, Class<T> klass) {
+//        Map<String, String> map = this.getToken(token);
+//        if (map != null && map.size() > 0) {
+//            try {
+//                return this.mapper.readValue(this.mapper.writeValueAsString(map), klass);
+//            } catch (Exception var5) {
+//                logger.log(Level.SEVERE, var5.getMessage(), var5);
+//            }
+//        }
+
+        return null;
+    }
+
 }

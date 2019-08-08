@@ -9,7 +9,9 @@ package com.yunque.www.springbootdemo.exceptions;
 //@Data,只支持类，不支持枚举类型
 public enum PicaResultCode {
 
-    INTERFACE_INVOKE_EXCEPTION("500005", "接口调用时内部存在异常");
+    INTERFACE_INVOKE_EXCEPTION("500005", "接口调用时内部存在异常"),
+    SYSTEM_EXCEPTION("500000", "接口调用时内部存在异常"),
+    LOGIN_FAIL("500004","请重新登陆");
 
     private String code;
     private String message;

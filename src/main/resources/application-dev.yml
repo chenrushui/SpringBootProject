@@ -1,5 +1,5 @@
 server:
-  port: 8000
+  port: 8001
 
 debug: false
 
@@ -84,6 +84,9 @@ logging:
 
 #是否激活swagger
 swagger: true
+
+sevenNiuFileUrl: http
+ossFileUrl: http
 
 
 
