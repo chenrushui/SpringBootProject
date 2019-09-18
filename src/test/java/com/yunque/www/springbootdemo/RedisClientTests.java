@@ -1,7 +1,7 @@
 package com.yunque.www.springbootdemo;
 
 
-import com.yunque.www.springbootdemo.redis.RedisUtils;
+import com.yunque.www.springbootdemo.module.redis.RedisUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;

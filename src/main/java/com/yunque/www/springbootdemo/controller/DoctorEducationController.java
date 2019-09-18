@@ -1,6 +1,6 @@
 package com.yunque.www.springbootdemo.controller;
 
-import com.yunque.www.springbootdemo.anno.loginpermission.LoginPermission;
+import com.yunque.www.springbootdemo.module.anno.loginpermission.LoginPermission;
 import com.yunque.www.springbootdemo.pojo.BaseResult;
 import com.yunque.www.springbootdemo.pojo.DoctorEducation;
 import com.yunque.www.springbootdemo.service.DoctorEducationService;

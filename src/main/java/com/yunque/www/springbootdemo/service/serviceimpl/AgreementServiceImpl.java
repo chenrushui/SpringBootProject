@@ -19,14 +19,11 @@ import java.util.List;
  */
 @Service
 public class AgreementServiceImpl implements AgreementService {
-
-
     @Autowired
     private DoctorAgreementMapper agreementMapper;
 
     @Autowired
     private DoctorAgreementLogMapper doctorAgreementLogMapper;
-
 
     @Override
     public List<DoctorAgreement> getListByType(Integer agreementType) {

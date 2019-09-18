@@ -1,13 +1,12 @@
 package com.yunque.www.springbootdemo;
 
-import com.yunque.www.springbootdemo.anno.demo1.TestParamLog;
-import com.yunque.www.springbootdemo.aop.MyAspect;
+import com.yunque.www.springbootdemo.module.anno.demo1.TestParamLog;
+import com.yunque.www.springbootdemo.module.aop.MyAspect;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.amqp.rabbit.annotation.EnableRabbit;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.springframework.kafka.annotation.EnableKafka;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.web.client.RestTemplate;
 
@@ -19,7 +18,7 @@ import java.util.function.Consumer;
 //@EnableFeignClients
 @EnableScheduling
 @MapperScan(basePackages = "com.yunque.www.springbootdemo.mapper")
-@SpringBootApplication(scanBasePackages = "com.yunque.www")
+@SpringBootApplication
 public class SpringBootApp {
 
     public static void main(String[] args) {

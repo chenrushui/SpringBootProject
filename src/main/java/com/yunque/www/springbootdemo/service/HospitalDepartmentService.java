@@ -13,6 +13,11 @@ import java.util.Map;
 
 public interface HospitalDepartmentService {
 
+    /**
+     * 重置机构的加入方式
+     */
+    Integer resetJoinWay();
+
 
     /**
      * 获取机构人数

@@ -1,5 +1,6 @@
 package com.yunque.www.springbootdemo.controller;
 
+import com.yunque.www.springbootdemo.pojo.BaseLogPost;
 import com.yunque.www.springbootdemo.pojo.BaseResult;
 import com.yunque.www.springbootdemo.pojo.User;
 import com.yunque.www.springbootdemo.service.IUserService;
@@ -108,18 +109,20 @@ public class UserController {
     }
 
     @PostMapping(value = "/post")
-    public BaseResult addUserPost(@RequestBody User user) {
-        return new BaseResult();
+    public BaseResult addUserPost(@RequestBody BaseLogPost baseLogPost) {
+//        logger.info(baseLogPost.toString());
+        return BaseResult.buildSuccess(baseLogPost);
     }
 
     //http://localhost:9000/user/get
     @GetMapping(value = "/user/get")
     public BaseResult getUserInfo() {
-        User user = new User();
-        User u = iUserService.printUser(user);
-        BaseResult baseResult = new BaseResult();
-        baseResult.setData(u.getName());
-        return baseResult;
+//        User user = new User();
+//        User u = iUserService.printUser(user);
+//        BaseResult baseResult = new BaseResult();
+//        baseResult.setData(u.getName());
+//        return baseResult;
+        return new BaseResult();
     }
 
 }

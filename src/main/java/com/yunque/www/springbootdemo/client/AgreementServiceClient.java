@@ -1,7 +1,7 @@
 package com.yunque.www.springbootdemo.client;
 
 import com.yunque.www.springbootdemo.pojo.BaseResult;
-import com.yunque.www.springbootdemo.req.AgreementConsentReq;
+import com.yunque.www.springbootdemo.module.req.AgreementConsentReq;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

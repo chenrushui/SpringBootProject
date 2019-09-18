@@ -8,11 +8,11 @@ import org.springframework.stereotype.Component;
 @Configuration //感觉此注解不需要
 public class PropertiesConfiguration {
 
-    @Value("${sevenNiuFileUrl}")
-    private  String sevenNiuFileUrl;
+//    @Value("${sevenNiuFileUrl}")
+    private String sevenNiuFileUrl="";
 
-    @Value("${ossFileUrl}")
-    private  String ossFileUrl;
+//    @Value("${ossFileUrl}")
+    private String ossFileUrl="";
 
     public String getSevenNiuFileUrl() {
         return sevenNiuFileUrl;

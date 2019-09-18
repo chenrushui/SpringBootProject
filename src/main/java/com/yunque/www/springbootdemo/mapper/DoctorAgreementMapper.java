@@ -2,9 +2,11 @@ package com.yunque.www.springbootdemo.mapper;
 
 
 import com.yunque.www.springbootdemo.pojo.DoctorAgreement;
+import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
+@Mapper
 public interface DoctorAgreementMapper {
     int deleteByPrimaryKey(Long id);
 
@@ -13,7 +15,6 @@ public interface DoctorAgreementMapper {
     int insertSelective(DoctorAgreement record);
 
     DoctorAgreement selectByPrimaryKey(int id);
-
 
     DoctorAgreement selectByAgreementType(int id);
 

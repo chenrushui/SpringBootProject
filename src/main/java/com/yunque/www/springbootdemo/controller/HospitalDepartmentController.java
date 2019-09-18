@@ -5,6 +5,8 @@ import com.yunque.www.springbootdemo.pojo.HospitalDepartmentMemberDto;
 import com.yunque.www.springbootdemo.service.HospitalDepartmentService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,6 +22,7 @@ import java.util.Map;
 @Api(description = "医院部门相关信息")
 @RequestMapping("/hospitals")
 public class HospitalDepartmentController {
+    private Logger logger= LoggerFactory.getLogger(this.getClass());
 
     @Autowired
     private HospitalDepartmentService hospitalDepartmentService;
@@ -37,6 +40,7 @@ public class HospitalDepartmentController {
     @GetMapping(value = "/list/num", produces = "application/json;charset=utf-8")
     public BaseResult getNumberByHospitalIds(@RequestParam("hospitalIds") List<Long> hospitalIds) {
         List<Map<String, Object>> list = hospitalDepartmentService.getMemberNumByHospitalIds(hospitalIds);
+//        logger.info("热部署");
         return BaseResult.buildSuccess(list);
     }
 

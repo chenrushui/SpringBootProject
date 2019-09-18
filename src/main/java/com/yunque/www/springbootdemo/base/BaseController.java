@@ -5,7 +5,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.yunque.www.springbootdemo.exceptions.PicaException;
 import com.yunque.www.springbootdemo.exceptions.PicaResultCode;
 import com.yunque.www.springbootdemo.pojo.BaseResult;
-import com.yunque.www.springbootdemo.redis.RedisUtils;
+import com.yunque.www.springbootdemo.module.redis.RedisUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

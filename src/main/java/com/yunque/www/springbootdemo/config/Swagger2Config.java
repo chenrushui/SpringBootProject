@@ -18,8 +18,8 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 //@ConfigurationProperties(prefix ="swagger")
 public class Swagger2Config {
 
-    @Value("${swagger}")
-    private Boolean swagger;
+//    @Value("${swagger}")
+    private Boolean swagger=true;
 
     @Bean
     public Docket createRestApi() {

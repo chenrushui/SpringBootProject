@@ -100,15 +100,13 @@ public class EncryptUtils {
         //todo：对称加密  手机号
         //1)两次密码的md5值是一样的，密码不可以是明文
         //2)手机号加密解密处理
-        String phone = "18711106861";
+        String phone = "13024112588";
         String result = encrypt(phone);
         System.out.println(result);
 
 //        String secrt = "RM2u9gTX+tBS5+Cv6/xnBg==";
 //        String dencrypt = dencrypt(secrt);
 //        System.out.println(dencrypt);
-
-
 
         System.out.println(new String(Base64.encodeBase64("123".getBytes())));
         System.out.println(new String(Base64.decodeBase64("MTIz".getBytes())));

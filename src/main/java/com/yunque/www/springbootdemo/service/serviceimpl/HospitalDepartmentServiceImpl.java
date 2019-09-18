@@ -24,6 +24,15 @@ public class HospitalDepartmentServiceImpl implements HospitalDepartmentService 
     private DoctorHospitalMapper doctorHospitalMapper;
 
 
+    /**
+     * 重置机构的加入方式
+     */
+    @Override
+    public Integer resetJoinWay() {
+        return 0;
+
+    }
+
     @Override
     public int getMemberNumByHospitalId(long hospitalId) {
         return doctorHospitalMapper.selectMemberNumByHospitalId(hospitalId);

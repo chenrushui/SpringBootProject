@@ -1,16 +1,16 @@
 package com.yunque.www.springbootdemo;
 
-import com.yunque.www.springbootdemo.design.facade.FacadeClass;
-import com.yunque.www.springbootdemo.design.template.BusTravel;
-import com.yunque.www.springbootdemo.design.template.TrainTravel;
-import com.yunque.www.springbootdemo.design.template.TravelTemplate;
+import com.yunque.www.springbootdemo.module.design.facade.FacadeClass;
+import com.yunque.www.springbootdemo.module.design.template.BusTravel;
+import com.yunque.www.springbootdemo.module.design.template.TrainTravel;
+import com.yunque.www.springbootdemo.module.design.template.TravelTemplate;
 import com.yunque.www.springbootdemo.mapper.RedisDao;
 import com.yunque.www.springbootdemo.mapper.TitleMapper;
 import com.yunque.www.springbootdemo.pojo.Person;
 import com.yunque.www.springbootdemo.pojo.Title;
 import com.yunque.www.springbootdemo.pojo.User;
 import com.yunque.www.springbootdemo.service.IUserService;
-import com.yunque.www.springbootdemo.spring.SpringBeanCircle;
+import com.yunque.www.springbootdemo.module.spring.SpringBeanCircle;
 import com.yunque.www.springbootdemo.validate.UserValidator;
 import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
@@ -140,10 +140,10 @@ public class SpringBootDemoApplicationTests {
      */
     @Test
     public void TestSpringAop() {
-        User user = new User();
-        user.setName("crs");
-        user.setPassword("123456");
-        iUserService.printUser(user);
+//        User user = new User();
+//        user.setName("crs");
+//        user.setPassword("123456");
+//        iUserService.printUser(user);
     }
 
     @Test
