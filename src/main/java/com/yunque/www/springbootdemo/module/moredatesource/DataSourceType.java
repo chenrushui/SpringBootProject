@@ -1,4 +1,4 @@
-package com.yunque.www.springbootdemo.module.mybaits.more.datesource;
+package com.yunque.www.springbootdemo.module.moredatesource;
 
 /**
  * Created on 2019/9/18 11:02
@@ -6,14 +6,14 @@ package com.yunque.www.springbootdemo.module.mybaits.more.datesource;
  * Description:数据源类型
  * 1)此类存储是不同数据库来源对应的type,为每个数据源配置一个type
  */
-public interface DatasourceType {
+public interface DataSourceType {
 
     /**
      * 数据源为pica时，对应的数据类型
      */
-    public static String pica="pica";
+    String DEV = "dev";
     /**
      * 数据库为test时，对应的数据源类型
      */
-    public static String test="log";
+    String TEST = "test";
 }

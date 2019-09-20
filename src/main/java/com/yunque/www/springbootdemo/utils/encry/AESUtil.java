@@ -1,14 +1,11 @@
-package com.yunque.www.springbootdemo.utils;
+package com.yunque.www.springbootdemo.utils.encry;
 
-import com.alibaba.fastjson.JSONObject;
-import com.yunque.www.springbootdemo.pojo.Person;
 import sun.misc.BASE64Decoder;
 import sun.misc.BASE64Encoder;
 
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
 import java.security.Key;
-import java.util.LinkedList;
 
 /**
  * AES加解密工具类
@@ -97,8 +94,6 @@ public class AESUtil {
         Integer artical_id = 50;
         //点赞操作
         Integer userId = 2;
-
-
     }
 
 }

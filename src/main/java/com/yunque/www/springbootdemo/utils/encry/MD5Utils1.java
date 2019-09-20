@@ -1,4 +1,4 @@
-package com.yunque.www.springbootdemo.utils;
+package com.yunque.www.springbootdemo.utils.encry;
 
 import java.security.MessageDigest;
 

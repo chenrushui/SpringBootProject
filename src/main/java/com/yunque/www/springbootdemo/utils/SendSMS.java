@@ -1,5 +1,7 @@
 package com.yunque.www.springbootdemo.utils;
 
+import com.yunque.www.springbootdemo.utils.encry.MD5Utils;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
