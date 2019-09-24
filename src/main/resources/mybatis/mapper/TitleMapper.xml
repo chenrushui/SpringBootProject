@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.yunque.www.springbootdemo.mapper.TitleMapper">
+<mapper namespace="com.demo.www.springbootdemo.mapper.TitleMapper">
     <!--开启二级缓存-->
     <cache/>
 
     <!--数据库字段的名称，字段类型-->
-    <resultMap id="baseResultMap" type="com.yunque.www.springbootdemo.pojo.Title">
+    <resultMap id="baseResultMap" type="com.demo.www.springbootdemo.pojo.Title">
         <id column="id" jdbcType="INTEGER" property="id"/>
         <result column="title_id" jdbcType="INTEGER" property="titleId"/>
         <result column="name" jdbcType="VARCHAR" property="name"/>
@@ -28,21 +28,21 @@
     </delete>
 
     <select id="selectByType" parameterType="java.lang.Integer"
-            resultType="com.yunque.www.springbootdemo.pojo.Title">
+            resultType="com.demo.www.springbootdemo.pojo.Title">
         select title_id as titleId, name
         from p_title
         where type = #{type,jdbcType=INTEGER} and delete_flag = 1
         order by seq_no
     </select>
 
-    <select id="selectAll" resultType="com.yunque.www.springbootdemo.pojo.Title">
+    <select id="selectAll" resultType="com.demo.www.springbootdemo.pojo.Title">
         select title_id as titleId, name
         from p_title
         where type > 0 and delete_flag = 1
         order by type, seq_no
     </select>
 
-    <select id="selectById" resultType="com.yunque.www.springbootdemo.pojo.Title"
+    <select id="selectById" resultType="com.demo.www.springbootdemo.pojo.Title"
             parameterType="java.lang.Integer">
         select title_id as titleId, name, type
         from p_title
@@ -50,7 +50,7 @@
     </select>
 
 
-    <update id="updateByPrimaryKeySelective" parameterType="com.yunque.www.springbootdemo.pojo.Title">
+    <update id="updateByPrimaryKeySelective" parameterType="com.demo.www.springbootdemo.pojo.Title">
         update p_title
         <set>
             <if test="titleId != null">

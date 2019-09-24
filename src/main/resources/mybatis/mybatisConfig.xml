@@ -15,14 +15,14 @@
 
     <!-- mybatis别名定义:为数据模型定义别名，然后在映射文件中使用 -->
     <typeAliases>
-        <typeAlias alias="DoctorTitle" type="com.yunque.www.springbootdemo.pojo.DoctorTitle"/>
-        <typeAlias alias="UserRole" type="com.yunque.www.springbootdemo.pojo.UserRole"/>
-        <typeAlias alias="DoctorPrivacySettings" type="com.yunque.www.springbootdemo.pojo.DoctorPrivacySettings"/>
-        <typeAlias alias="DoctorAgreement" type="com.yunque.www.springbootdemo.pojo.DoctorAgreement"/>
-        <typeAlias alias="DoctorAgreementLog" type="com.yunque.www.springbootdemo.pojo.DoctorAgreementLog"/>
-        <typeAlias alias="DoctorEducation" type="com.yunque.www.springbootdemo.pojo.DoctorEducation"/>
-        <typeAlias alias="Doctor" type="com.yunque.www.springbootdemo.pojo.Doctor"/>
-        <typeAlias alias="DoctorHospital" type="com.yunque.www.springbootdemo.pojo.DoctorHospital"/>
+        <typeAlias alias="DoctorTitle" type="com.demo.www.springbootdemo.pojo.DoctorTitle"/>
+        <typeAlias alias="UserRole" type="com.demo.www.springbootdemo.pojo.UserRole"/>
+        <typeAlias alias="DoctorPrivacySettings" type="com.demo.www.springbootdemo.pojo.DoctorPrivacySettings"/>
+        <typeAlias alias="DoctorAgreement" type="com.demo.www.springbootdemo.pojo.DoctorAgreement"/>
+        <typeAlias alias="DoctorAgreementLog" type="com.demo.www.springbootdemo.pojo.DoctorAgreementLog"/>
+        <typeAlias alias="DoctorEducation" type="com.demo.www.springbootdemo.pojo.DoctorEducation"/>
+        <typeAlias alias="Doctor" type="com.demo.www.springbootdemo.pojo.Doctor"/>
+        <typeAlias alias="DoctorHospital" type="com.demo.www.springbootdemo.pojo.DoctorHospital"/>
         <!--<typeAlias alias="Article" type="com.mybatis.test.Article"/>-->
         <!--<typeAlias alias="Blog" type="com.mybatis.test.Blog"/>-->
     </typeAliases>

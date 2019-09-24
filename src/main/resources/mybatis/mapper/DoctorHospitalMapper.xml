@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.yunque.www.springbootdemo.mapper.DoctorHospitalMapper">
+<mapper namespace="com.demo.www.springbootdemo.mapper.DoctorHospitalMapper">
 
 
     <resultMap id="BaseResultMap" type="DoctorHospital">
@@ -55,7 +55,7 @@
     <!--查看有人员的科室id以及对应的人数-->
     <!--todo：结果进行了自动映射,别名和对象的属性一致特别好用-->
     <select id="getDepartmentMemberByHospitalId"
-            resultType="com.yunque.www.springbootdemo.pojo.HospitalDepartmentMemberDto">
+            resultType="com.demo.www.springbootdemo.pojo.HospitalDepartmentMemberDto">
         select t.department_id as departmentId,count(1) as memberNum
         from (
         select case

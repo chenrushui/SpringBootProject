@@ -1,0 +1,8 @@
+package com.demo.www.springbootdemo.module.design.factory.factory1;
+
+/**
+ * 抽象类
+ */
+public abstract class Fruit {
+    public abstract void eat();
+}
