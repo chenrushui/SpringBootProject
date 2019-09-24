@@ -19,6 +19,7 @@ public class ShortUrlController {
     @ResponseBody
     public BaseResponse processShortUrl(HttpServletResponse httpServletResponse) {
         httpServletResponse.setStatus(302);
+        //短链接的生成逻辑。
         httpServletResponse.setHeader("location", "https://www.baidu.com/");
         return BaseResponse.toResponse("success");
     }
