@@ -28,7 +28,7 @@ public class CustomInterceptor {
     ThreadLocal<HttpServletRequest> requestThreadLocal = new ThreadLocal();
     ThreadLocal<Long> startTime = new ThreadLocal();
 
-    @Pointcut("execution(public * com.yunque.www..*Controller.*(..))")
+    @Pointcut("execution(public * com.demo.www..*Controller.*(..))")
     public void picaLog() {
 
     }

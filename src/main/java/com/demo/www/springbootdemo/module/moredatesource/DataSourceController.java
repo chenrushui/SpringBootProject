@@ -25,7 +25,7 @@ public class DataSourceController {
     //http://localhost:8080/data/dev?id=9
     @GetMapping(value = "/dev", produces = "application/json;charset=utf8")
     public String getDevData(Integer id) {
-        DynamicDataSource.setDataSourcesType(DataSourceType.DEV);
+//        DynamicDataSource.setDataSourcesType(DataSourceType.DEV);
         DataSourceEntity entity = dataSourceMapper.getDoctorInfoById(id);
         return JSONObject.toJSONString(entity);
     }
@@ -33,7 +33,7 @@ public class DataSourceController {
     //http://localhost:8080/data/test?name=Krystal
     @GetMapping(value = "/test", produces = "application/json;charset=utf8")
     public String getDevData(String name) {
-        DynamicDataSource.setDataSourcesType(DataSourceType.TEST);
+//        DynamicDataSource.setDataSourcesType(DataSourceType.TEST);
         DataSourceEntity entity = dataSourceMapper.getDoctorInfoByName(name);
         return JSONObject.toJSONString(entity);
     }

@@ -29,7 +29,7 @@ public class Swagger2Config {
                 .apiInfo(apiInfo())
                 .select()
                 //apis()指定扫描的包会生成文档
-                .apis(RequestHandlerSelectors.basePackage("com.yunque.www.springbootdemo.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.demo.www.springbootdemo.controller"))
                 .paths(PathSelectors.any())
                 .build();
     }

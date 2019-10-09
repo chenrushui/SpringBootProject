@@ -17,7 +17,7 @@ import java.util.function.Consumer;
 @EnableRabbit
 //@EnableFeignClients
 @EnableScheduling
-@MapperScan(basePackages = "com.yunque.www.springbootdemo.mapper")
+@MapperScan(basePackages = "com.demo.www.springbootdemo.mapper")
 @SpringBootApplication
 public class SpringBootApp {
 
