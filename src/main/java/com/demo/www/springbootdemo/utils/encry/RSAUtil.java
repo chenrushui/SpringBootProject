@@ -26,19 +26,17 @@ public class RSAUtil {
     //用于封装随机产生的公钥与私钥
     private static Map<Integer, String> keyMap = new HashMap<>();
 
-    private static final String privateKey="MIICdwIBADANBgkqhkiG9w0BAQEFAASCAmEwggJdAgEAAoGBAO+zh8bnUA+elnRy1BHKEGrbTmh/" +
-            "r71zFboVTznwAuEzPnvOezQBOY+623mIXh86/cyCLlCRzbGm0Q5M3LSY6sTemNXtupVnb1lWwD1xDrSG0JsCgeS/weCLI9gHaknNuMfVlg+" +
-            "5esYcy2JlyG5ldcJahCgAOog2lJr4pLUSj8fJAgMBAAECgYEAiJIlnjJU71FQL/Ds22XhjMB/IBMAMlTL4EYb6crSGTV1OF0g3TSFc1rniY" +
-            "sk9W5LBKZ3dPhd1gZRvnAUn+EwgPh1bVBG0Z30vr2Ea0w9v+D3T96byeCKh+xoKQqG+Yp+u5w8v6MNNX6sVN2D0gks9YgY+2xGEeAf9kuF5" +
-            "gpHhAECQQD65WyV3dI8uO4tQEBnS6LRAWVFuEZEWp1W8MXm5DUz/Tnsd7eAdg3VRdS1rZJ17pLa9umFtL/FUVWmw++zeABhAkEA9JPOqXlr" +
-            "vB/GjLl9g3YJBpPjA7UhWHZ6vn8bUq55noengQQL0l2mrJfEFXVHLs0m9lV3tAURpgpuraLkd/ugaQJATFBITPVhozKkz4LBlCm/Zk9EXIa" +
-            "GaPge73jg2TAEtsGJQtHPMPW3k21gG7ql19UvOgbsVMz7n6rzoHvshuwzQQJAY92WnQy/OOmgoQV8gplHxi/Mmk7zdrOqGu67sV8cueaaNs" +
-            "v4J8WlsQOnRTvF/Q43wo3TeuY29p1749qHf5Z3QQJBANnZYSe93QlOT+6PFT1Dkv8osnOY/93CZYD2IvTpfXfqJnbBZ9bkSe7xcxIIqGO6M" +
-            "JWlZjItnYBZLLHP3JKVgOQ=";
+    public static final String privateKey="MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAJrqPdInBev+ksvBvo+rymL1K0+r5" +
+            "a+bq+74tZAHWE2oKVaTSNCbkacXoqPRpzaCqCwyy61zeGExppfZBm8tf6AVAcL+58YF0Fuk+0N4ZaxAi2wx//GqqWQs+Rzt5VPJ+yaulAzs" +
+            "Eb0tW9o9Vc9VRxl8k0Fpi5Hj5J/pmLZrIj+FAgMBAAECgYAj+0A8rZ+sfsat2ORgDnDFp1hV+wEwVqIKsW3KdEpIT0S6vR7uhRPBkbXPAwU" +
+            "pnhNdoLa6JNXTDWs6XcgmzpSTx32WS3450+h1QNdLL+doiEinWxGijvp+UN7CadoeFBnLml3gGjPpTMeDheialQExwwvVKKe4+0VjO4zPDG" +
+            "nrAQJBAM3luGYrweNcFxvVsfQG6cpR/C0DeykyojN0Kbq+3/S+wG1y53Ak1HKz4OHftC4liYNXWy9W1fQ/MSbdVaSka+UCQQDAnJmYwmJ64" +
+            "I35T+GmgA0r505BCuYZG9pNyrjdko7n5+DaalRWSXuAwXb2SJbFHvWmVEgZOnVRhPdFgZUGP4shAkAjmG1SrInuhoMwOrdzGqbcZWQVXB60" +
+            "tp44CwMT19/b7gZSZaUBTDy2P8bHBeeeerrVTArlmjuO6EXVFDq0JgDJAkBLlCdhHcVu2fZbwdCVeOGyPI0kUJaBe8BpjgaESyHwNbixe8+" +
+            "kHCluGHwJn+opZ0CVB7VS0PGAD2DH0VUcooqBAkEAvLBZTnNcM/I2xbV6euw9gpEw7uLkT/94McLQOuZjKPWPHKDQOqa+y+CRPYuxIhQsFK" +
+            "mlTze7cR+/4QUANvGAow==";
 
-    private static final String publicKey="MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDvs4fG51APnpZ0ctQRyhBq205of6+9cxW6FU858" +
-            "ALhMz57zns0ATmPutt5iF4fOv3Mgi5Qkc2xptEOTNy0mOrE3pjV7bqVZ29ZVsA9cQ60htCbAoHkv8HgiyPYB2pJzbjH1ZYPuXrGHMtiZchu" +
-            "ZXXCWoQoADqINpSa+KS1Eo/HyQIDAQAB";
+    public static final String publicKey="MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCa6j3SJwXr/pLLwb6Pq8pi9StPq+Wvm6vu+LWQB1hNqClWk0jQm5GnF6Kj0ac2gqgsMsutc3hhMaaX2QZvLX+gFQHC/ufGBdBbpPtDeGWsQItsMf/xqqlkLPkc7eVTyfsmrpQM7BG9LVvaPVXPVUcZfJNBaYuR4+Sf6Zi2ayI/hQIDAQAB";
 
     /**
      * 加密方法
@@ -136,4 +134,6 @@ public class RSAUtil {
         String messageDe = decrypt(messageEn, keyMap.get(1));
         System.out.println("还原后的字符串为:" + messageDe);
     }
+
+
 }

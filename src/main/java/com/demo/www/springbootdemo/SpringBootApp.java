@@ -6,11 +6,16 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.amqp.rabbit.annotation.EnableRabbit;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration;
+import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
+import java.util.concurrent.CountDownLatch;
 import java.util.function.Consumer;
 
 //@ImportResource(locations = {"classpath:bean.xml"})
@@ -19,11 +24,17 @@ import java.util.function.Consumer;
 @EnableScheduling
 @MapperScan(basePackages = "com.demo.www.springbootdemo.mapper")
 @SpringBootApplication
+@EnableCaching
 public class SpringBootApp {
 
-    public static void main(String[] args) {
-        SpringApplication.run(SpringBootApp.class, args);
+    public static void main(String[] args) throws InterruptedException {
+        ApplicationContext ctx =   SpringApplication.run(SpringBootApp.class, args);
+
+
         System.out.println(new TestParamLog().addSum(1, 2));
+
+        StringRedisTemplate template = ctx.getBean(StringRedisTemplate.class);
+        template.convertAndSend("chat", "Hello from Redis!");
     }
 
     /**
