@@ -139,7 +139,7 @@ public class AESUtil {
 
     public static void main(String[] args) throws Exception {
 
-        String key="";
+        String key="zJJ$c5md3$yuuhWW";
         String content="13862872330";
 
         System.out.println(aesEncrypt(content,key));
