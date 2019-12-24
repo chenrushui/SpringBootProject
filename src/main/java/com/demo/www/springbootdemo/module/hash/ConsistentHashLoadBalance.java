@@ -16,7 +16,7 @@ public class ConsistentHashLoadBalance {
     private TreeMap<Long, String> realNode = new TreeMap();
     private String[] nodes;
     //每个真实节点对应的虚拟节点数
-    private final int replicCnt;
+    private int replicCnt;
 
     public ConsistentHashLoadBalance(String[] nodes) {
         //引用类型不能直接传递赋值

@@ -13,11 +13,11 @@ public class PayStrategyContext {
     }
 
     //执行支付的方法
-    public void executePay() {
+    public void executePay(String params) {
         if (payStrategy == null) {
             throw new RuntimeException("支付策略未配置");
         }
-        payStrategy.pay();
+        payStrategy.pay(params);
     }
 
     public IPayStrategy getPayStrategy() {

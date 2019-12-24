@@ -23,7 +23,7 @@ public class AliPayStrategy implements IPayStrategy {
 
 
     @Override
-    public void pay() {
+    public void pay(String params) {
         System.out.println("支付宝支付");
     }
 }

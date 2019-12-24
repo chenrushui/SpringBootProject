@@ -7,17 +7,27 @@ package com.demo.www.springbootdemo.module.design.strategy;
  */
 public class TestStrategy1 {
 
-    public static void main(String[] args) {
+    /**
+     * 预下单方法
+     * @param params 请求参数
+     * @param type UC下单类型
+     */
+    public static void prepareOrder(String params, String type) {
+        params = "预下单参数";
+        type = "Ali";
+
         //创建上下文对象
         PayStrategyContext context = new PayStrategyContext();
-        //选择支付宝支付
-        IPayStrategy payStrategy = null;
-        //payStrategy = new AliPayStrategy();
-        //payStrategy = new EBankPayStrategy();
-        //payStrategy = new WeiPayStrategy();
-        //payStrategy = PayStrategyUtils.getPayStrategy("com.yunque.www.springbootdemo.design.strategy.EBankPayStrategy");
-        payStrategy = PayStrategyUtils.getPayMethod("Ali");
+        //创建预下单对象
+        IPayStrategy payStrategy = PayStrategyUtils.getPayMethod(type);
         context.setPayStrategy(payStrategy);
-        context.executePay();
+        context.executePay(params);
     }
+
+    //payStrategy = new AliPayStrategy();
+    //payStrategy = new EBankPayStrategy();
+    //payStrategy = new WeiPayStrategy();
+    //payStrategy = PayStrategyUtils.getPayStrategy("com.yunque.www.springbootdemo.design.strategy.EBankPayStrategy");
+
+
 }

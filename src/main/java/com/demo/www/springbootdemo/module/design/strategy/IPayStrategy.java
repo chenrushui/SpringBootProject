@@ -7,6 +7,6 @@ package com.demo.www.springbootdemo.module.design.strategy;
  */
 public interface IPayStrategy {
     //支付接口
-    void pay();
+    void pay(String params);
 
 }

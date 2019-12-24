@@ -6,7 +6,7 @@ package com.demo.www.springbootdemo.module.design.prototype;
  * Description:测试原型模式
  */
 public class TestTeacher {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws CloneNotSupportedException {
 
         /**
          * 两个不同的人，除了姓名不一样，其他三个属性都一样，
@@ -28,6 +28,7 @@ public class TestTeacher {
         System.out.println("-----------");
 
         p1.setName("李四");
+        p1.setAge(88);
         System.out.println(p);
         System.out.println(p1);
     }

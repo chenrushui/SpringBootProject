@@ -7,7 +7,7 @@ package com.demo.www.springbootdemo.module.design.strategy;
  */
 public class EBankPayStrategy implements IPayStrategy {
     @Override
-    public void pay() {
+    public void pay(String params) {
         System.out.println("银联支付");
     }
 }

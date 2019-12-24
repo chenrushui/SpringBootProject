@@ -1,6 +1,8 @@
 package com.demo.www.springbootdemo.module.design.prototype;
 
 import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 
@@ -12,6 +14,8 @@ import java.util.ArrayList;
 //todo:自己捕捉当前log所在的类，不需要自己进行过滤。info()方法只传入一个参数就好了。
 @Slf4j
 public class WordDocument implements Cloneable {
+
+    private Logger log= LoggerFactory.getLogger(WordDocument.class);
 
     private String txt;
     private ArrayList<String> images = new ArrayList<>();
