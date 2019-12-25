@@ -25,7 +25,7 @@ public class CacheTokenCommands implements  ICacheTokenCommands {
 
     public CacheTokenCommands(ICacheCoreCommands command) {
         this.command = command;
-        this.mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+//        this.mapper.configure(DaeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         this.mapper.setDateFormat(this.simpleDateFormat);
     }
 

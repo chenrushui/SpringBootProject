@@ -1,5 +1,7 @@
 package com.demo.www.springbootdemo.module.redisclient1.command;
 
+import redis.clients.jedis.JedisPool;
+
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -10,6 +12,7 @@ import java.util.Set;
  * Description:ICacheCoreCommands
  */
 public interface ICacheCoreCommands {
+
     String get(String var1);
 
     String set(String var1, String var2);
@@ -139,4 +142,6 @@ public interface ICacheCoreCommands {
     String type(String var1);
 
     Long expire(String var1, int var2);
+
+    Map<String, JedisPool> clusterInfo();
 }

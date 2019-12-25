@@ -5,6 +5,7 @@ import com.demo.www.springbootdemo.module.redisclient1.configuration.CacheConfig
 import com.demo.www.springbootdemo.module.redisclient1.key.CacheKeyRule;
 import com.demo.www.springbootdemo.module.redisclient1.local.ILocalCache;
 import com.demo.www.springbootdemo.module.redisclient1.local.LocalCache;
+import redis.clients.jedis.JedisPool;
 
 import java.util.List;
 import java.util.Map;
@@ -358,6 +359,11 @@ public class CacheClient extends CacheKeyRule implements ICacheClient{
     @Override
     public Long expire(String key, int seconds) {
         return this.client.expire(this.attachInfoToKey(key), seconds);
+    }
+
+    @Override
+    public Map<String, JedisPool> clusterInfo() {
+        return client.clusterInfo();
     }
 
     //todo:对token的操作

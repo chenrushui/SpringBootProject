@@ -2,6 +2,7 @@ package com.demo.www.springbootdemo.module.redisclient1.command;
 
 import com.demo.www.springbootdemo.module.redisclient1.configuration.CacheConfig;
 import redis.clients.jedis.JedisCluster;
+import redis.clients.jedis.JedisPool;
 
 import java.util.List;
 import java.util.Map;
@@ -768,5 +769,10 @@ public class CacheCoreCommands implements ICacheCoreCommands {
             logger.log(Level.SEVERE, e.getMessage(), e);
             return 0L;
         }
+    }
+
+    //集群的操作
+    public Map<String, JedisPool> clusterInfo(){
+        return cluster.getClusterNodes();
     }
 }

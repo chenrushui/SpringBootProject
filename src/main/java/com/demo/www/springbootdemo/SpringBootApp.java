@@ -30,7 +30,6 @@ public class SpringBootApp {
     public static void main(String[] args) throws InterruptedException {
         ApplicationContext ctx =   SpringApplication.run(SpringBootApp.class, args);
 
-
         System.out.println(new TestParamLog().addSum(1, 2));
 
         StringRedisTemplate template = ctx.getBean(StringRedisTemplate.class);
@@ -60,7 +59,6 @@ public class SpringBootApp {
             }
         });
     }
-
 
     /**
      * 让容器帮我们实例化此对象
