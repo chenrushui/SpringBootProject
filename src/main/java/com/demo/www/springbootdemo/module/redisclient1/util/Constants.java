@@ -63,6 +63,7 @@ public class Constants {
         prodSet.add(new HostAndPort("172.19.137.109", 6379));
         prodSet.add(new HostAndPort("172.19.137.110", 6379));
 
+        //todo：把所有环境的配置放到一个map集合里面，通过key获取对应环境的配置；
         ENV_HOST_MAP.put(Environment.DEV,devSet);
         ENV_HOST_MAP.put(Environment.TEST1,testSet);
         ENV_HOST_MAP.put(Environment.UAT,uatSet);

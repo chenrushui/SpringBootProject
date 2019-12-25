@@ -1,11 +1,9 @@
 package com.demo.www.springbootdemo.module.redisclient1.configuration;
 
-import com.pica.cloud.foundation.redis.util.Constants;
-import com.pica.cloud.foundation.redis.util.Environment;
+import com.demo.www.springbootdemo.module.redisclient1.util.Constants;
+import com.demo.www.springbootdemo.module.redisclient1.util.Environment;
 import redis.clients.jedis.HostAndPort;
 import redis.clients.jedis.JedisPoolConfig;
-
-import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -17,46 +15,54 @@ import java.util.Set;
 public final class CacheConfig {
 
     //所有的数据连接配置
-    private JedisPoolConfig jedisPoolConfig;
     //结点集合
-    private Set<HostAndPort> hostAndPortSet;
     //redis密码
-    private String password;
-    private int soTimeout;
-    private int maxAttempts;
     //连接超时时间
-    private int connectionTimeout;
     //key前缀
-    private String keyPrefix;
     //超时时间
-    private int keyExpiredSeconds;
-    private int numberOfMaster;
-    private int localInitialCapacity;
-    private int localConcurrencyLevel;
-    private long localMaximumWeight;
+    //返回对应环境的结点信息
 
-    private CacheConfig(CacheConfig.Builder builder) {
+    private String password = "Uu49Kz1olY85HQBu";
+    private int keyExpiredSeconds = 2592000;
+    private int numberOfMaster = 3;
+    private int soTimeout = 2000;
+    private int maxAttempts = 5;
+    private int connectionTimeout = 2000;
+    private int maxTotal = 50;
+    private int maxIdle = 10;
+    private int minIdle = 0;
+    private int maxWaitMillis = -1;
+    private boolean blockWhenExhausted = true;
+    private boolean testOnBorrow = true;
+    private boolean testOnReturn = false;
+    private boolean testWhileIdle = false;
+    private JedisPoolConfig jedisPoolConfig;
+    private Set<HostAndPort> hostAndPortSet;
+
+    public CacheConfig(String env) {
+        hostAndPortSet = this.resolved(env);
         this.jedisPoolConfig = new JedisPoolConfig();
-        this.jedisPoolConfig.setMaxTotal(builder.maxTotal);
-        this.jedisPoolConfig.setMaxIdle(builder.maxIdle);
-        this.jedisPoolConfig.setMinIdle(builder.minIdle);
-        this.jedisPoolConfig.setMaxWaitMillis((long) builder.maxWaitMillis);
-        //这个配置什么含义？
-        this.jedisPoolConfig.setBlockWhenExhausted(builder.blockWhenExhausted);
-        this.jedisPoolConfig.setTestOnBorrow(builder.testOnBorrow);
-        this.jedisPoolConfig.setTestOnReturn(builder.testOnReturn);
-        this.jedisPoolConfig.setTestWhileIdle(builder.testWhileIdle);
-        this.hostAndPortSet = builder.hostAndPortSet;
-        this.password = builder.password;
-        this.soTimeout = builder.soTimeout;
-        this.maxAttempts = builder.maxAttempts;
-        this.connectionTimeout = builder.connectionTimeout;
-        this.keyPrefix = builder.keyPrefix;
-        this.keyExpiredSeconds = builder.keyExpiredSeconds;
-        this.numberOfMaster = builder.numberOfMaster;
-        this.localConcurrencyLevel = builder.localConcurrencyLevel;
-        this.localInitialCapacity = builder.localInitialCapacity;
-        this.localMaximumWeight = builder.localMaximumWeight;
+        this.jedisPoolConfig.setMaxTotal(maxTotal);
+        this.jedisPoolConfig.setMaxIdle(maxIdle);
+        this.jedisPoolConfig.setMinIdle(minIdle);
+        this.jedisPoolConfig.setMaxWaitMillis((long) maxWaitMillis);
+        this.jedisPoolConfig.setBlockWhenExhausted(blockWhenExhausted);
+        this.jedisPoolConfig.setTestOnBorrow(testOnBorrow);
+        this.jedisPoolConfig.setTestOnReturn(testOnReturn);
+        this.jedisPoolConfig.setTestWhileIdle(testWhileIdle);
+    }
+
+    /**
+     * 通过用户传递的环境变量，获取集群结点信息.
+     *
+     * @param env
+     * @return
+     */
+    private Set<HostAndPort> resolved(String env) {
+        //获取当前环境枚举类型
+        Environment environment = Environment.valueOf(env.trim().toUpperCase());
+        //从枚举中获取当前集群结点信息，Constants
+        return Constants.ENV_HOST_MAP.get(environment);
     }
 
     //对外暴露方法获取配置信息
@@ -83,9 +89,6 @@ public final class CacheConfig {
     public int getConnectionTimeout() {
         return connectionTimeout;
     }
-    public String getKeyPrefix() {
-        return keyPrefix;
-    }
 
     public int getKeyExpiredSeconds() {
         return keyExpiredSeconds;
@@ -95,192 +98,5 @@ public final class CacheConfig {
         return numberOfMaster;
     }
 
-    public int getLocalInitialCapacity() {
-        return localInitialCapacity;
-    }
 
-    public int getLocalConcurrencyLevel() {
-        return localConcurrencyLevel;
-    }
-
-    public long getLocalMaximumWeight() {
-        return localMaximumWeight;
-    }
-
-    public static final class Builder {
-        private Set<HostAndPort> hostAndPortSet;
-        private String password;
-        private String keyPrefix;
-        private int keyExpiredSeconds;
-        private int numberOfMaster;
-        private int soTimeout;
-        private int maxAttempts;
-        private int connectionTimeout;
-        private int maxTotal;
-        private int maxIdle;
-        private int minIdle;
-        private int maxWaitMillis;
-        private boolean blockWhenExhausted;
-        private boolean testOnBorrow;
-        private boolean testOnReturn;
-        private boolean testWhileIdle;
-        private long localMaximumWeight;
-        private int localInitialCapacity;
-        private int localConcurrencyLevel;
-
-        public Builder(String env) {
-            this(env, "");
-        }
-
-        /**
-         * 给定一些默认参数
-         *
-         * @param env
-         * @param keyPrefix
-         */
-        public Builder(String env, String keyPrefix) {
-            this.hostAndPortSet = this.resolved(env);
-            this.password = "Uu49Kz1olY85HQBu";
-            this.soTimeout = 2000;
-            this.maxAttempts = 5;
-            this.connectionTimeout = 2000;
-            this.maxTotal = 50;
-            this.maxIdle = 10;
-            this.minIdle = 0;
-            this.maxWaitMillis = -1;
-            this.blockWhenExhausted = true;
-            this.testOnBorrow = true;
-            this.testOnReturn = false;
-            this.testWhileIdle = false;
-            this.keyPrefix = keyPrefix;
-            this.keyExpiredSeconds = 2592000;
-            this.numberOfMaster = 3;
-            this.localInitialCapacity = 16;
-            this.localMaximumWeight = 274877906944L;
-            this.localConcurrencyLevel = Runtime.getRuntime().availableProcessors();
-        }
-
-        /**
-         * 对外提供build方法获取配置对象
-         *
-         * @return
-         */
-        public CacheConfig build() {
-            return new CacheConfig(this);
-        }
-
-        //返回对应环境的结点信息
-        public Set<HostAndPort> resolved(String env) {
-            HashSet<Object> hashAndPortSet = new HashSet<>();
-            try {
-                if (env != null && env.contains(":")) {
-                    String[] hostAndPortsArray = env.split(",");
-                    String[] var4 = hostAndPortsArray;
-                    int length = hostAndPortsArray.length;
-                    for (int i = 0; i < length; i++) {
-                        String hostAndPort = var4[i];
-                        if (hostAndPort != null && !"".equals(hostAndPort.trim())) {
-                            String[] hostAndPortArray = hostAndPort.split(":");
-                            if (hostAndPortArray.length == 2) {
-                                hashAndPortSet.add(new HostAndPort(hostAndPortArray[0].trim(), Integer.valueOf(hostAndPortArray[1].trim())));
-                            }
-                        }
-                    }
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            return (Set) (hostAndPortSet.size() == 0 ? (Set) Constants.ENV_HOST_MAP.get(Environment.valueOf(env.trim().toUpperCase())) : hostAndPortSet);
-        }
-
-        public CacheConfig.Builder password() {
-            this.password = password;
-            return this;
-        }
-
-        public CacheConfig.Builder setSoTimeout(int soTimeout) {
-            this.soTimeout = soTimeout;
-            return this;
-        }
-
-        public CacheConfig.Builder maxAttempts(int maxAttempts) {
-            this.maxAttempts = maxAttempts;
-            return this;
-        }
-
-        public CacheConfig.Builder connectionTimeout(int connectionTimeout) {
-            this.connectionTimeout = connectionTimeout;
-            return this;
-        }
-
-        public CacheConfig.Builder maxTotal(int maxTotal) {
-            this.maxTotal = maxTotal;
-            return this;
-        }
-
-        public CacheConfig.Builder maxIdle(int maxIdle) {
-            this.maxIdle = maxIdle;
-            return this;
-        }
-
-        public CacheConfig.Builder minIdle(int minIdle) {
-            this.minIdle = minIdle;
-            return this;
-        }
-
-        public CacheConfig.Builder maxWaitMillis(int maxWaitMillis) {
-            this.maxWaitMillis = maxWaitMillis;
-            return this;
-        }
-
-        public CacheConfig.Builder blockWhenExhausted(boolean blockWhenExhausted) {
-            this.blockWhenExhausted = blockWhenExhausted;
-            return this;
-        }
-
-        public CacheConfig.Builder testOnBorrow(boolean testOnBorrow) {
-            this.testOnBorrow = testOnBorrow;
-            return this;
-        }
-
-        public CacheConfig.Builder testOnReturn(boolean testOnReturn) {
-            this.testOnReturn = testOnReturn;
-            return this;
-        }
-
-        public CacheConfig.Builder testWhileIdle(boolean testWhileIdle) {
-            this.testWhileIdle = testWhileIdle;
-            return this;
-        }
-
-        public CacheConfig.Builder keyPrefix(String keyPrefix) {
-            this.keyPrefix = keyPrefix;
-            return this;
-        }
-
-        public CacheConfig.Builder keyExpiredSeconds(int keyExpiredSeconds) {
-            this.keyExpiredSeconds = keyExpiredSeconds;
-            return this;
-        }
-
-        public CacheConfig.Builder numberOfMaster(int numberOfMaster) {
-            this.numberOfMaster = numberOfMaster;
-            return this;
-        }
-
-        public CacheConfig.Builder localMaximumWeight(long localMaximumWeight) {
-            this.localMaximumWeight = 1073741824L * localMaximumWeight;
-            return this;
-        }
-
-        public CacheConfig.Builder localInitialCapacity(int localInitialCapacity) {
-            this.localInitialCapacity = localInitialCapacity;
-            return this;
-        }
-
-        public CacheConfig.Builder localConcurrencyLevel(int localConcurrencyLevel) {
-            this.localConcurrencyLevel = localConcurrencyLevel;
-            return this;
-        }
-    }
 }

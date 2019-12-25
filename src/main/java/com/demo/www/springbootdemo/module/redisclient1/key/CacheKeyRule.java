@@ -7,8 +7,10 @@ import java.util.List;
  * Created on 2019/12/23 17:00
  * author:crs
  * Description:缓存key规则，一般不会使用这个类的
+ * 判断当前key是否有前缀？
+ * 是否以#开头？
  */
-public class CacheKeyRule implements ICacheKeyRule {
+public abstract class CacheKeyRule implements ICacheKeyRule {
 
     public String keyPrefix;
 

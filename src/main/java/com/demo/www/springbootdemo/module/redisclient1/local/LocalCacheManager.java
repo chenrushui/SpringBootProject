@@ -58,18 +58,19 @@ public final class LocalCacheManager {
                 this.cacheBucket.put(type.toString() + seconds, cache);
             }
 
-            ((Cache)cache).put(key, this.mapper.writeValueAsString(delegate.call()));
+            ((Cache) cache).put(key, this.mapper.writeValueAsString(delegate.call()));
             this.keyMapper.put(key, cache);
         }
     }
 
     /**
      * 通过键获取缓存信息
+     *
      * @param key
      * @return
      */
     public Cache<String, String> get(String key) {
-        return (Cache)this.keyMapper.get(key);
+        return (Cache) this.keyMapper.get(key);
     }
 
     /**
@@ -78,13 +79,14 @@ public final class LocalCacheManager {
      * @return
      */
     private CacheBuilder<String, String> cacheBuilder() {
-        return CacheBuilder.newBuilder().weakKeys().weakValues()
-                .initialCapacity(this.config.getLocalInitialCapacity()).concurrencyLevel(this.config.getLocalConcurrencyLevel())
-                .maximumWeight(this.config.getLocalMaximumWeight()).weigher(new Weigher<String, String>() {
-                    @Override
-                    public int weigh(String key, String value) {
-                        return key.getBytes().length + value.getBytes().length;
-                    }
-                });
+//        return CacheBuilder.newBuilder().weakKeys().weakValues()
+//                .initialCapacity(this.config.getLocalInitialCapacity()).concurrencyLevel(this.config.getLocalConcurrencyLevel())
+//                .maximumWeight(this.config.getLocalMaximumWeight()).weigher(new Weigher<String, String>() {
+//                    @Override
+//                    public int weigh(String key, String value) {
+//                        return key.getBytes().length + value.getBytes().length;
+//                    }
+//                });
+        return null;
     }
 }

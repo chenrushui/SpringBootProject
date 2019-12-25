@@ -19,10 +19,17 @@ public class TestRedis {
 
         //获取某个环境的枚举
         System.out.println(Environment.valueOf("TEST1"));
+
+        CacheConfig cacheConfig = new CacheConfig("DEV");
+        CacheClient cacheClient = new CacheClient(cacheConfig);
+        cacheClient.set("key1", "测试框架的封装");
+        System.out.println(cacheClient.get("key1"));
+
     }
 
     @Test
     public void testCacheLocal() {
+
 
     }
 

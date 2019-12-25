@@ -1,8 +1,10 @@
 package com.demo.www.springbootdemo.module.redisclient1;
 
+import com.demo.www.springbootdemo.module.redisclient1.command.ICacheCoreCommands;
+import com.demo.www.springbootdemo.module.redisclient1.command.ICacheExtensionCommands;
+import com.demo.www.springbootdemo.module.redisclient1.command.ICacheTokenCommands;
 import com.demo.www.springbootdemo.module.redisclient1.local.ILocalCache;
-import com.pica.cloud.foundation.redis.command.ICacheCoreCommands;
-import com.pica.cloud.foundation.redis.command.ICacheTokenCommands;
+
 
 
 /**
@@ -11,6 +13,6 @@ import com.pica.cloud.foundation.redis.command.ICacheTokenCommands;
  * Description:ICacheClient
  * 接口直接可以多继承
  */
-public interface ICacheClient extends ICacheCoreCommands, ICacheTokenCommands {
+public interface ICacheClient extends ICacheCoreCommands, ICacheTokenCommands , ICacheExtensionCommands {
     ILocalCache local();
 }
