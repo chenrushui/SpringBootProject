@@ -1,6 +1,7 @@
 package com.demo.www.springbootdemo.module.redisclient1.local;
 
-import com.demo.www.springbootdemo.module.redisclient1.configuration.CacheConfig;
+
+import com.demo.www.springbootdemo.module.redisclient1.configuration.LocalCacheConfig;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.cache.Cache;
@@ -23,7 +24,7 @@ public class LocalCache implements ILocalCache {
     //缓存管理器
     private static LocalCacheManager cacheManager;
 
-    public LocalCache(CacheConfig config) {
+    public LocalCache(LocalCacheConfig config) {
         cacheManager = new LocalCacheManager(config);
     }
 
@@ -32,7 +33,7 @@ public class LocalCache implements ILocalCache {
         Cache<String, String> cache = cacheManager.get(key);
         if (cache != null) {
             try {
-                return (String) this.mapper.readValue((String) cache.getIfPresent(key), String.class);
+                return (String) this.mapper.readValue(cache.getIfPresent(key), String.class);
             } catch (IOException e) {
                 logger.error("getOrLoad exception", e);
             }
@@ -45,7 +46,7 @@ public class LocalCache implements ILocalCache {
         try {
             Cache<String, String> cache = cacheManager.get(key);
             if (cache != null) {
-                return this.mapper.readValue((String)cache.getIfPresent(key), klass);
+                return this.mapper.readValue((String) cache.getIfPresent(key), klass);
             }
         } catch (Exception e) {
             logger.error("getOrLoad exception", e);
@@ -59,7 +60,7 @@ public class LocalCache implements ILocalCache {
         try {
             Cache<String, String> cache = cacheManager.get(key);
             if (cache != null) {
-                return this.mapper.readValue((String)cache.getIfPresent(key), typeReference);
+                return this.mapper.readValue((String) cache.getIfPresent(key), typeReference);
             }
         } catch (Exception e) {
             logger.error("getOrLoad exception", e);
@@ -76,7 +77,7 @@ public class LocalCache implements ILocalCache {
                 cacheManager.put(LocalCacheType.Never, key, load, -1);
             }
 
-            return this.mapper.readValue((String)cacheManager.get(key).get(key, () -> {
+            return this.mapper.readValue((String) cacheManager.get(key).get(key, () -> {
                 return this.mapper.writeValueAsString(load.call());
             }), klass);
         } catch (Exception e) {
@@ -93,7 +94,7 @@ public class LocalCache implements ILocalCache {
                 cacheManager.put(LocalCacheType.Never, key, load, -1);
             }
 
-            return this.mapper.readValue((String)cacheManager.get(key).get(key, () -> {
+            return this.mapper.readValue((String) cacheManager.get(key).get(key, () -> {
                 return this.mapper.writeValueAsString(load.call());
             }), typeReference);
         } catch (Exception e) {
@@ -102,16 +103,20 @@ public class LocalCache implements ILocalCache {
         }
     }
 
+    /**
+     * 存入数据
+     *
+     * @param key
+     * @param value
+     */
     @Override
     public void set(String key, Object value) {
-        try {
-            cacheManager.put(LocalCacheType.Never, key, () -> {
+        cacheManager.put(LocalCacheType.Never, key, new Callable<Object>() {
+            @Override
+            public Object call() throws Exception {
                 return value;
-            }, -1);
-        } catch (Exception e) {
-            logger.error("local cache exception", e);
-        }
-
+            }
+        }, -1);
     }
 
     @Override

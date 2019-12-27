@@ -17,7 +17,7 @@ import java.util.logging.Logger;
  * 所有的核心操作都在里面
  * 如何创建JedisCluster集群对象，JedisPoolConfig。
  */
-public class CacheCoreCommands implements ICacheCoreCommands {
+public  class CacheCoreCommands implements ICacheCoreCommands {
 
     private static final Logger logger = Logger.getLogger("CacheCoreCommands");
     private final JedisCluster cluster;

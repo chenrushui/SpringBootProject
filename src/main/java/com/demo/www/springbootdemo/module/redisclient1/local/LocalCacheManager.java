@@ -1,6 +1,6 @@
 package com.demo.www.springbootdemo.module.redisclient1.local;
 
-import com.demo.www.springbootdemo.module.redisclient1.configuration.CacheConfig;
+import com.demo.www.springbootdemo.module.redisclient1.configuration.LocalCacheConfig;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
@@ -24,9 +24,9 @@ public final class LocalCacheManager {
     //用于保存所有的本地缓存键值对么？
     private final Map<String, Cache<String, String>> cacheBucket = new HashMap();
     private final ConcurrentHashMap<String, Cache<String, String>> keyMapper = new ConcurrentHashMap<>();
-    private final CacheConfig config;
+    private final LocalCacheConfig config;
 
-    public LocalCacheManager(CacheConfig config) {
+    public LocalCacheManager(LocalCacheConfig config) {
         this.config = config;
     }
 
@@ -36,31 +36,43 @@ public final class LocalCacheManager {
      * @param delegate 回调
      * @param seconds  缓存过期时间
      */
-    public void put(LocalCacheType type, String key, final Callable<Object> delegate, Integer seconds) throws Exception {
-        Cache<String, String> cache = this.cacheBucket.get(type.toString() + seconds);
+    public void put(LocalCacheType type, String key, final Callable<Object> delegate, Integer seconds)  {
+        //当前缓存是否存在
+        Cache<String, String> cache = (Cache)this.cacheBucket.get(type.toString() + seconds);
         if (cache == null) {
-            switch (type) {
+            switch(type) {
                 case Never:
                     cache = this.cacheBuilder().build();
+                    break;
                 case ExpireAfterWrite:
-                    cache = this.cacheBuilder().expireAfterWrite((long) seconds, TimeUnit.SECONDS).build();
+                    cache = this.cacheBuilder().expireAfterWrite((long)seconds, TimeUnit.SECONDS).build();
+                    break;
                 case ExpireAfterAccess:
-                    cache = this.cacheBuilder().expireAfterAccess((long) seconds, TimeUnit.SECONDS).build();
+                    cache = this.cacheBuilder().expireAfterAccess((long)seconds, TimeUnit.SECONDS).build();
                     break;
                 case AutoRefresh:
-                    cache = this.cacheBuilder().refreshAfterWrite((long) seconds, TimeUnit.SECONDS).build(new CacheLoader<String, String>() {
+                    cache = this.cacheBuilder().refreshAfterWrite((long)seconds, TimeUnit.SECONDS).build(new CacheLoader<String, String>() {
                         public String load(String key) throws Exception {
                             return LocalCacheManager.this.mapper.writeValueAsString(delegate.call());
                         }
                     });
             }
+
+            //把cache对象缓存起来，不用每次都创建对象。
             if (type != LocalCacheType.AutoRefresh) {
                 this.cacheBucket.put(type.toString() + seconds, cache);
             }
-
-            ((Cache) cache).put(key, this.mapper.writeValueAsString(delegate.call()));
-            this.keyMapper.put(key, cache);
         }
+
+        try {
+            Object call = delegate.call();
+            String value = this.mapper.writeValueAsString(call);
+            ((Cache)cache).put(key, value);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        this.keyMapper.put(key, cache);
     }
 
     /**
@@ -70,7 +82,7 @@ public final class LocalCacheManager {
      * @return
      */
     public Cache<String, String> get(String key) {
-        return (Cache) this.keyMapper.get(key);
+        return (Cache)this.keyMapper.get(key);
     }
 
     /**
@@ -79,14 +91,10 @@ public final class LocalCacheManager {
      * @return
      */
     private CacheBuilder<String, String> cacheBuilder() {
-//        return CacheBuilder.newBuilder().weakKeys().weakValues()
-//                .initialCapacity(this.config.getLocalInitialCapacity()).concurrencyLevel(this.config.getLocalConcurrencyLevel())
-//                .maximumWeight(this.config.getLocalMaximumWeight()).weigher(new Weigher<String, String>() {
-//                    @Override
-//                    public int weigh(String key, String value) {
-//                        return key.getBytes().length + value.getBytes().length;
-//                    }
-//                });
-        return null;
+        return CacheBuilder.newBuilder().weakKeys().weakValues().initialCapacity(this.config.getLocalInitialCapacity()).concurrencyLevel(this.config.getLocalConcurrencyLevel()).maximumWeight(this.config.getLocalMaximumWeight()).weigher(new Weigher<String, String>() {
+            public int weigh(String key, String value) {
+                return key.getBytes().length + value.getBytes().length;
+            }
+        });
     }
 }

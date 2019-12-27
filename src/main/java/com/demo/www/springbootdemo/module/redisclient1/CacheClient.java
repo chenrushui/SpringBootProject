@@ -16,24 +16,16 @@ import java.util.Set;
  * author:crs
  * Description:CacheClient
  */
-public class CacheClient extends CacheKeyRule implements ICacheClient{
+public final class CacheClient extends CacheKeyRule implements ICacheClient {
 
     private final ICacheCoreCommands client;
     private final ICacheTokenCommands tokenCommands;
     private final ICacheExtensionCommands extensionCommands;
-    private final ILocalCache localCache;
-
 
     public CacheClient(CacheConfig config) {
         this.client = new CacheCoreCommands(config);
-        this.localCache = new LocalCache(config);
         this.tokenCommands = new CacheTokenCommands(this.client);
-        this.extensionCommands = new CacheExtensionCommands(this.client,"");
-    }
-
-    @Override
-    public ILocalCache local() {
-        return this.localCache;
+        this.extensionCommands = new CacheExtensionCommands(this.client, "");
     }
 
     @Override
@@ -370,7 +362,7 @@ public class CacheClient extends CacheKeyRule implements ICacheClient{
     //这个操作是做什么的？
     @Override
     public String saveToken(Map<String, String> hashMap, int expireSeconds) throws Exception {
-        return tokenCommands.saveToken(hashMap,expireSeconds);
+        return tokenCommands.saveToken(hashMap, expireSeconds);
     }
 
     //获取token
@@ -381,12 +373,12 @@ public class CacheClient extends CacheKeyRule implements ICacheClient{
 
     @Override
     public <T> T getToken(String token, Class<T> klass) {
-        return tokenCommands.getToken(token,klass);
+        return tokenCommands.getToken(token, klass);
     }
 
     @Override
     public String getTokenByUserId(String userId, String sysCode) {
-        return tokenCommands.getTokenByUserId(userId,sysCode);
+        return tokenCommands.getTokenByUserId(userId, sysCode);
     }
 
     @Override
@@ -399,20 +391,21 @@ public class CacheClient extends CacheKeyRule implements ICacheClient{
     public <T> T get(String key, Class<T> clazz) {
         return this.extensionCommands.get(this.attachInfoToKey(key), clazz);
     }
+
     //直接获取对象集合
     @Override
     public <T> List<T> getList(String key, Class<T> clazz) {
-        return this.extensionCommands.getList(this.attachInfoToKey(key),clazz);
+        return this.extensionCommands.getList(this.attachInfoToKey(key), clazz);
     }
 
     @Override
     public <T> T hget(String key, String field, Class<T> clazz) {
-        return this.extensionCommands.hget(this.attachInfoToKey(key),field,clazz);
+        return this.extensionCommands.hget(this.attachInfoToKey(key), field, clazz);
     }
 
     @Override
     public <T> List<T> hgetList(String key, String field, Class<T> clazz) {
-        return this.extensionCommands.hgetList(this.attachInfoToKey(key),field,clazz);
+        return this.extensionCommands.hgetList(this.attachInfoToKey(key), field, clazz);
     }
 
     @Override

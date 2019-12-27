@@ -3,6 +3,8 @@ package com.demo.www.springbootdemo.module.redisclient1;
 
 import com.demo.www.springbootdemo.module.design.prototype.copy.Person;
 import com.demo.www.springbootdemo.module.redisclient1.configuration.CacheConfig;
+import com.demo.www.springbootdemo.module.redisclient1.configuration.LocalCacheConfig;
+import com.demo.www.springbootdemo.module.redisclient1.local.LocalCache;
 import com.demo.www.springbootdemo.module.redisclient1.util.Environment;
 import org.junit.Test;
 import redis.clients.jedis.JedisPool;
@@ -147,6 +149,7 @@ public class TestRedis {
     //Redis集群的一致性Hash
     @Test
     public void testCacheLocal() {
+        /*
         CacheConfig cacheConfig = new CacheConfig("DEV");
         CacheClient cacheClient = new CacheClient(cacheConfig);
         cacheClient.set("test","test");
@@ -154,12 +157,28 @@ public class TestRedis {
 
         Map<String, JedisPool> map = cacheClient.clusterInfo();
         System.out.println(map);
+        */
+
+        LocalCacheConfig localCacheConfig = new LocalCacheConfig();
+
+        LocalCache localCache = new LocalCache(localCacheConfig);
+
+        localCache.set("key","test");
+        localCache.set("key1","test1");
+        localCache.set("key2","test2");
+        localCache.set("key3","test3");
 
 
+        String key = localCache.get("key3");
+        System.out.println(key);
 
+        RedisEntity crs = new RedisEntity("crs", 22);
+        RedisEntity qgyd = new RedisEntity("qgyd", 23);
 
+        localCache.set("body",crs);
 
-
+        RedisEntity body = localCache.get("body", RedisEntity.class);
+        System.out.println(body);
 
 
     }

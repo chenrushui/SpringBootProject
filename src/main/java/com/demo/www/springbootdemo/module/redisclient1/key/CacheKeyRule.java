@@ -10,7 +10,7 @@ import java.util.List;
  * 判断当前key是否有前缀？
  * 是否以#开头？
  */
-public abstract class CacheKeyRule implements ICacheKeyRule {
+public class CacheKeyRule implements ICacheKeyRule {
 
     public String keyPrefix;
 

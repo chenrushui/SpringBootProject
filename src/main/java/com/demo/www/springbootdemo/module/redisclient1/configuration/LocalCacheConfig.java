@@ -3,35 +3,31 @@ package com.demo.www.springbootdemo.module.redisclient1.configuration;
 /**
  * Created on 2019/12/24 17:52
  * author:crs
- * Description:XXX
+ * Description:LocalCacheConfig
  */
 public class LocalCacheConfig {
 
-    private int localInitialCapacity;
-    private int localConcurrencyLevel;
-    private long localMaximumWeight;
+    private final int localInitialCapacity;
+    private final int localConcurrencyLevel;
+    private final long localMaximumWeight;
+
+    public LocalCacheConfig() {
+        this.localInitialCapacity = 16;
+        this.localConcurrencyLevel = Runtime.getRuntime().availableProcessors();
+        this.localMaximumWeight = 274877906944L;
+    }
 
     public int getLocalInitialCapacity() {
         return localInitialCapacity;
-    }
-
-    public void setLocalInitialCapacity(int localInitialCapacity) {
-        this.localInitialCapacity = localInitialCapacity;
     }
 
     public int getLocalConcurrencyLevel() {
         return localConcurrencyLevel;
     }
 
-    public void setLocalConcurrencyLevel(int localConcurrencyLevel) {
-        this.localConcurrencyLevel = localConcurrencyLevel;
-    }
-
     public long getLocalMaximumWeight() {
         return localMaximumWeight;
     }
 
-    public void setLocalMaximumWeight(long localMaximumWeight) {
-        this.localMaximumWeight = localMaximumWeight;
-    }
+
 }

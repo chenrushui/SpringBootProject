@@ -14,5 +14,4 @@ import com.demo.www.springbootdemo.module.redisclient1.local.ILocalCache;
  * 接口直接可以多继承
  */
 public interface ICacheClient extends ICacheCoreCommands, ICacheTokenCommands , ICacheExtensionCommands {
-    ILocalCache local();
 }
