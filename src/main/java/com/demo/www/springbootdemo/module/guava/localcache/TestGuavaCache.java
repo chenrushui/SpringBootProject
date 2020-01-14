@@ -5,11 +5,8 @@ import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
-import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import org.junit.Test;
 
-import java.lang.ref.SoftReference;
-import java.lang.ref.WeakReference;
 import java.util.*;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
@@ -140,8 +137,6 @@ public class TestGuavaCache {
         System.out.println(refreshCache.stats().toString());
 
         System.out.println("cpu的核数：" + Runtime.getRuntime().availableProcessors());
-
-
     }
 
     /**
@@ -152,7 +147,6 @@ public class TestGuavaCache {
         //多核cpu可以多个线程同时执行。Cache创建的时候，可以设置多少个线程执行？
         System.out.println("cpu的核数：" + Runtime.getRuntime().availableProcessors());
     }
-
 
     /**
      * 测试缓存的创建
@@ -170,5 +164,4 @@ public class TestGuavaCache {
         cache.put("testCreateCache", "testCreateCache");
         System.out.println(cache.getIfPresent("testCreateCache"));
     }
-
 }

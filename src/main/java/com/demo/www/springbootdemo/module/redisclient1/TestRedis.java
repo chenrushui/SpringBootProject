@@ -70,7 +70,7 @@ public class TestRedis {
         //计算有序集合中指定分数区间的成员数量。
         System.out.println(cacheClient.zcount(key, "98", "100"));
         //打印出所有的set集合（member，按照分数的从高到、低排列）
-        System.out.println(cacheClient.zrevrange(key,0,101));
+        System.out.println(cacheClient.zrevrange(key, 0, 101));
         //rank表示排名
         //range表示界限，范围
         //rev表示排序规则，从大到消
@@ -123,10 +123,10 @@ public class TestRedis {
         */
 
         //让键存储到同一个redis结点上；这样设置，直接分布到同一个hash slot上了。
-        cacheClient.sadd("{111}222","222");
-        cacheClient.sadd("{111}333","333");
-        cacheClient.spop("{111}222");
-        cacheClient.spop("{111}333");
+        //cacheClient.sadd("{111}222","222");
+        //cacheClient.sadd("{111}333","333");
+        //cacheClient.spop("{111}222");
+        //cacheClient.spop("{111}333");
 
         //1.查看集群节点
         //cluster nodes
@@ -144,6 +144,18 @@ public class TestRedis {
 
 
         //redis的一致性hash算法，让key均匀的分布
+
+
+        //订单过期使用sortset来做，使用场景
+        cacheClient.zadd("lose",202001081735d,"1");
+        cacheClient.zadd("lose",202001081935d,"2");
+        cacheClient.zadd("lose",202001082035d,"3");
+        cacheClient.zremrangeByScore("lose",0,202001081935d);
+        System.out.println(cacheClient.zcard("lose"));
+        Double lose = cacheClient.zscore("lose", "1");
+        System.out.println(lose);
+
+        //先查出所有超时的订单号
     }
 
     //Redis集群的一致性Hash
@@ -160,14 +172,12 @@ public class TestRedis {
         */
 
         LocalCacheConfig localCacheConfig = new LocalCacheConfig();
-
         LocalCache localCache = new LocalCache(localCacheConfig);
 
-        localCache.set("key","test");
-        localCache.set("key1","test1");
-        localCache.set("key2","test2");
-        localCache.set("key3","test3");
-
+        localCache.set("key", "test");
+        localCache.set("key1", "test1");
+        localCache.set("key2", "test2");
+        localCache.set("key3", "test3");
 
         String key = localCache.get("key3");
         System.out.println(key);
@@ -175,13 +185,68 @@ public class TestRedis {
         RedisEntity crs = new RedisEntity("crs", 22);
         RedisEntity qgyd = new RedisEntity("qgyd", 23);
 
-        localCache.set("body",crs);
+        localCache.set("body", crs);
 
         RedisEntity body = localCache.get("body", RedisEntity.class);
         System.out.println(body);
-
-
     }
+
+    //测试redis在高并发场景下的使用
+    @Test
+    public void testCurrent() {
+        CacheConfig cacheConfig = new CacheConfig("DEV");
+        CacheClient cacheClient = new CacheClient(cacheConfig);
+        cacheClient.set("sum", 20);
+
+//        Long sum = 20L;
+//        Thread thread = null;
+//        for (int i = 0; i < 20; i++) {
+//            System.out.println("--------------->");
+//            thread = new Thread(
+//                    new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            sum = cacheClient.decr("sum");
+//                            System.out.println(sum);
+//                            if (sum < 10) {
+//                            }
+//                        }
+//                    }
+//            );
+//            thread.start();
+//        }
+//        try {
+//            Thread.sleep(1000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+//        System.out.println("----->" + cacheClient.get("sum"));
+    }
+
+    @Test
+    public void testSortedSet(){
+        CacheConfig cacheConfig = new CacheConfig("DEV");
+        CacheClient cacheClient = new CacheClient(cacheConfig);
+        for (int i = 0; i < 100; i++) {
+            cacheClient.zadd("cache-user-score",i,"userId"+i);
+        }
+
+        //如何获取前十名的人的id？
+
+        Long zcard = cacheClient.zcard("cache-user-score");
+        System.out.println(zcard);
+        //排名前十的用户id
+        Set<String> set = cacheClient.zrevrange("cache-user-score", 0, 10);
+        System.out.println(cacheClient.zrevrange("cache-user-score",0,10));
+
+        Iterator<String> iterator = set.iterator();
+        while( iterator.hasNext()){
+            String member = iterator.next();
+            Double zscore = cacheClient.zscore("cache-user-score", member);
+            System.out.println(member+"---->"+zscore);
+        }
+    }
+
 
 
 }
