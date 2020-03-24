@@ -1,6 +1,7 @@
 package com.demo.www.springbootdemo.module.beanutils;
 
 import com.esotericsoftware.reflectasm.MethodAccess;
+import org.springframework.beans.BeanUtils;
 import org.springframework.util.StringUtils;
 
 import java.lang.reflect.Field;
@@ -31,9 +32,12 @@ public class TestBeanUtils {
         beanEntity.setName("BeanUtilsByReflect");
         beanEntity.setAge(100);
         long start = System.currentTimeMillis();
+
         for (int i = 0; i < 1000000; i++) {
-            //BeanEntity result = transferObjectByReflect(beanEntity, BeanEntity.class);
-            copyProperties(beanEntity, new BeanEntity());
+//            BeanEntity result = transferObjectByReflect(beanEntity, BeanEntity.class);
+            //1824
+            //copyProperties(beanEntity, new BeanEntity());
+            BeanUtils.copyProperties(beanEntity, BeanEntity.class);
         }
         long end = System.currentTimeMillis();
         //旧的反射系统：2154
