@@ -39,7 +39,7 @@ public class Swagger2Config {
 
         return new Docket(DocumentationType.SWAGGER_2).globalOperationParameters(pars)
                 //是否开启swagger功能
-                .enable(swagger)
+
                 .apiInfo(apiInfo())
                 .select()
                 //apis()指定扫描的包会生成文档
