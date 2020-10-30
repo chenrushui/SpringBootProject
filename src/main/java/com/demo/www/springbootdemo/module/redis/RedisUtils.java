@@ -7,10 +7,10 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
-import redis.clients.jedis.HostAndPort;
-import redis.clients.jedis.Jedis;
-import redis.clients.jedis.JedisCluster;
-import redis.clients.jedis.JedisSentinelPool;
+//import redis.clients.jedis.HostAndPort;
+//import redis.clients.jedis.Jedis;
+//import redis.clients.jedis.JedisCluster;
+//import redis.clients.jedis.JedisSentinelPool;
 
 import java.util.HashSet;
 import java.util.List;
@@ -29,21 +29,22 @@ public class RedisUtils {
     @Autowired
     private RedisTemplate redisTemplate;
 
-    private final JedisSentinelPool jedisSentinelPool = null;
 
-    //-------------多结点配置-------------------------------
-    public void redisCluster() {
-        HashSet<HostAndPort> node = new HashSet<>();
-        node.add(new HostAndPort("192.168.140.98", 6379));
-        node.add(new HostAndPort("192.168.140.97", 6379));
-        node.add(new HostAndPort("192.168.140.96", 6379));
-        // 通过jedisCluster操作redis
-        JedisCluster jedisCluster = new JedisCluster(node);
-    }
+//    private final JedisSentinelPool jedisSentinelPool = new JedisSentinelPool();
+
+//    //-------------多结点配置-------------------------------
+//    public void redisCluster() {
+//        HashSet<HostAndPort> node = new HashSet<>();
+//        node.add(new HostAndPort("192.168.140.98", 6379));
+//        node.add(new HostAndPort("192.168.140.97", 6379));
+//        node.add(new HostAndPort("192.168.140.96", 6379));
+//        // 通过jedisCluster操作redis
+//        JedisCluster jedisCluster = new JedisCluster(node);
+//    }
 
     public void jedis() {
-        Jedis jedis = new Jedis("192.168.140.98", 6379);
-        jedis.auth("redis密码");
+//        Jedis jedis = new Jedis("192.168.140.98", 6379);
+//        jedis.auth("redis密码");
         //直接使用jedis操作redis，所有的命令都对应一个方法。
     }
 
@@ -57,8 +58,9 @@ public class RedisUtils {
      * @return
      */
     public long setNX(String key, String content) {
-        Jedis jedis = jedisSentinelPool.getResource();
-        return jedis.setnx(key, content);
+//        Jedis jedis = jedisSentinelPool.getResource();
+//        return jedis.setnx(key, content);
+        return 10;
     }
 
     /**

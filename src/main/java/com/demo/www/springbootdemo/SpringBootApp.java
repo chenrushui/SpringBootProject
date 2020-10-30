@@ -6,10 +6,12 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.amqp.rabbit.annotation.EnableRabbit;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.web.client.RestTemplate;
@@ -19,21 +21,24 @@ import java.util.concurrent.CountDownLatch;
 import java.util.function.Consumer;
 
 //@ImportResource(locations = {"classpath:bean.xml"})
-@EnableRabbit
+//@EnableRabbit
 //@EnableFeignClients
-@EnableScheduling
+//@EnableScheduling
 @MapperScan(basePackages = "com.demo.www.springbootdemo.mapper")
 @SpringBootApplication
 @EnableCaching
+@EntityScan(basePackageClasses = {
+        SpringBootApp.class
+})
 public class SpringBootApp {
 
     public static void main(String[] args) throws InterruptedException {
         ApplicationContext ctx =   SpringApplication.run(SpringBootApp.class, args);
 
-        System.out.println(new TestParamLog().addSum(1, 2));
+        //System.out.println(new TestParamLog().addSum(1, 2));
 
-        StringRedisTemplate template = ctx.getBean(StringRedisTemplate.class);
-        template.convertAndSend("chat", "Hello from Redis!");
+        //StringRedisTemplate template = ctx.getBean(StringRedisTemplate.class);
+        //template.convertAndSend("chat", "Hello from Redis!");
     }
 
     /**
@@ -64,8 +69,8 @@ public class SpringBootApp {
      * 让容器帮我们实例化此对象
      * @return
      */
-    @Bean
-    public RestTemplate restTemplate() {
-        return new RestTemplate();
-    }
+//    @Bean
+//    public RestTemplate restTemplate() {
+//        return new RestTemplate();
+//    }
 }

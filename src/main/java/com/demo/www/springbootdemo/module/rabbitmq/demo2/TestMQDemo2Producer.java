@@ -12,8 +12,8 @@ import org.springframework.test.context.junit4.SpringRunner;
  * author:crs
  * Description:测试消息
  */
-@RunWith(SpringRunner.class)
-@SpringBootTest
+//@RunWith(SpringRunner.class)
+//@SpringBootTest
 public class TestMQDemo2Producer {
 
     @Autowired

@@ -10,11 +10,11 @@ import java.io.Serializable;
 @ApiModel(value = "BaseResult")
 public class BaseResult<T> implements Serializable {
     //200 表示成功，-1表示失败
-    @ApiModelProperty(value = "code码")
+    @ApiModelProperty(value = "code")
     public int code;
-    @ApiModelProperty(value = "信息")
+    @ApiModelProperty
     public String message;
-    @ApiModelProperty(value = "数据")
+    @ApiModelProperty
     public T data;
 
     public BaseResult() {
@@ -112,6 +112,4 @@ public class BaseResult<T> implements Serializable {
     public static BaseResult buildError(int code, String msg) {
         return new BaseResult(code, msg, null);
     }
-
-
 }

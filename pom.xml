@@ -34,15 +34,15 @@
         <!--</dependency>-->
 
         <!--mongodb-->
-        <dependency>
-            <groupId>org.mongodb</groupId>
-            <artifactId>mongo-java-driver</artifactId>
-            <version>3.8.2</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-mongodb</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.mongodb</groupId>-->
+<!--            <artifactId>mongo-java-driver</artifactId>-->
+<!--            <version>3.8.2</version>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.boot</groupId>-->
+<!--            <artifactId>spring-boot-starter-data-mongodb</artifactId>-->
+<!--        </dependency>-->
         <!--谷歌guava高并发处理工具-->
         <dependency>
             <groupId>com.google.guava</groupId>
@@ -94,34 +94,38 @@
             <artifactId>redisson</artifactId>
             <version>3.11.1</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
 
         <!-- pica -->
-        <dependency>
-            <groupId>com.pica.cloud.foundation</groupId>
-            <artifactId>pica-cloud-redis</artifactId>
-            <version>1.3.0</version>
-            <scope>provided</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.slf4j</groupId>
-                    <artifactId>slf4j-api</artifactId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>jackson-databind</artifactId>
-                    <groupId>com.fasterxml.jackson.core</groupId>
-                </exclusion>
-                <exclusion>
-                    <groupId>com.google.guava</groupId>
-                    <artifactId>guava</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.pica.cloud.foundation</groupId>-->
+<!--            <artifactId>pica-cloud-redis</artifactId>-->
+<!--            <version>1.3.0</version>-->
+<!--            <scope>provided</scope>-->
+<!--            <exclusions>-->
+<!--                <exclusion>-->
+<!--                    <groupId>org.slf4j</groupId>-->
+<!--                    <artifactId>slf4j-api</artifactId>-->
+<!--                </exclusion>-->
+<!--                <exclusion>-->
+<!--                    <artifactId>jackson-databind</artifactId>-->
+<!--                    <groupId>com.fasterxml.jackson.core</groupId>-->
+<!--                </exclusion>-->
+<!--                <exclusion>-->
+<!--                    <groupId>com.google.guava</groupId>-->
+<!--                    <artifactId>guava</artifactId>-->
+<!--                </exclusion>-->
+<!--            </exclusions>-->
+<!--        </dependency>-->
 
-        <dependency>
-            <groupId>com.pica.cloud.foundation</groupId>
-            <artifactId>pica-cloud-encryption-common</artifactId>
-            <version>1.0.2</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.pica.cloud.foundation</groupId>-->
+<!--            <artifactId>pica-cloud-encryption-common</artifactId>-->
+<!--            <version>1.0.2</version>-->
+<!--        </dependency>-->
 
 
         <!--<dependency>-->
@@ -209,7 +213,11 @@
             <version>1.18.2</version>
             <scope>provided</scope>
         </dependency>
-
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.1.0</version>
+        </dependency>
         <!--redis的依赖-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -238,11 +246,11 @@
             <version>2.2.0.RELEASE</version>
         </dependency>
 
-        <dependency>
-            <groupId>com.pica.cloud.foundation</groupId>
-            <artifactId>pica-cloud-kafka</artifactId>
-            <version>1.2.6-SNAPSHOT</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.pica.cloud.foundation</groupId>-->
+<!--            <artifactId>pica-cloud-kafka</artifactId>-->
+<!--            <version>1.2.6-SNAPSHOT</version>-->
+<!--        </dependency>-->
 
         <!--<dependency>-->
         <!--<groupId>org.springframework.cloud</groupId>-->
@@ -289,11 +297,11 @@
             <artifactId>spring-boot-starter-data-redis</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>com.pica.cloud.report</groupId>
-            <artifactId>pica-cloud-stats-client</artifactId>
-            <version>1.0.0</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.pica.cloud.report</groupId>-->
+<!--            <artifactId>pica-cloud-stats-client</artifactId>-->
+<!--            <version>1.0.0</version>-->
+<!--        </dependency>-->
 
         <!-- httpClient依赖-->
         <!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpcore -->
@@ -309,6 +317,14 @@
             <artifactId>httpclient</artifactId>
             <version>4.5.6</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+
+
+
 
     </dependencies>
 

@@ -1,6 +1,6 @@
 package com.demo.www.springbootdemo.module.redisclient1.test.demo1;
 
-import com.demo.www.springbootdemo.module.redisclient1.CacheClient;
+
 import com.demo.www.springbootdemo.module.redisclient1.configuration.CacheConfig;
 
 /**
@@ -15,7 +15,7 @@ public class TestThreadIncr {
 
 
         CacheConfig cacheConfig = new CacheConfig("DEV");
-        CacheClient cacheClient = new CacheClient(cacheConfig);
+//        CacheClient cacheClient = new CacheClient(cacheConfig);
 //        cacheClient.set("sum", 20);
 
 //        for (int i = 0; i <20 ; i++) {
@@ -23,7 +23,7 @@ public class TestThreadIncr {
 //            testThread.start();
 //        }
 
-        System.out.println(cacheClient.get("sum"));
+//        System.out.println(cacheClient.get("sum"));
 
 
 

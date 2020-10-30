@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
  * author:crs
  * Description:消息生产者
  */
-@Component
+//@Component
 public class BaseMQProducer {
 
     @Autowired

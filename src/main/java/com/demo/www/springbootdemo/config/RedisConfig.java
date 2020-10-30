@@ -17,39 +17,39 @@ import org.springframework.context.annotation.PropertySource;
 @Slf4j
 public class RedisConfig {
 
-    //获取配置文件的属性值
-    @Value("${redis.hostName}")
-    private String hostName;
-
-    @Value("${redis.port}")
-    private int port;
-
-    @Value("${redis.maxIdle}")
-    private Integer maxIdle;
-
-    @Value("${redis.timeout}")
-    private Integer timeout;
-
-    @Value("${redis.maxTotal}")
-    private Integer maxTotal;
-
-    @Value("${redis.maxWaitMillis}")
-    private Integer maxWaitMillis;
-
-    @Value("${redis.minEvictableIdleTimeMillis}")
-    private Integer minEvictableIdleTimeMillis;
-
-    @Value("${redis.numTestsPerEvictionRun}")
-    private Integer numTestsPerEvictionRun;
-
-    @Value("${redis.timeBetweenEvictionRunsMillis}")
-    private long timeBetweenEvictionRunsMillis;
-
-    @Value("${redis.testOnBorrow}")
-    private boolean testOnBorrow;
-
-    @Value("${redis.testWhileIdle}")
-    private boolean testWhileIdle;
+//    //获取配置文件的属性值
+//    @Value("${redis.hostName}")
+//    private String hostName;
+//
+//    @Value("${redis.port}")
+//    private int port;
+//
+//    @Value("${redis.maxIdle}")
+//    private Integer maxIdle;
+//
+//    @Value("${redis.timeout}")
+//    private Integer timeout;
+//
+//    @Value("${redis.maxTotal}")
+//    private Integer maxTotal;
+//
+//    @Value("${redis.maxWaitMillis}")
+//    private Integer maxWaitMillis;
+//
+//    @Value("${redis.minEvictableIdleTimeMillis}")
+//    private Integer minEvictableIdleTimeMillis;
+//
+//    @Value("${redis.numTestsPerEvictionRun}")
+//    private Integer numTestsPerEvictionRun;
+//
+//    @Value("${redis.timeBetweenEvictionRunsMillis}")
+//    private long timeBetweenEvictionRunsMillis;
+//
+//    @Value("${redis.testOnBorrow}")
+//    private boolean testOnBorrow;
+//
+//    @Value("${redis.testWhileIdle}")
+//    private boolean testWhileIdle;
 
     //注入到Spring IOC容器中
 

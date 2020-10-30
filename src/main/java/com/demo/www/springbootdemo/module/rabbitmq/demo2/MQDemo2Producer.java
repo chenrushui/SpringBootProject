@@ -18,7 +18,7 @@ import java.util.UUID;
  * author:crs
  * Description:生产者
  */
-@Component
+//@Component
 public class MQDemo2Producer implements RabbitTemplate.ConfirmCallback {
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 

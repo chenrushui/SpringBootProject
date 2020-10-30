@@ -15,11 +15,11 @@ public class BeanUtils implements ApplicationContextAware {
         this.ac = ac;
         String[] bean = ac.getBeanDefinitionNames();
 
-        System.err.println("------------------------------------>");
-        for (int i = 0; i < bean.length; i++) {
-            System.err.println(bean[i]);
-        }
-        System.err.println("------------------------------------>");
+        //System.err.println("------------------------------------>");
+        //for (int i = 0; i < bean.length; i++) {
+        //    System.err.println(bean[i]);
+        //}
+        //System.err.println("------------------------------------>");
 
         //ApplicationContext Spring ioc容器
         //ApplicationContextAware 有ApplicationContext的引用

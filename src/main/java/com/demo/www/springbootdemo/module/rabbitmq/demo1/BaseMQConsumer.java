@@ -19,7 +19,7 @@ import java.util.Map;
  * author:crs
  * Description:消息消费者，从消息队列中拉取消息并消费
  */
-@Component
+//@Component
 public class BaseMQConsumer {
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());

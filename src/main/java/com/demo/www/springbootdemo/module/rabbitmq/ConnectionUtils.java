@@ -23,11 +23,11 @@ public class ConnectionUtils {
      * @throws TimeoutException
      */
     public static Connection getInstance() throws IOException, TimeoutException {
-        ConnectionFactory factory = new ConnectionFactory();
-        factory.setPassword("guest");
-        factory.setUsername("guest");
-        factory.setHost("192.168.140.88");
-        factory.setPort(5672);
+//        ConnectionFactory factory = new ConnectionFactory();
+//        factory.setPassword("guest");
+//        factory.setUsername("guest");
+//        factory.setHost("192.168.140.88");
+//        factory.setPort(5672);
         //return factory.newConnection();
         return null;
     }

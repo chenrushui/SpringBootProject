@@ -23,8 +23,8 @@ import java.util.List;
 @Component
 public class RestUtils {
 
-    @Autowired
-    private RestTemplate restTemplate;
+//    @Autowired
+//    private RestTemplate restTemplate;
 
     public ResponseEntity<BaseResult<List<Doctor>>> getRemoteData(String url) {
         //请求头
@@ -37,10 +37,11 @@ public class RestUtils {
         //返回数据模型的泛型类型
         ParameterizedTypeReference<BaseResult<List<Doctor>>> classType = new ParameterizedTypeReference<BaseResult<List<Doctor>>>() {
         };
-        ResponseEntity<BaseResult<List<Doctor>>> responseEntity = restTemplate.exchange(url, HttpMethod.GET, httpEntity, classType, new HashMap<>());
+        //ResponseEntity<BaseResult<List<Doctor>>> responseEntity = restTemplate.exchange(url, HttpMethod.GET, httpEntity, classType, new HashMap<>());
         //不能传递请求头，具备局限性
         //Object forObject = restTemplate.getForObject();
-        return responseEntity;
+        //return responseEntity;
+        return null;
     }
 
     @GetMapping("/")
