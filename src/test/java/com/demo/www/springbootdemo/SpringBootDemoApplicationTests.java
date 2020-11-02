@@ -1,6 +1,6 @@
 package com.demo.www.springbootdemo;
 
-import com.demo.www.springbootdemo.module.design.facade.FacadeClass;
+
 import com.demo.www.springbootdemo.module.design.template.BusTravel;
 import com.demo.www.springbootdemo.module.design.template.TrainTravel;
 import com.demo.www.springbootdemo.module.design.template.TravelTemplate;
@@ -126,14 +126,7 @@ public class SpringBootDemoApplicationTests {
         trainTravel.travel();
     }
 
-    /**
-     * 测试外观模式
-     */
-    @Test
-    public void TestFacade() {
-        //直接调用外观类就可实现其中的功能
-        new FacadeClass().action();
-    }
+
 
     /**
      * 测试面向切面编程

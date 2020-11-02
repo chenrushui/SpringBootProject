@@ -1,4 +1,4 @@
-package com.demo.www.springbootdemo.crs.chain;
+package com.demo.www.springbootdemo.crs.design.chain;
 
 public class MainTest {
     public static void main(String[] args) {

@@ -1,7 +1,5 @@
 package com.demo.www.springbootdemo.module.kafka.kafkaClient.producer;
 
-
-
 import org.apache.kafka.clients.producer.Callback;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.clients.producer.RecordMetadata;
